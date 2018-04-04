@@ -1,7 +1,11 @@
 module.exports = function(sequelize, DataTypes) {
   var Topics = sequelize.define("Topics",
   {
-    topicName: {
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    description: {
       type: DataTypes.STRING,
       allowNull: false
     },

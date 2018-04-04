@@ -9,6 +9,11 @@ const bodyParser = require("body-parser");
 const session = require("express-session");
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
+const bcrypt = require('bcryptjs');
+const salt = bcrypt.genSaltSync(10);
+const hashConst = process.env.PSWHASH || "B4c0/\/";
+const hash = bcrypt.hashSync(hashConst, salt);
+
 
 
 // Sets up the Express App

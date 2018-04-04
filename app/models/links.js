@@ -5,9 +5,18 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
+    description: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     url: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    online: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      default: true
     },
     id: {
       type: DataTypes.INTEGER,

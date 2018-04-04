@@ -1,0 +1,10 @@
+.loginBox {
+    padding: .2em;
+    margin: .5em;
+    text-align: left;
+}
+input,
+label {
+    padding: .2em;
+    margin: .5em;
+}

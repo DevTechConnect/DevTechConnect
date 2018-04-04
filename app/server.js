@@ -4,19 +4,19 @@
 // ******************************************************************************
 // *** Dependencies
 // =============================================================
-var express = require("express");
-var bodyParser = require("body-parser");
-var session = require("express-session");
-var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
+const express = require("express");
+const bodyParser = require("body-parser");
+const session = require("express-session");
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
 
 
 // Sets up the Express App
 // =============================================================
-var app = express();
+const app = express();
 
-var PORT = process.env.PORT || 3001;
-var SECRET = process.env.PASSPORTSECRET || "nalksfdhJKQ1oiy30491sfouts";
+const PORT = process.env.PORT || 5000;
+const SECRET = process.env.PASSPORTSECRET || "nalksfdhJKQ1oiy30491sfouts";
 
 // Requiring our models for syncing
 var db = require("./models");
@@ -69,6 +69,15 @@ passport.deserializeUser(function(id, done) {
         } //close else
       });
 });
+
+
+//********************* ROUTES *******************************//
+
+/* GET users listing. */
+app.get('/api/hello', (req, res) => {
+  res.send({ express: 'Hello From Express' });
+});
+
 
 
 // Syncing our sequelize models and then starting our Express app

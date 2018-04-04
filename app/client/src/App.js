@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Login from './Login/Login';
 import Signup from './Signup/Signup';
+import Landing from './Landing/Landing';
 
 
 import './App.css';
@@ -28,8 +29,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Login />
-        <Signup />
+        <Landing />
       </div>
     );
   }

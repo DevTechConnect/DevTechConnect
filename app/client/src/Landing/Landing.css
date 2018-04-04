@@ -1,0 +1,5 @@
+.App {
+    background: #fff url(./globe_bkgrnd.jpg) no-repeat right top;
+    background-size: cover;
+    height: 100%;
+}

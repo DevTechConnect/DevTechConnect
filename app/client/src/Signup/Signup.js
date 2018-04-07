@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import './Signup.css';
+import API from "../utils/API";
 
 class Signup extends Component {
-    
+
     constructor(props) {
         super(props);
         this.state = [{firstName: '', lastName:'', email:'', email2:'', psw:'', psw2:'', zipCode:'', dob: ''}];
@@ -10,7 +11,7 @@ class Signup extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
       }
-    
+
     handleChange(event) {
         this.setState({value: event.target.value});
     }
@@ -18,8 +19,11 @@ class Signup extends Component {
     handleSubmit(event) {
         alert(`Your signup was succesfull ${this.state.firstName}!`);
         event.preventDefault();
+        //TODO Pass the real information
+        API.addNewUser({firstName:"John", lastName:"Smith", email:"js@js.com", password:"abcd"})
+            .catch(err => console.log(err));
     }
-    
+
     render() {
         return (
             <form className='signupBox' onSubmit={this.handleSubmit}>

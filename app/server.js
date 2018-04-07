@@ -10,9 +10,7 @@ const session = require("express-session");
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcryptjs');
-const salt = bcrypt.genSaltSync(10);
-const hashConst = process.env.PSWHASH || "B4c0/\/";
-const hash = bcrypt.hashSync(hashConst, salt);
+const saltRounds = bcrypt.genSaltSync(10);
 
 
 
@@ -81,6 +79,26 @@ passport.deserializeUser(function(id, done) {
 /* GET users listing. */
 app.get('/api/hello', (req, res) => {
   res.send({ express: 'Hello From Express' });
+});
+
+app.post('/api/addUser', (req, res) => {
+  console.log(req.body.firstName, req.body.lastName, req.body.email, req.body.password);
+  var email = req.body.email.toLowerCase();
+  var hash = bcrypt.hashSync(req.body.password, saltRounds);
+
+  var newUser = { firstName: req.body.firstName, lastName: req.body.lastName, email:email, password:hash };
+  var isDuplicateEmail = false;
+  if(isDuplicateEmail){
+    //TODO add code to check if this is a duplicate email
+  } else {
+    db.Members.create(newUser)
+                      .then(function(result) {
+                        res.json(result);
+                      }).catch(function(err){
+                        console.log(err);
+                        throw err;
+                      });
+  }
 });
 
 

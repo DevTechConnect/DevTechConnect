@@ -1,0 +1,14 @@
+li {
+    display: inline-block;
+    padding: .8em;
+    margin: .5em;
+    border-style: ridge;
+}
+
+.inline {
+    display: inline-block;
+}
+.logo {
+    position: absolute;
+    left: .5em;
+}

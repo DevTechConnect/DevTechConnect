@@ -1,11 +1,14 @@
 import React from 'react';
+import Image from '../Image/Image';
+
+import './NavbarNLI.css';
 
 const NavbarNLI = () => {
     return (
         <div>
             <nav>
-                <img src='%PUBLIC_URL%/assets/images/tempLogo.jpg' alt='DevTech Connect Logo' />
-                <ul>
+                <Image className='inline logo' src={'../../public/assets/images/tempLogo.jpg'} width={150} height={100} mode='fit' />  
+                <ul className='inline'>
                     <li>Login</li>
                     <li>Sign Up</li>
                 </ul>

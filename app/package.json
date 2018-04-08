@@ -4,7 +4,8 @@
   "scripts": {
     "client": "cd client && npm run start",
     "server": "nodemon server.js",
-    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
+    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
+    "test": "mocha"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -23,6 +24,9 @@
     "sequelize": "^4.37.5"
   },
   "devDependencies": {
-    "concurrently": "^3.5.1"
+    "chai": "^4.1.2",
+    "chai-http": "^4.0.0",
+    "concurrently": "^3.5.1",
+    "mocha": "^5.0.5"
   }
 }

@@ -10,9 +10,7 @@ const session = require("express-session");
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcryptjs');
-const salt = bcrypt.genSaltSync(10);
-const hashConst = process.env.PSWHASH || "B4c0/\/";
-const hash = bcrypt.hashSync(hashConst, salt);
+const saltRounds = bcrypt.genSaltSync(10);
 
 
 
@@ -77,10 +75,27 @@ passport.deserializeUser(function(id, done) {
 
 
 //********************* ROUTES *******************************//
+app.post('/api/addUser', (req, res) => {
+      var email = req.body.email.toLowerCase();
+      var hash = bcrypt.hashSync(req.body.password, saltRounds);
 
-/* GET users listing. */
-app.get('/api/hello', (req, res) => {
-  res.send({ express: 'Hello From Express' });
+      var newUser = { firstName: req.body.firstName, lastName: req.body.lastName, email:email, password:hash };
+      // search for attributes
+      db.Members.count({ where: {email: email} })
+                .then(function(count){
+                  if(count<=0){
+                    db.Members.create(newUser)
+                              .then(function(result) {
+                                res.json(result);
+                              }).catch(function(err){
+                                console.log(err);
+                                throw err;
+                              });
+                  } else {
+                    res.status(409).send('Duplicate Email');
+                  }
+                // project will be the first entry of the Projects table with the title 'aProject' || null
+              });//close then
 });
 
 
@@ -90,5 +105,8 @@ app.get('/api/hello', (req, res) => {
 db.sequelize.sync({ force: true }).then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
+    app.emit('serverStarted'); //used for testing so that the tests know the server has started before running
   });
 });
+
+module.exports = app; //for testing

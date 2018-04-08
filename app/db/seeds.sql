@@ -97,3 +97,17 @@ INSERT INTO LINKS (id, topicId, online, linkName, url, description) VALUES
 (67,50000,TRUE,"Lorem Ipsum","https://loremipsum.io/","Dummy text of the printing and typesetting industry."),
 (68,50000,TRUE,"Random User Generator","https://randomuser.me/","A free, open-source API for generating random user data. Like Lorem Ipsum, but for people."),
 (69,50000,TRUE,"Stack Overflow","https://stackoverflow.com","A large online community for developers to learn, share​ ​their programming ​knowledge, and build their careers. If you are looking to add to your portfolio, be active on Stack Overflow.");
+
+
+
+
+INSERT INTO Tracks (id, trackname) VALUES
+(1, "HTML/CSS"),
+(2, "JavaScript"),
+(3, "MongoDB"),
+(4, "SQL"),
+(5, "Computer Science Fundamentals");
+
+
+INSERT INTO TrackLinks () VALUES 
+();

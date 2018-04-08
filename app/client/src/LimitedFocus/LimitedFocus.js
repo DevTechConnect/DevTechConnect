@@ -1,17 +1,16 @@
 import React from 'react';
 
-
 import NavbarNLI from '../Navbar/Navbar';
 
-import './Home.css';
+import './LimitedFocus.css';
 
-const Home = () => {
+const LimitedFocus = () => {
     return (
         <div>
             <Navbar />
-            <p>Home Page Test</p>
+            <p>Limited Focus Test</p>
         </div>
     )
 };
 
-export default Home;
+export default LimitedFocus;

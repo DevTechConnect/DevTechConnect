@@ -3,7 +3,7 @@ import Image from '../Image/Image';
 
 import './NavbarNLI.css';
 
-const NavbarNLI = () => {
+const Navbar = () => {
     return (
         <div>
             <nav>
@@ -17,4 +17,4 @@ const NavbarNLI = () => {
     )
 };
 
-export default NavbarNLI;
+export default Navbar;

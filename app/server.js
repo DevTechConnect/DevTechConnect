@@ -75,30 +75,27 @@ passport.deserializeUser(function(id, done) {
 
 
 //********************* ROUTES *******************************//
-
-/* GET users listing. */
-app.get('/api/hello', (req, res) => {
-  res.send({ express: 'Hello From Express' });
-});
-
 app.post('/api/addUser', (req, res) => {
-  console.log(req.body.firstName, req.body.lastName, req.body.email, req.body.password);
-  var email = req.body.email.toLowerCase();
-  var hash = bcrypt.hashSync(req.body.password, saltRounds);
+      var email = req.body.email.toLowerCase();
+      var hash = bcrypt.hashSync(req.body.password, saltRounds);
 
-  var newUser = { firstName: req.body.firstName, lastName: req.body.lastName, email:email, password:hash };
-  var isDuplicateEmail = false;
-  if(isDuplicateEmail){
-    //TODO add code to check if this is a duplicate email
-  } else {
-    db.Members.create(newUser)
-                      .then(function(result) {
-                        res.json(result);
-                      }).catch(function(err){
-                        console.log(err);
-                        throw err;
-                      });
-  }
+      var newUser = { firstName: req.body.firstName, lastName: req.body.lastName, email:email, password:hash };
+      // search for attributes
+      db.Members.count({ where: {email: email} })
+                .then(function(count){
+                  if(count<=0){
+                    db.Members.create(newUser)
+                              .then(function(result) {
+                                res.json(result);
+                              }).catch(function(err){
+                                console.log(err);
+                                throw err;
+                              });
+                  } else {
+                    res.status(409).send('Duplicate Email');
+                  }
+                // project will be the first entry of the Projects table with the title 'aProject' || null
+              });//close then
 });
 
 
@@ -108,5 +105,8 @@ app.post('/api/addUser', (req, res) => {
 db.sequelize.sync({ force: true }).then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
+    app.emit('serverStarted'); //used for testing so that the tests know the server has started before running
   });
 });
+
+module.exports = app; //for testing

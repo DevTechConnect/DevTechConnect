@@ -43,6 +43,7 @@ class Landing extends Component {
                 <Login 
                     email={this.state.email} 
                     psw={this.state.psw}
+                    inputUpdate={this.handleInputChange}
                     loginSubmit={this.handleLoginSubmit} />
                 <Signup 
                     fName={this.state.firstName}
@@ -51,7 +52,7 @@ class Landing extends Component {
                     email2={this.state.email2}
                     psw={this.state.psw}
                     psw2={this.state.psw2}
-                    inputUpdate={this.handleInput}
+                    inputUpdate={this.handleInputChange}
                     signupSubmit={this.handleSignupSubmit} />
             </div>
         )

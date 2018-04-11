@@ -6,8 +6,8 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
     },
-    maxCompletedStep: {
-      type: DataTypes.INTEGER,
+    completedSteps: { //string of fomat stepNum,stepNum, etc.
+      type: DataTypes.STRING,
       allowNull: false,
       defaultValue: 0
     }

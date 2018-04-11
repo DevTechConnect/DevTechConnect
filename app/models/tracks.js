@@ -24,7 +24,7 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   Tracks.associate = function(models){
-    models.Tracks.hasMany(models.TrackLinks, {foreignKey: "trackId"});
+    models.Tracks.hasMany(models.TrackSteps, {foreignKey: "trackId"});
     models.Tracks.hasMany(models.TrackPractice, {foreignKey: "trackId"});
   }
 

@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  var TrackLinks = sequelize.define("TrackLinks",
+  var TrackSteps = sequelize.define("TrackSteps",
   {
     //will have an id by default
     trackId: {
@@ -22,8 +22,8 @@ module.exports = function(sequelize, DataTypes) {
       timestamps:false
     });
 
-  TrackLinks.associate = function (models) {
-     models.TrackLinks.belongsTo(models.Tracks, {
+  TrackSteps.associate = function (models) {
+     models.TrackSteps.belongsTo(models.Tracks, {
        as: "track", //the word "id" will be added at the end of the name automatically
        onDelete: "CASCADE",
        foreignKey: {
@@ -33,5 +33,5 @@ module.exports = function(sequelize, DataTypes) {
 
    };
 
-  return TrackLinks;
+  return TrackSteps;
 };

@@ -8,7 +8,7 @@ import API from "../utils/API";
 import './Landing.css';
 
 class Landing extends Component {
-    
+
     constructor(props) {
         super(props);
         this.state = [{firstName: '', lastName:'', email:'', email2:'', psw:'', psw2:''}];
@@ -30,11 +30,14 @@ class Landing extends Component {
             .catch(err => console.log(err));
     };
 
-    handleLoginSubmit = (event, firstName) => {
-        alert(`Your login was succesfull ${firstName}!`);
+    handleLoginSubmit = (event) => {
+        alert(`Your login was succesfull ${this.state.loginEmail}!`);
         event.preventDefault();
+        //the field names MUST be username and password for PassportJS to work
+        API.login({username:this.state.loginEmail, password:this.state.loginPass})
+            .catch(err => console.log(err));
     }
-    
+
     render() {
         return (
             <div>
@@ -43,12 +46,12 @@ class Landing extends Component {
                 <h2>Keep Moving</h2>
                 <p>Web development is constantly evolving. Trying to learn a skill that changes faster than bipolar weather can be intimidating - there are resources everywhere. So, where you start? Righ <a href='#'>here</a>. </p>
                 <button type='button' name='getStarted'>Get Started</button>
-                <Login 
-                    email={this.state.email} 
+                <Login
+                    email={this.state.email}
                     psw={this.state.psw}
                     inputUpdate={this.handleInputChange}
                     loginSubmit={this.handleLoginSubmit} />
-                <Signup 
+                <Signup
                     fName={this.state.firstName}
                     lName={this.state.lastName}
                     email={this.state.email}

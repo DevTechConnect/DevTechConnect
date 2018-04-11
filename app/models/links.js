@@ -13,7 +13,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
-    online: {
+    isonline: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
       default: true

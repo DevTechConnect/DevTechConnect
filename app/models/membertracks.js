@@ -6,7 +6,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
     },
-    completedSteps: { //string of fomat stepNum,stepNum, etc.
+    completedSteps: { //string of fomat stepNum,stepNum, to mock an array using comma delineator .
       type: DataTypes.STRING,
       allowNull: false,
       defaultValue: 0

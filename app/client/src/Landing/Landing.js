@@ -9,8 +9,8 @@ import './Landing.css';
 
 class Landing extends Component {
     
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = [{firstName: '', lastName:'', email:'', email2:'', psw:'', psw2:''}];
 
     };

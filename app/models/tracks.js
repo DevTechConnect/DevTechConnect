@@ -13,6 +13,10 @@ module.exports = function(sequelize, DataTypes) {
     description: {
       type: DataTypes.STRING(10000),
       allowNull: false
+    },
+    introVideoLink: {
+      type: DataTypes.STRING(10000),
+      allowNull: false
     }
   },
   {

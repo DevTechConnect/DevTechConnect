@@ -9,6 +9,10 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
+    },
+    description: {
+      type: DataTypes.STRING(10000),
+      allowNull: false
     }
   },
   {
@@ -17,6 +21,7 @@ module.exports = function(sequelize, DataTypes) {
 
   Tracks.associate = function(models){
     models.Tracks.hasMany(models.TrackLinks, {foreignKey: "trackId"});
+    models.Tracks.hasMany(models.TrackPractice, {foreignKey: "trackId"});
   }
 
   return Tracks;

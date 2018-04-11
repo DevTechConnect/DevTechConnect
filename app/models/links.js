@@ -36,8 +36,6 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false
           }
         });
-
-        models.Links.hasMany(models.TrackLinks, {foreignKey: "linkId"});
   };
 
   return Links;

@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import Login from '../Login/Login';
 import Signup from '../Signup/Signup';
 import NavbarNLI from '../NavbarNLI/NavbarNLI';
+import Trial from '../Trial/Trial';
+import LimitedFModule from "../LimitedFModule/LimitedFModule";
 import API from "../utils/API";
 
 import './Landing.css';
@@ -14,7 +16,9 @@ class Landing extends Component {
         this.state = {
             user: {firstName: '', lastName:'', email:'', email2:'', psw:'', psw2:''},
             loginClick: false,
-            signupClick: false
+            signupClick: false,
+            tryNow: false,
+            trialHTML: false
         };
     };
     
@@ -22,7 +26,9 @@ class Landing extends Component {
         const loginClkd = this.state.loginClick;
         this.setState({
             loginClick: !loginClkd,
-            signupClick: false
+            signupClick: false,
+            trialHTML: false,
+            tryNow: false
         });
     };
 
@@ -30,7 +36,29 @@ class Landing extends Component {
         const signClkd = this.state.signupClick;
         this.setState({
             signupClick: !signClkd,
-            loginClick: false
+            loginClick: false,
+            trialHTML: false,
+            tryNow: false
+        });
+    };
+    
+    tryNowClickHandler = () => {
+        const tryNowClkd = this.state.tryNow;
+        this.setState({
+            tryNow: !tryNowClkd,
+            loginClick: false,
+            signupClick: false,
+            trialHTML: false
+        });
+    };
+
+    trialClickHandler = () => {
+        const trialClkd = this.state.trialHTML;
+        this.setState({
+            trialHTML: !trialClkd,
+            loginClick: false,
+            signupClick: false,
+            tryNow: false
         });
     };
     
@@ -65,21 +93,25 @@ class Landing extends Component {
                     loginClick={this.loginClickHandler}
                     signupClick={this.signClickHandler} 
                 />
-                <h1>
-                    DevTech Connect
-                </h1>
-                <h2>
-                    Keep Moving
-                </h2>
-                <p>
-                    Web development is constantly evolving. Trying to learn a skill that changes faster than bipolar weather can be intimidating - there are resources everywhere. So, where you start? Righ <a href='#'>here</a>. 
-                </p>
-                <button type='button' name='getStarted'>
-                    Get Started
-                </button>
-            
+                {this.state.tryNow === false ?
+                
+                    <div>
+                        <h1>
+                            DevTech Connect
+                        </h1>
+                        <h2>
+                            Keep Moving
+                        </h2>
+                        <p>
+                            Web development is constantly evolving. Trying to learn a skill that changes faster than bipolar weather can be intimidating - there are resources everywhere. So, where you start? Righ <a href='#'>here</a>. 
+                        </p>
+                        <button type='button' name='getStarted' onClick={this.tryNowClickHandler}>
+                            Get Started
+                        </button>
+                    </div> : null
+                }
                 {
-                this.state.loginClick === true && this.state.signupClick === false ?
+                this.state.loginClick ?
                     <Login
                         email={this.state.user.email}
                         psw={this.state.user.psw}
@@ -89,7 +121,7 @@ class Landing extends Component {
                 }
             
                 {
-                this.state.signupClick === true && this.state.loginClick === false ?
+                this.state.signupClick ?
                     <Signup
                         fName={this.state.user.firstName}
                         lName={this.state.user.lastName}
@@ -100,6 +132,19 @@ class Landing extends Component {
                         inputUpdate={this.handleInputChange}
                         signupSubmit={this.handleSignupSubmit} 
                     /> : null
+                }
+                {
+                this.state.tryNow ?
+                    <Trial 
+                        signupClick={this.signClickHandler}
+                        htmlTrialClick={this.trialClickHandler}
+                        tryNow={this.state.tryNow}
+                    /> : null
+                }
+                {
+                this.state.trialHTML ?
+                    <LimitedFModule 
+                    trackName={'HTML/CSS'} /> : null
                 }
             </div>
         )

@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from '../Image/Image';
 
-import './NavbarNLI.css';
+import './Navbar.css';
 
 const Navbar = () => {
     return (

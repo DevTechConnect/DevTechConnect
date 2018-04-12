@@ -1,10 +1,14 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
 const Steps = (props) => {
-    render(
+    return (
         <ul className="nav nav-tabs">
+            <li className={window.location.pathname === "/LangDef" ? "active" : ""}>
+                <Link to="/LangDef">Definition</Link>
+            </li>
             <li className={window.location.pathname === "/Step1" ? "active" : ""}>
-                <Link to="/">Step 1</Link>
+                <Link to="/Step1">Step 1</Link>
             </li>
             <li className={window.location.pathname === "/Step2" ? "active" : ""}>
                 <Link to="/about">Step 2</Link>
@@ -26,3 +30,5 @@ const Steps = (props) => {
 };
 
 export default Steps;
+
+

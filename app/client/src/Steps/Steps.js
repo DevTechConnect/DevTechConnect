@@ -11,19 +11,19 @@ const Steps = (props) => {
                 <Link to="/Step1">Step 1</Link>
             </li>
             <li className={window.location.pathname === "/Step2" ? "active" : ""}>
-                <Link to="/about">Step 2</Link>
+                <Link to="/Step2">Step 2</Link>
             </li>
             <li className={window.location.pathname === "/Step3" ? "active" : ""}>
-                <Link to="/blog">Step 3</Link>
+                <Link to="/Step3">Step 3</Link>
             </li>
             <li className={window.location.pathname === "/Step4" ? "active" : ""}>
-                <Link to="/contact">Step 4</Link>
+                <Link to="/Step4">Step 4</Link>
             </li>
             <li className={window.location.pathname === "/practice" ? "active" : ""}>
-                <Link to="/contact/learn">Practice Links</Link>
+                <Link to="/practice">Practice Links</Link>
             </li>
-            <li className={window.location.pathname === "/next" ? "active" : ""}>
-                <Link to="/contact/learn">Next Track</Link>
+            <li className={window.location.pathname === "/NextTrack" ? "active" : ""}>
+                <Link to="/NextTrack">Next Track</Link>
             </li>
           </ul>
     )

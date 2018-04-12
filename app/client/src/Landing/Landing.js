@@ -103,7 +103,7 @@ class Landing extends Component {
                             Keep Moving
                         </h2>
                         <p>
-                            Web development is constantly evolving. Trying to learn a skill that changes faster than bipolar weather can be intimidating - there are resources everywhere. So, where you start? Righ <a href='#'>here</a>. 
+                            Web development is constantly evolving. Trying to learn a skill that changes faster than bipolar weather can be intimidating - there are resources everywhere. So, where you start? Right <a href='#' onClick={this.tryNowClickHandler}>here</a>. 
                         </p>
                         <button type='button' name='getStarted' onClick={this.tryNowClickHandler}>
                             Get Started

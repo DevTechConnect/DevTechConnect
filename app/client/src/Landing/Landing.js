@@ -62,20 +62,32 @@ class Landing extends Component {
         return (
             <div>
                 <NavbarNLI 
-                loginClick={this.loginClickHandler}
-                signupClick={this.signClickHandler} />
-                <h1>DevTech Connect</h1>
-                <h2>Keep Moving</h2>
-                <p>Web development is constantly evolving. Trying to learn a skill that changes faster than bipolar weather can be intimidating - there are resources everywhere. So, where you start? Righ <a href='#'>here</a>. </p>
-                <button type='button' name='getStarted'>Get Started</button>
+                    loginClick={this.loginClickHandler}
+                    signupClick={this.signClickHandler} 
+                />
+                <h1>
+                    DevTech Connect
+                </h1>
+                <h2>
+                    Keep Moving
+                </h2>
+                <p>
+                    Web development is constantly evolving. Trying to learn a skill that changes faster than bipolar weather can be intimidating - there are resources everywhere. So, where you start? Righ <a href='#'>here</a>. 
+                </p>
+                <button type='button' name='getStarted'>
+                    Get Started
+                </button>
+            
                 {
                 this.state.loginClick === true && this.state.signupClick === false ?
                     <Login
                         email={this.state.user.email}
                         psw={this.state.user.psw}
                         inputUpdate={this.handleInputChange}
-                        loginSubmit={this.handleLoginSubmit} /> : null
+                        loginSubmit={this.handleLoginSubmit} 
+                    /> : null
                 }
+            
                 {
                 this.state.signupClick === true && this.state.loginClick === false ?
                     <Signup
@@ -86,7 +98,8 @@ class Landing extends Component {
                         psw={this.state.user.psw}
                         psw2={this.state.user.psw2}
                         inputUpdate={this.handleInputChange}
-                        signupSubmit={this.handleSignupSubmit} /> : null
+                        signupSubmit={this.handleSignupSubmit} 
+                    /> : null
                 }
             </div>
         )

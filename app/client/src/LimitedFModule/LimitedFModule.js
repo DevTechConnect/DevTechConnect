@@ -8,7 +8,7 @@ import Step2 from '../Step2/Step2';
 import Step3 from '../Step3/Step3';
 import Step4 from '../Step4/Step4';
 import Practice from '../Practice/Practice';
-import NextTrack from '../RelTrack/RelTrack';
+import RelTrack from '../RelTrack/RelTrack';
 
 
 import './LimitedFModule.css';

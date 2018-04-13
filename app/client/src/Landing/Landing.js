@@ -65,8 +65,8 @@ class Landing extends Component {
     handleInputChange = event => {
         const value = event.target.value;
         const name = event.target.name;
-        this.setState(this.user: {
-          [name]: value
+        this.setState({user: {
+          [name]: value}
         });
     };
 

@@ -14,7 +14,14 @@ class Landing extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            user: {firstName: '', lastName:'', email:'', email2:'', psw:'', psw2:''},
+            firstName: '', 
+            lastName:'', 
+            email:'', 
+            email2:'', 
+            psw:'', 
+            psw2:'', 
+            loginEmail: '', 
+            loginPass:'',
             loginClick: false,
             signupClick: false,
             tryNow: false,
@@ -65,24 +72,24 @@ class Landing extends Component {
     handleInputChange = event => {
         const value = event.target.value;
         const name = event.target.name;
-        this.setState({user: {
-          [name]: value}
+        this.setState({
+          [name]: value
         });
     };
 
 
     handleSignupSubmit = (event)  => {
-        alert(`Your signup was successful ${this.state.user.firstName}!`);
         event.preventDefault();
-        API.addNewUser({firstName:this.state.user.firstName, lastName:this.state.user.lastName, email:this.state.user.email, password:this.state.user.psw})
+        alert(`Your signup was successful ${this.state.firstName}!`);
+        API.addNewUser({firstName:this.state.firstName, lastName:this.state.lastName, email:this.state.email, password:this.state.psw})
             .catch(err => console.log(err));
     };
 
     handleLoginSubmit = (event) => {
-        alert(`Your login was succesfull ${this.state.user.loginEmail}!`);
         event.preventDefault();
+        alert(`Your login was succesfull ${this.state.loginEmail}!`);
         //the field names MUST be username and password for PassportJS to work
-        API.login({username:this.state.user.loginEmail, password:this.state.user.loginPass})
+        API.login({username:this.state.loginEmail, password:this.state.loginPass})
             .catch(err => console.log(err));
     }
 
@@ -113,8 +120,8 @@ class Landing extends Component {
                 {
                 this.state.loginClick ?
                     <Login
-                        email={this.state.user.email}
-                        psw={this.state.user.psw}
+                        email={this.state.loginEmail}
+                        psw={this.state.loginPass}
                         inputUpdate={this.handleInputChange}
                         loginSubmit={this.handleLoginSubmit} 
                     /> : null
@@ -123,12 +130,12 @@ class Landing extends Component {
                 {
                 this.state.signupClick ?
                     <Signup
-                        fName={this.state.user.firstName}
-                        lName={this.state.user.lastName}
-                        email={this.state.user.email}
-                        email2={this.state.user.email2}
-                        psw={this.state.user.psw}
-                        psw2={this.state.user.psw2}
+                        fName={this.state.firstName}
+                        lName={this.state.lastName}
+                        email={this.state.email}
+                        email2={this.state.email2}
+                        psw={this.state.psw}
+                        psw2={this.state.psw2}
                         inputUpdate={this.handleInputChange}
                         signupSubmit={this.handleSignupSubmit} 
                     /> : null

@@ -8,7 +8,7 @@ import Step2 from '../Step2/Step2';
 import Step3 from '../Step3/Step3';
 import Step4 from '../Step4/Step4';
 import Practice from '../Practice/Practice';
-import NextTrack from '../NextTrack/NextTrack';
+import RelTrack from '../RelTrack/RelTrack';
 
 
 import './LimitedFModule.css';
@@ -61,7 +61,7 @@ class LimitedFModule extends Component {
                             <Route exact path="/Step3" component={Step3} />
                             <Route exact path="/Step4" component={Step4} />
                             <Route exact path="/Practice" component={Practice} />
-                            <Route exact path="/NextTrack" component={NextTrack} />
+                            <Route exact path="/RelTrack" component={RelTrack} />
                     </div>
                 </Router> : null
             }

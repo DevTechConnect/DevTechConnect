@@ -22,8 +22,8 @@ const Steps = (props) => {
             <li className={window.location.pathname === "/practice" ? "active" : ""}>
                 <Link to="/practice">Practice Links</Link>
             </li>
-            <li className={window.location.pathname === "/NextTrack" ? "active" : ""}>
-                <Link to="/NextTrack">Next Track</Link>
+            <li className={window.location.pathname === "/RelTrack" ? "active" : ""}>
+                <Link to="/RelTrack">Next Track</Link>
             </li>
           </ul>
     )

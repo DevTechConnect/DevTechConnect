@@ -58,7 +58,7 @@ INSERT INTO LINKS (id, topicId, isOnline, linkName, url, description) VALUES
 (31,16000,TRUE,"Reshader",	"https://www.reshader.com/", "A customizable JavaScript library to manage consitent color gradients in your css-in-js code. jQuery plugins available"),
 
 
-(32,18000,TRUE,"Angel List","	https://angel.co/	","A startup job boards."),
+(32,18000,TRUE,"Angel List","https://angel.co/","A startup job boards."),
 (33,18000,TRUE,"FlexJobs","https://www.flexjobs.com/","Remote and flexible jobs."),
 (34,18000,TRUE,"Guide to Public Speaking","http://www.jobinterviewtools.com/guideto-public-speaking.htm","Public speaking doesn't always mean you have a crowd. You can feel equally intimidated in a small room talking to one person. Help prepare yourself. "),
 (35,18000,TRUE,"HireArt","https://www.hireart.com/","A startup focused staffing site. Search jobs, provide videos and work samples, personalized assessments, and updates during the hiring process."),
@@ -115,6 +115,8 @@ Keep clicking through. We’ll teach you more in a bit.", "https://www.youtube.c
 (4, "SQL", "SQL", "https://www.youtube.com/watch?v=FR4QIeZaPeM"),
 (5, "Computer Science Fundamentals", "Computer Science Fundamentals", "https://www.youtube.com/watch?v=SzJ46YA_RaA");
 
+INSERT INTO RelatedTracks (trackId, relatedTrackId) VALUES
+(1,2), (2,1), (3,4), (4,3), (1,5);
 
 INSERT INTO TrackSteps (trackId, stepNumber, link, description) VALUES
 (1,1,"https://learn.shayhowe.com/html-css/", "Thorough. Not quick, but worth your time. This lesson will take you through all the basics on HTML and CSS. Take notes. You will have a great grasp on both languages when you’re done." ),

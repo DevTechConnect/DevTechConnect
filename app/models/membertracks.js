@@ -10,6 +10,11 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
       defaultValue: 0
+    },
+    markedComplete: { //string of fomat stepNum,stepNum, to mock an array using comma delineator .
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false
     }
   }, {
       timestamps:false

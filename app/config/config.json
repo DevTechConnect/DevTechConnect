@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "",
+    "password": "We.R0ck!",
     "database": "devtech_db",
     "host": "127.0.0.1",
     "dialect": "mysql"

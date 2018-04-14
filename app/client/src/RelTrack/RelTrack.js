@@ -5,7 +5,7 @@ import './RelTrack.css';
 const RelTrack = () => {
     return (
         <div>
-            <p>Related Track</p>
+            <h2>Related Track</h2>
         </div>
     )
 };

@@ -1,11 +1,15 @@
 import React from 'react';
 
+import Link from '../Link/Link';
+import Info from '../Info/Info';
+
 import './TextOpt.css';
 
 const TextOpt = () => {
     return (
         <div>
-            <p>This will be the text component users can click on when they want to utilize the text option in a step.</p>
+            <Link />
+            <Info />
         </div>
     )
 };

@@ -2,13 +2,15 @@ import React from 'react';
 import Iframe from 'react-iframe';
 
 import TextOpt from '../TextOpt/TextOpt';
+import Duration from '../Duration/Duration';
+import Info from '../Info/Info';
 
 import './Step4.css';
 
 const Step4 = () => {
     return (
         <div>
-            <p>Step4</p>
+            <h2>Step4</h2>
             <TextOpt />
             <Iframe url="http://www.youtube.com/embed/xDMP3i36naA"
                     width="450px"
@@ -18,6 +20,8 @@ const Step4 = () => {
                     display="initial"
                     position="relative"
                     allowFullScreen/>
+            <Duration />
+            <Info />
         </div>
     )
 };

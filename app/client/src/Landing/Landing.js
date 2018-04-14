@@ -82,7 +82,7 @@ class Landing extends Component {
         event.preventDefault();
         alert(`Your signup was successful ${this.state.firstName}!`);
         API.addNewUser({firstName:this.state.firstName, lastName:this.state.lastName, email:this.state.email, password:this.state.psw})
-            .then(this.props.setAppState("Home"))
+            .then(this.props.setAppState("MemberP"))
             .catch(err => console.log(err));
     
     };
@@ -90,7 +90,7 @@ class Landing extends Component {
   handleLoginSubmit = (event) => {
     event.preventDefault();
     API.login({username:this.state.loginEmail, password:this.state.loginPass})
-      .then(function(res){console.log("response in Landing", res);})
+      .then(this.props.setAppState("Home"))
       .catch(err => console.log(err));
   };
 

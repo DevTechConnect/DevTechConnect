@@ -139,11 +139,7 @@ class Landing extends Component {
                         psw={this.state.psw}
                         psw2={this.state.psw2}
                         inputUpdate={this.handleInputChange}
-<<<<<<< HEAD
-                        signupSubmit={this.props.handleSignupSubmit} 
-=======
                         signupSubmit={this.handleSignupSubmit}
->>>>>>> 78e8ddb74d254a98ceffa1414f517b096ba3f828
                     /> : null
                 }
                 {

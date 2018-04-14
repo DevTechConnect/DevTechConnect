@@ -9,7 +9,7 @@ import './App.css';
 class App extends Component {
     
   state = {
-    response: ''
+    page: "Landing"
   };
 
   componentDidMount() {
@@ -27,10 +27,18 @@ class App extends Component {
     return body;
   };
 
+    handleHolderPage = (page) => {
+        this.setState({
+            page: page
+        })
+    }
+
   render() {
     return (
       <div className="App">
-        <Landing />
+        <Landing 
+            setAppState={this.handleHolderPage}
+        />
       </div>
     );
   }

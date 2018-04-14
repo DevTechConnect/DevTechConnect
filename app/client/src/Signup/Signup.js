@@ -3,6 +3,7 @@ import './Signup.css';
 import API from "../utils/API";
 
 const Signup = (props) => {
+    
 
     return (
         <form className='signupBox' onSubmit={props.signupSubmit}>

@@ -82,7 +82,9 @@ class Landing extends Component {
         event.preventDefault();
         alert(`Your signup was successful ${this.state.firstName}!`);
         API.addNewUser({firstName:this.state.firstName, lastName:this.state.lastName, email:this.state.email, password:this.state.psw})
+            .then(this.props.setAppState("Home"))
             .catch(err => console.log(err));
+    
     };
 
     handleLoginSubmit = (event) => {
@@ -137,7 +139,7 @@ class Landing extends Component {
                         psw={this.state.psw}
                         psw2={this.state.psw2}
                         inputUpdate={this.handleInputChange}
-                        signupSubmit={this.handleSignupSubmit} 
+                        signupSubmit={this.props.handleSignupSubmit} 
                     /> : null
                 }
                 {

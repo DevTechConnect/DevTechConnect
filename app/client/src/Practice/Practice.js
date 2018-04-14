@@ -7,11 +7,14 @@ import Duration from '../Duration/Duration';
 
 import './Practice.css';
 
+
+
 const Practice = () => {
+        
     return (
         <div>
             <h2>Practice</h2>
-            <Link />
+        <Link />
             <Info /> 
             <Type /> 
             <Duration />

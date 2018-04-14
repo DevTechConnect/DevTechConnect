@@ -1,8 +1,8 @@
 import React from 'react';
 
-import './TextComp.css';
+import './TextDef.css';
 
-const TextComp = () => {
+const TextDef = () => {
     return (
         <div>
             <p>This will be our definition text. It will generally be a paragraph or two long, and will give the user a text definition of the term.</p>
@@ -10,4 +10,4 @@ const TextComp = () => {
     )
 };
 
-export default TextComp;
+export default TextDef;

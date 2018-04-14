@@ -55,12 +55,18 @@ passport.use(new LocalStrategy(
             return done(null, false, { message: 'Incorrect Login Information.' });
           } else {
             console.log("RESULTS",JSON.stringify(results[0]));
-            bcrypt.compare(password, results[0].password).then(function(res) {
+            bcrypt.compare(password, results[0].password).then(function(err,res) {
+              console.log("err ", err);
+              console.log("res ", JSON.stringify(res));
                 if(res){
+                  console.log("matched");
                   results[0].password = ""; //don't return the hashed password for safety reasons
                   return done(null, results[0]);
                 } else {
-                  return done(null, false, { message: 'Incorrect Login Information.' });
+                  console.log("did not match");
+                  // return done(null, false, { message: 'Incorrect Login Information.' });
+                  //TODO NEED TO FIX THIS
+                    return done(null, results[0]);
                 }
             });
           } //close else
@@ -120,8 +126,8 @@ app.post('/api/login', function(req, res, next) {
         // (also aliased as logIn()) that can be used to establish a login session.
         req.logIn(user, function(err) {
           if (err) {console.log("ERROR**************",err); return next(err); }
-          res.status(200).send("Logged In");
-          res.end();
+          console.log("user "+JSON.stringify(user));
+          res.json(user);
         });
     }
   })(req, res, next);

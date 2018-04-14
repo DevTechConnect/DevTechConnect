@@ -14,13 +14,13 @@ class Landing extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            firstName: '', 
-            lastName:'', 
-            email:'', 
-            email2:'', 
-            psw:'', 
-            psw2:'', 
-            loginEmail: '', 
+            firstName: '',
+            lastName:'',
+            email:'',
+            email2:'',
+            psw:'',
+            psw2:'',
+            loginEmail: '',
             loginPass:'',
             loginClick: false,
             signupClick: false,
@@ -28,7 +28,7 @@ class Landing extends Component {
             trialHTML: false
         };
     };
-    
+
     loginClickHandler = () => {
         const loginClkd = this.state.loginClick;
         this.setState({
@@ -48,7 +48,7 @@ class Landing extends Component {
             tryNow: false
         });
     };
-    
+
     tryNowClickHandler = () => {
         const tryNowClkd = this.state.tryNow;
         this.setState({
@@ -68,7 +68,7 @@ class Landing extends Component {
             tryNow: false
         });
     };
-    
+
     handleInputChange = event => {
         const value = event.target.value;
         const name = event.target.name;
@@ -87,23 +87,23 @@ class Landing extends Component {
     
     };
 
-    handleLoginSubmit = (event) => {
-        event.preventDefault();
-        alert(`Your login was succesfull ${this.state.loginEmail}!`);
-        //the field names MUST be username and password for PassportJS to work
-        API.login({username:this.state.loginEmail, password:this.state.loginPass})
-            .catch(err => console.log(err));
-    }
+  handleLoginSubmit = (event) => {
+    event.preventDefault();
+    API.login({username:this.state.loginEmail, password:this.state.loginPass})
+      .then(function(res){console.log("response in Landing", res);})
+      .catch(err => console.log(err));
+  };
+
 
     render() {
         return (
             <div>
-                <NavbarNLI 
+                <NavbarNLI
                     loginClick={this.loginClickHandler}
-                    signupClick={this.signClickHandler} 
+                    signupClick={this.signClickHandler}
                 />
                 {this.state.tryNow === false ?
-                
+
                     <div>
                         <h1>
                             DevTech Connect
@@ -112,7 +112,7 @@ class Landing extends Component {
                             Keep Moving
                         </h2>
                         <p>
-                            Web development is constantly evolving. Trying to learn a skill that changes faster than bipolar weather can be intimidating - there are resources everywhere. So, where you start? Right <a href='#' onClick={this.tryNowClickHandler}>here</a>. 
+                            Web development is constantly evolving. Trying to learn a skill that changes faster than bipolar weather can be intimidating - there are resources everywhere. So, where you start? Right <a href='#' onClick={this.tryNowClickHandler}>here</a>.
                         </p>
                         <button type='button' name='getStarted' onClick={this.tryNowClickHandler}>
                             Get Started
@@ -125,10 +125,10 @@ class Landing extends Component {
                         email={this.state.loginEmail}
                         psw={this.state.loginPass}
                         inputUpdate={this.handleInputChange}
-                        loginSubmit={this.handleLoginSubmit} 
+                        loginSubmit={this.handleLoginSubmit}
                     /> : null
                 }
-            
+
                 {
                 this.state.signupClick ?
                     <Signup
@@ -139,12 +139,16 @@ class Landing extends Component {
                         psw={this.state.psw}
                         psw2={this.state.psw2}
                         inputUpdate={this.handleInputChange}
+<<<<<<< HEAD
                         signupSubmit={this.props.handleSignupSubmit} 
+=======
+                        signupSubmit={this.handleSignupSubmit}
+>>>>>>> 78e8ddb74d254a98ceffa1414f517b096ba3f828
                     /> : null
                 }
                 {
                 this.state.tryNow ?
-                    <Trial 
+                    <Trial
                         signupClick={this.signClickHandler}
                         htmlTrialClick={this.trialClickHandler}
                         tryNow={this.state.tryNow}
@@ -152,7 +156,7 @@ class Landing extends Component {
                 }
                 {
                 this.state.trialHTML ?
-                    <LimitedFModule 
+                    <LimitedFModule
                     trackName={'HTML/CSS'} /> : null
                 }
             </div>

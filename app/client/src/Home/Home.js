@@ -37,15 +37,21 @@ class Home extends Component {
                 trackClickHandler={this.trackClickHandler} 
                 homeClickHandler={this.homeClickHandler} />
             <Sidebar />
-            <h1>DevTech Connect</h1>
-            <h2>Keep Moving</h2>
-            <Article />
-            <Article />
-            <Article />
-            <Article />
-            <Article />
-            <RecTracks 
-                startTrackHandler={this.startTrackHandler} />
+            <div className='head'>
+                <h1>DevTech Connect</h1>
+                <h2>Keep Moving</h2>
+            </div>
+            <div className='article-holder'>
+                <Article />
+                <Article />
+                <Article />
+                <Article />
+                <Article />
+            </div>
+            <div className='rec-tracks'>
+                <RecTracks 
+                    startTrackHandler={this.startTrackHandler} />
+            </div>
         </div>
     )
     }

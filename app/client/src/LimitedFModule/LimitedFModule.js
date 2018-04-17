@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import Steps from '../Steps/Steps';
 import LangDef from '../LangDef/LangDef';
 import Step1 from '../Step1/Step1';
 import Step2 from '../Step2/Step2';

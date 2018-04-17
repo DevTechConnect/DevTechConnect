@@ -89,24 +89,33 @@ chai.use(chaiHttp);
                       res.body.lastName.should.equal("TestLastName");
                       res.body.password.should.equal("");//should have been blanked out
 
+
                       var today = new Date();
-                      //res.body.joinDate format will be: 2018-04-16T17:29:17.000Z
+                      //res.body.joinDate and lastLogin format will be: 2018-04-16T17:29:17.000Z
                       //test that the user was created today
 
-                      var dateArray = res.body.joinDate.split("-");
+
                       var expectedYear = parseInt(today.getFullYear());
-                      var receivedYear = parseInt(dateArray[0]);
-
                       var expectedMonth = parseInt(today.getMonth())+1; //0 is the first month of the year in JS
-                      var receivedMonth = parseInt(dateArray[1]);
+                      var expectedDay = parseInt(today.getDate());
+                      var joinDateArray = res.body.joinDate.split("-");
+                      var receivedMonthJoin = parseInt(joinDateArray[1]);
+                      var receivedYearJoin = parseInt(joinDateArray[0]);
+                      var receivedDayJoin = parseInt(joinDateArray[2].split("T")[0]);
 
-                      var expectedDay = parseInt(today.getDate()); //0 is the first month of the year in JS
-                      var receivedDay = parseInt(dateArray[2].split("T")[0]);
 
+                      var lastLoginDateArray = res.body.lastLogin.split("-");
+                      var receivedMonthLogin = parseInt(lastLoginDateArray[1]);
+                      var receivedYearLogin = parseInt(lastLoginDateArray[0]);
+                      var receivedDayLogin = parseInt(lastLoginDateArray[2].split("T")[0]);
 
-                      expectedYear.should.equal(receivedYear);
-                      expectedMonth.should.equal(receivedMonth);
-                      expectedDay.should.equal(receivedDay);
+                      expectedYear.should.equal(receivedYearJoin);
+                      expectedMonth.should.equal(receivedMonthJoin);
+                      expectedDay.should.equal(receivedDayJoin);
+
+                      expectedYear.should.equal(receivedYearLogin);
+                      expectedMonth.should.equal(receivedMonthLogin);
+                      expectedDay.should.equal(receivedDayLogin);
 
                       done();
                     });

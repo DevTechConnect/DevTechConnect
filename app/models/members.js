@@ -22,6 +22,10 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.DATE,
       allowNull: false,
       defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
+    },
+    lastLogin: {
+      type: DataTypes.DATE,
+      allowNull: true
     }
   }, {
       timestamps:false

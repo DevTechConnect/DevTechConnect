@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 
 import Navbar from '../Navbar/Navbar';
 import Sidebar from '../Sidebar/Sidebar';
-import MemberInfo from '../MemberInfo/MemberInfo';
-import Achievement from '../Achievement/Achievement';
-import MemTracks from '../MemTracks/MemTracks';
+import TrackQV from '../TrackQV/TrackQV';
 
-import './MemberP.css';
+import './AllTracks.css';
 
-class MemberP extends Component {
+class AllTracks extends Component {
+    
+    constructor (props) {
+        super(props)
+    }
     
     memClickHandler = () => {
         this.props.setAppState("MemberP")
@@ -26,7 +28,7 @@ class MemberP extends Component {
         this.props.setAppState("LimitedFocus")
     }
     
-    render(props) {
+    render () {
     return (
         <div>
             <Navbar 
@@ -34,19 +36,14 @@ class MemberP extends Component {
                 trackClickHandler={this.trackClickHandler} 
                 homeClickHandler={this.homeClickHandler} />
             <Sidebar />
-            <MemberInfo />
-            <p>Hop back in where you left off.</p>
-            <button type='button' name='pickUpMemTop' onClick={this.startTrackHandler}>last track name</button>
-            <Achievement />
-            <Achievement />
-            <Achievement />
-            <Achievement />
-            <Achievement />
-            <MemTracks 
-                startTrackHandler={() => this.startTrackHandler()} />
+            <h1>DevTech Connect</h1>
+            <h2>Keep Moving</h2>
+            <h3>These are all of our available tracks.</h3>
+            <TrackQV 
+                startTrackHandler={this.startTrackHandler} />
         </div>
     )
     }
 };
 
-export default MemberP;
+export default AllTracks;

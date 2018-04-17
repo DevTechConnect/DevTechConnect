@@ -3,6 +3,9 @@ import Login from './Login/Login';
 import Signup from './Signup/Signup';
 import Landing from './Landing/Landing';
 import Home from './Home/Home';
+import MemberP from './MemberP/MemberP';
+import AllTracks from './AllTracks/AllTracks';
+import LimitedFocus from './LimitedFocus/LimitedFocus';
 
 
 import './App.css';
@@ -36,7 +39,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className='App'>
         {
             this.state.page === 'Landing' ?
         <Landing 
@@ -49,7 +52,17 @@ class App extends Component {
         }
         {
             this.state.page === 'MemberP' ?
-        <Home 
+        <MemberP 
+            setAppState={this.handleHolderPage} /> : null
+        }
+        {
+        this.state.page === 'AllTracks' ?
+        <AllTracks 
+            setAppState={this.handleHolderPage} /> : null
+        }
+        {
+        this.state.page === 'LimitedFocus' ?
+        <LimitedFocus 
             setAppState={this.handleHolderPage} /> : null
         }
       </div>

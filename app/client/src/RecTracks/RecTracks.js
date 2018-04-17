@@ -1,17 +1,14 @@
 import React from 'react';
 
-import TrackQV from './TrackQV/TrackQV';
+import TrackQV from '../TrackQV/TrackQV';
 
 import './RecTracks.css';
 
-const RecTracks = () => {
+const RecTracks = (props) => {
     return (
         <div>
-            <TraackQV />
-            <TraackQV />
-            <TraackQV />
-            <TraackQV />
-            <TraackQV />
+            <TrackQV 
+                startTrackHandler={props.startTrackHandler} />
         </div>
     )
 };

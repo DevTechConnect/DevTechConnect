@@ -18,6 +18,7 @@ class LimitedFModule extends Component {
     state = {
         startClick: false,
         trackName: 'HTML/CSS',
+        page: 'LangDef'
     };
 
     startClickHandler = () => {
@@ -26,45 +27,71 @@ class LimitedFModule extends Component {
     }
     
     trackNameHandler = () => {
-        let selectedTrack = 'HTML/CSS';
+        let selectedTrack = '';
         this.setState({trackName: selectedTrack})
+    }
+    langDefHandler = () => {
+        this.setState({page: 'LangDef'})
+    }
+    step1Handler = () => {
+        this.setState({page: 'Step1'})
+    }
+    step2Handler = () => {
+        this.setState({page: 'Step2'})
+    }
+    step3Handler = () => {
+        this.setState({page: 'Step3'})
+    }
+    step4Handler = () => {
+        this.setState({page: 'Step4'})
+    }
+    practiceHandler = () => {
+        this.setState({page: 'Practice'})
+    }
+    relTrackHandler = () => {
+        this.setState({page: 'RelTrack'})
     }
 
     render () {
         return (
             <div>
-            {
-            this.state.startClick === false ?
-                <div>
-                    <h2>
-                        Welcome to your {this.state.trackName} learning track.
-                    </h2>
-                    <p>
-                        Follow along and check off each step you complete to track of your progress. Most importantly, don/'t skip the practice; practice will be your quickest teacher in code. We will give you achievements along the way - you can find those on your <a href="#">Member Page</a>. 
-                    </p>
-                    <p>
-                        We're' happy you're here. Stick around, and like always, keep moving.
-                    </p>
-                    <button type='button' name='startButton' onClick={this.startClickHandler}>
-                        Start Track 
-                    </button>
-                </div> : null
-            }
-            {
-                this.state.startClick ?
-                <Router>
-                    <div>
-                        <Steps />
-                            <Route exact path="/LangDef" component={LangDef} />
-                            <Route exact path="/Step1" component={Step1} />
-                            <Route exact path="/Step2" component={Step2} />
-                            <Route exact path="/Step3" component={Step3} />
-                            <Route exact path="/Step4" component={Step4} />
-                            <Route exact path="/Practice" component={Practice} />
-                            <Route exact path="/RelTrack" component={RelTrack} />
-                    </div>
-                </Router> : null
-            }
+                <ul className="nav nav-tabs">
+                    <li onClick={this.langDefHandler}>Language Definition</li>
+                    <li onClick={this.step1Handler}>Step 1</li>
+                    <li onClick={this.step2Handler}>Step 2</li>
+                    <li onClick={this.step3Handler}>Step 3</li>
+                    <li onClick={this.step4Handler}>Step 4</li>
+                    <li onClick={this.practiceHandler}>Practice</li>
+                    <li onClick={this.relTrackHandler}>Related Tracks</li>
+                </ul>
+                {
+                this.state.page === 'LangDef' ?
+                    <LangDef /> : null
+                }
+                {
+                this.state.page === 'Step1' ?
+                    <Step1 /> : null
+                }
+                {
+                this.state.page === 'Step2' ?
+                    <Step2 /> : null
+                }
+                {
+                this.state.page === 'Step3' ?
+                    <Step3 /> : null
+                }
+                {
+                this.state.page === 'Step4' ?
+                    <Step4 /> : null
+                }
+                {
+                this.state.page === 'Practice' ?
+                    <Practice /> : null
+                }
+                {
+                this.state.page === 'RelTrack' ?
+                    <RelTrack /> : null
+                }
             </div>
         )
     }

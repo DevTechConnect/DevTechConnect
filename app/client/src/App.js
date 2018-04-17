@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import API from "./utils/API";
 import Login from './Login/Login';
 import Signup from './Signup/Signup';
 import Landing from './Landing/Landing';
@@ -13,14 +14,47 @@ import './App.css';
 class App extends Component {
 
   state = {
-    page: "Landing"
+    page: "Landing",
+        firstName: '',
+            lastName:'',
+            email:'',
+            email2:'',
+            psw:'',
+            psw2:'',
+            loginEmail: '',
+            loginPass:'',
   };
 
-    handleHolderPage = (page) => {
+    setAppState = (page) => {
         this.setState({
-            page: page
+            page: page,
         })
     }
+
+    handleInputChange = event => {
+        const value = event.target.value;
+        const name = event.target.name;
+        this.setState({
+          [name]: value
+        });
+    };
+
+
+    handleSignupSubmit = (event)  => {
+        event.preventDefault();
+        alert(`Your signup was successful ${this.state.firstName}!`);
+        API.addNewUser({firstName:this.state.firstName, lastName:this.state.lastName, email:this.state.email, password:this.state.psw})
+            .then(this.setAppState("MemberP"))
+            .catch(err => console.log(err));
+
+    };
+
+    handleLoginSubmit = (event) => {
+    event.preventDefault();
+    API.login({username:this.state.loginEmail, password:this.state.loginPass})
+      .then(this.setAppState("Home"))
+      .catch(err => console.log(err));
+    };
 
   render() {
     return (
@@ -28,27 +62,42 @@ class App extends Component {
         {
             this.state.page === 'Landing' ?
         <Landing
-            setAppState={this.handleHolderPage} /> : null
+            setAppState={this.setAppState} 
+            handleInputChange={this.handleInputChange}
+            handleSignupSubmit={this.handleSignupSubmit}
+            handleLoginSubmit={this.handleLoginSubmit}
+            firstName={this.state.firstName}
+            lastName={this.state.lastName} 
+            email={this.state.email}
+            email2={this.state.email2}
+            psw={this.state.psw}
+            psw2={this.state.psw2}
+            loginEmail={this.state.loginEmail}
+            loginPass={this.state.loginPass} /> : null
         }
         {
             this.state.page === 'Home' ?
         <Home
-            setAppState={this.handleHolderPage} /> : null
+            setAppState={this.handleHolderPage} 
+            handleInputChange={this.handleInputChange} /> : null
         }
         {
             this.state.page === 'MemberP' ?
         <MemberP 
-            setAppState={this.handleHolderPage} /> : null
+            setAppState={this.handleHolderPage} 
+            handleInputChange={this.handleInputChange} /> : null
         }
         {
         this.state.page === 'AllTracks' ?
         <AllTracks 
-            setAppState={this.handleHolderPage} /> : null
+            setAppState={this.handleHolderPage} 
+            handleInputChange={this.handleInputChange} /> : null
         }
         {
         this.state.page === 'LimitedFocus' ?
         <LimitedFocus 
-            setAppState={this.handleHolderPage} /> : null
+            setAppState={this.handleHolderPage} 
+            handleInputChange={this.handleInputChange} /> : null
         }
       </div>
     );

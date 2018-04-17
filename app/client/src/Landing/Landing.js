@@ -5,7 +5,6 @@ import Signup from '../Signup/Signup';
 import NavbarNLI from '../NavbarNLI/NavbarNLI';
 import Trial from '../Trial/Trial';
 import LimitedFModule from "../LimitedFModule/LimitedFModule";
-import API from "../utils/API";
 
 import './Landing.css';
 
@@ -14,14 +13,6 @@ class Landing extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            firstName: '',
-            lastName:'',
-            email:'',
-            email2:'',
-            psw:'',
-            psw2:'',
-            loginEmail: '',
-            loginPass:'',
             loginClick: false,
             signupClick: false,
             tryNow: false,
@@ -69,33 +60,9 @@ class Landing extends Component {
         });
     };
 
-    handleInputChange = event => {
-        const value = event.target.value;
-        const name = event.target.name;
-        this.setState({
-          [name]: value
-        });
-    };
-
-
-    handleSignupSubmit = (event)  => {
-        event.preventDefault();
-        alert(`Your signup was successful ${this.state.firstName}!`);
-        API.addNewUser({firstName:this.state.firstName, lastName:this.state.lastName, email:this.state.email, password:this.state.psw})
-            .then(this.props.setAppState("MemberP"))
-            .catch(err => console.log(err));
     
-    };
 
-  handleLoginSubmit = (event) => {
-    event.preventDefault();
-    API.login({username:this.state.loginEmail, password:this.state.loginPass})
-      .then(this.props.setAppState("Home"))
-      .catch(err => console.log(err));
-  };
-
-
-    render() {
+    render(props) {
         return (
             <div>
                 <NavbarNLI
@@ -122,24 +89,24 @@ class Landing extends Component {
                 {
                 this.state.loginClick ?
                     <Login
-                        email={this.state.loginEmail}
-                        psw={this.state.loginPass}
-                        inputUpdate={this.handleInputChange}
-                        loginSubmit={this.handleLoginSubmit}
+                        email={this.props.loginEmail}
+                        psw={this.props.loginPass}
+                        inputUpdate={this.props.handleInputChange}
+                        loginSubmit={this.props.handleLoginSubmit}
                     /> : null
                 }
 
                 {
                 this.state.signupClick ?
                     <Signup
-                        fName={this.state.firstName}
-                        lName={this.state.lastName}
-                        email={this.state.email}
-                        email2={this.state.email2}
-                        psw={this.state.psw}
-                        psw2={this.state.psw2}
-                        inputUpdate={this.handleInputChange}
-                        signupSubmit={this.handleSignupSubmit}
+                        fName={this.props.firstName}
+                        lName={this.props.lastName}
+                        email={this.props.email}
+                        email2={this.props.email2}
+                        psw={this.props.psw}
+                        psw2={this.props.psw2}
+                        inputUpdate={this.props.handleInputChange}
+                        signupSubmit={this.props.handleSignupSubmit}
                     /> : null
                 }
                 {

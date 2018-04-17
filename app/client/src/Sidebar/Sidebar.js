@@ -1,16 +1,26 @@
 import React from 'react';
 
+import Achievement from '../Achievement/Achievement';
+import MemberInfo from '../MemberInfo/MemberInfo';
+import TrackQV from '../TrackQV/TrackQV';
+import Article from '../Article/Article';
+
 import './Sidebar.css';
 
 const Sidebar = () => {
     return (
-        <div>
+        <div className='sidebar'>
             <h1>This is the side bar</h1>
-            <p>This is the member information.</p>
-            <p>This is the last track you were working on.</p>
-            <p>These are your 3 latest tracks</p>
-            <p>These are your last 5 achievements.</p>
-            <p>These are your last 3 bookmarked articles.</p>
+            <h4>This is the member information.</h4>
+            <MemberInfo />
+            <h4>This is the last track you were working on.</h4>
+            <TrackQV />
+            <h4>These are your 3 latest tracks</h4>
+            <TrackQV />
+            <h4>These are your last 5 achievements.</h4>
+            <Achievement />
+            <h4>These are your last 3 bookmarked articles.</h4>
+            <Article />
         </div>
     )
 };

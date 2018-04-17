@@ -7,8 +7,7 @@ import './Achievement.css';
 const Achievement = () => {
     return (
         <div>
-            <Image />
-            <p>This is an achievement.</p>
+            <Image className='inline' src={require('./html_css_gold_seal.png')} width={150} height={150} mode='fit' />
         </div>
     )
 }

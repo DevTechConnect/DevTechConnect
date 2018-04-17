@@ -12,7 +12,6 @@ export default class Image extends Component {
     let defaults = {
       height: height || 100,
       width: width || 100,
-      border: 'solid'
     };
 
     let important = {

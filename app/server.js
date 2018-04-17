@@ -39,7 +39,7 @@ app.use(passport.session());
 passport.use(new LocalStrategy(
   function(username, password, done) {
     var query = "Select M.id, M.email, M.firstName, M.lastName, M.joinDate, M.password, "
-                +" MT.trackId, MT.completedSteps, count(TS.id) as numSteps from Members as M "
+                +" MT.trackId, MT.completedSteps, M.lastLogin from Members as M "
                 +" Left JOIN membertracks as MT ON M.id = MT.memberId "
                 +" Left JOIN tracksteps as TS on MT.trackId = TS.trackId "
                 +" WHERE M.email = ? GROUP BY TS.trackId;";
@@ -88,7 +88,8 @@ passport.deserializeUser(function(id, done) {
 app.post('/api/addUser', (req, res) => {
       var email = req.body.email.toLowerCase();
       var hash = bcrypt.hashSync(req.body.password, 10);
-      var newUser = { firstName: req.body.firstName, lastName: req.body.lastName, email:email, password:hash };
+      var newUser = { firstName: req.body.firstName, lastName: req.body.lastName,
+                       email:email, password:hash, lastLogin:db.sequelize.fn('NOW') };
       // search for attributes
       db.Members.count({ where: {email: email} })
                 .then(function(count){
@@ -115,6 +116,24 @@ app.post('/api/login', function(req, res, next) {
         // (also aliased as logIn()) that can be used to establish a login session.
         req.logIn(user, function(err) {
           if (err) {console.log("ERROR**************",err); return next(err); }
+          //set the last login date since login was successful
+          db.Members.update(
+                    {lastLogin: db.sequelize.fn('NOW')} ,
+                    {where: {id: user.id}}
+                  ).catch(function(err){console.log(err)});//no need to wait for the promise to return
+
+          //get the tracks and track information for this user
+          db.sequelize
+              .query(
+                      "Select id, firstName, lastName, email, joinDate from Members where id = ?;"
+                      , { replacements: [id], type: db.sequelize.QueryTypes.SELECT}
+                    )
+              .then(function(results){
+
+              });
+
+
+
           console.log("user "+JSON.stringify(user));
           res.status(200).json(user);
         });

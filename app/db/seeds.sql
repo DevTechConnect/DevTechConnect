@@ -126,16 +126,14 @@ INSERT INTO TrackSteps (trackId, stepNumber, link, description) VALUES
 (1,5,"https://theblog.adobe.com/learn-to-code-series-html-basics-resources-and-activities/","You’ve been through a lot. This site has a variety of resources and links. Look through it, pick through it, add bookmarks to important sites, check out the tutorials linked – you’re gradually wading into the world of code. Don’t get overwhelmed. Take your time and keep plugging away." ),
 (1,6,"https://www.youtube.com/watch?v=kDyJN7qQETA","Free, HTML5, 1.1 hours – Another video on HTML. Get your pause finger ready. Derek Banas talks fast, but he will take you through HTML like a great tour guide steering you down a gondola in Italy – or maybe more like you’re on a motorbike. Either way, this is a great resource. Pause when you need to and take notes. Don’t worry, we’ll provide plenty of practice links at the end of the track." ),
 (1,7,"https://www.quora.com/What-are-the-bests-courses-to-learn-advanced-HTML-CSS","This isn’t an instructional link, but a community response to a question. A great way to learn code is from those who have been there. Read through the comments and find what resources help you. " ),
-(1,8,"https://www.youtube.com/watch?v=CUxH_rWSI1k","Free, CSS3, 1 hour – Derek Banas is back, this time, with your all-encompassing guide to CSS3. " );
-
-INSERT INTO TrackPractices (trackId, link, description) VALUES
-(1, "https://www.codecademy.com/en/tracks/projects", "A great place for practice. Practice is absolutely necessary if you want to learn code. We will repeat this, a lot. During practice, if you get stuck. Hop on Google. It’s what all the cool coders do. There’s a good chance you’ll end up on StackOverflow.com in your searched for a solution. Course, 77 lectures, 12 hours of video"),
-(1, "https://www.youtube.com/watch?v=yTHTo28hwTQ&list=PLgGbWId6zgaWZkPFI4Sc9QXDmmOWa1v5F", "YouTube HTML and CSS tutorial. Playlist, 32 videos, average 10-15 minutes each"),
-(1, "https://www.youtube.com/watch?v=LqvFIuVlyP8&list=PL41lfR-6DnOruqMacTfff1zrEcqtmm7Fv", "Another HTML and CSS walkthrough with practice. Playlist, 52 videos, average under 10 minutes each"),
-(1, "https://www.youtube.com/watch?v=Wm6CUkswsNw", "Build a responsive website. Single video, 1.1 hours"),
-(1, "https://www.youtube.com/watch?v=gqOEoUR5RHg", "Derek Banas again, this time, he is here to show you how to use Bootstrap, a front-end framework for web-design. Single video, 1.1 hours"),
-(1, "https://www.youtube.com/watch?v=hnCmSXCZEpU", "Learn the latest version of Bootstrap, v4. This lesson is slightly advanced and has you work in the terminal. Give it a try. You can always come back to it after you finish your lesson on Node.js. Single video, 50 minutes"),
-(1, "https://100dayscss.com/", "There are a ton of code snippets on this site to show you what all is possible with some creative CSS implementation. Scroll through and examine the code, plug it into your site, experiment with it. If you click ‘edit,’ you will be taken to CodePen, where you can edit the code in the browser.");
+(1,8,"https://www.youtube.com/watch?v=CUxH_rWSI1k","Free, CSS3, 1 hour – Derek Banas is back, this time, with your all-encompassing guide to CSS3. " ),
+(1, 100, "https://www.codecademy.com/en/tracks/projects", "A great place for practice. Practice is absolutely necessary if you want to learn code. We will repeat this, a lot. During practice, if you get stuck. Hop on Google. It’s what all the cool coders do. There’s a good chance you’ll end up on StackOverflow.com in your searched for a solution. Course, 77 lectures, 12 hours of video"),
+(1,  100,"https://www.youtube.com/watch?v=yTHTo28hwTQ&list=PLgGbWId6zgaWZkPFI4Sc9QXDmmOWa1v5F", "YouTube HTML and CSS tutorial. Playlist, 32 videos, average 10-15 minutes each"),
+(1, 100, "https://www.youtube.com/watch?v=LqvFIuVlyP8&list=PL41lfR-6DnOruqMacTfff1zrEcqtmm7Fv", "Another HTML and CSS walkthrough with practice. Playlist, 52 videos, average under 10 minutes each"),
+(1, 100, "https://www.youtube.com/watch?v=Wm6CUkswsNw", "Build a responsive website. Single video, 1.1 hours"),
+(1, 100, "https://www.youtube.com/watch?v=gqOEoUR5RHg", "Derek Banas again, this time, he is here to show you how to use Bootstrap, a front-end framework for web-design. Single video, 1.1 hours"),
+(1, 100, "https://www.youtube.com/watch?v=hnCmSXCZEpU", "Learn the latest version of Bootstrap, v4. This lesson is slightly advanced and has you work in the terminal. Give it a try. You can always come back to it after you finish your lesson on Node.js. Single video, 50 minutes"),
+(1,  100,"https://100dayscss.com/", "There are a ton of code snippets on this site to show you what all is possible with some creative CSS implementation. Scroll through and examine the code, plug it into your site, experiment with it. If you click ‘edit,’ you will be taken to CodePen, where you can edit the code in the browser.");
 
 INSERT INTO TrackSteps (trackId, stepNumber, link, description) VALUES
 (2,1,"http://www.learn-js.org/", "A limited focus introduction to some of the tools available in JavaScript. Short lessons with an exercise for you at the end of each one. We highly recommend you go through the tutorials here."),
@@ -146,19 +144,17 @@ INSERT INTO TrackSteps (trackId, stepNumber, link, description) VALUES
 (2,6,"https://www.youtube.com/watch?v=1PKOdfj7P6Q", "Free, jQuery, .9 hours – Your first video on jQuery. This video is short and sweet. Don’t worry, we’ll throw plenty of practice at you later."),
 (2,7,"https://www.youtube.com/watch?v=BWXggB-T1jQ", "Free, jQuery, 1.1 hours - We are giving you double videos for your fourth step of this track. We want to show you a quick run through of just what all is possible with jQuery, while also taking you through object-oriented programming with JavaScript in your second video. If you went through our HTML and CSS track, you met Derek Banas in a few videos. He’s back. Get your note taking hand ready."),
 (2,8,"https://www.youtube.com/watch?v=O8wwnhdkPE4&t=354s", "Free, Object-Oriented JavaScript, 1 hour – Derek Banas is back, this time, with your all-encompassing guide to OO JavaScript. This is an important lesson to prepare you for some more complex coding down the line. Pay attention to this one. "),
-(2,9,"https://www.codecademy.com/en/tracks/javascript", "An exercise-based course that will take you through functions, ‘for’ and ‘while’ loops, arrays and objects, and more.");
-
-INSERT INTO TrackPractices (trackId, link, description) VALUES
-(2, "https://www.codecademy.com/en/tracks/javascript","An exercise-based course that will take you through functions, ‘for’ and ‘while’ loops, arrays and objects, and more."),
-(2, "https://www.youtube.com/watch?v=46Jz0QJyhN0&list=PLUoqTnNH-2Xwmr2GvOdZMJnrp6b51ndZE&index=1","YouTube jQuery tutorial.
+(2,9,"https://www.codecademy.com/en/tracks/javascript", "An exercise-based course that will take you through functions, ‘for’ and ‘while’ loops, arrays and objects, and more."),
+(2, 100, "https://www.codecademy.com/en/tracks/javascript","An exercise-based course that will take you through functions, ‘for’ and ‘while’ loops, arrays and objects, and more."),
+(2, 100, "https://www.youtube.com/watch?v=46Jz0QJyhN0&list=PLUoqTnNH-2Xwmr2GvOdZMJnrp6b51ndZE&index=1","YouTube jQuery tutorial.
 Playlist, 12 videos, average 12 minutes each"),
-(2, "https://www.youtube.com/watch?v=BaIgTKj1iCQ&list=PL0eyrZgxdwhy7byLHsVkuhtRV_IpoJU7n","Another jQuery YouTube tutorial walkthrough.
+(2,  100,"https://www.youtube.com/watch?v=BaIgTKj1iCQ&list=PL0eyrZgxdwhy7byLHsVkuhtRV_IpoJU7n","Another jQuery YouTube tutorial walkthrough.
 Playlist, 12 videos, average under 10 minutes each"),
-(2, "https://www.udemy.com/the-complete-javascript-course/learn/v4/overview","How are you feeling with your JavaScript skills? If you feel like you missed some things, we recommend this course. It is a regularly updated, thorough JavaScript Udemy course.
+(2, 100, "https://www.udemy.com/the-complete-javascript-course/learn/v4/overview","How are you feeling with your JavaScript skills? If you feel like you missed some things, we recommend this course. It is a regularly updated, thorough JavaScript Udemy course.
 Course, 151 lectures, 26 hours of video"),
-(2, "https://www.udemy.com/understand-javascript/learn/v4/content","Feeling pretty good with the JavaScript basics but want a deeper understanding? Check out this Udemy course.
+(2, 100, "https://www.udemy.com/understand-javascript/learn/v4/content","Feeling pretty good with the JavaScript basics but want a deeper understanding? Check out this Udemy course.
 Course, 85 lectures,11.5 hours of video"),
-(2, "https://www.udemy.com/projects-in-javascript-jquery/","A Udemy course that takes you through projects in JavaScript and jQuery. It’s time for some practice! Course, 50 lectures, 9 hours of video");
+(2, 100, "https://www.udemy.com/projects-in-javascript-jquery/","A Udemy course that takes you through projects in JavaScript and jQuery. It’s time for some practice! Course, 50 lectures, 9 hours of video");
 
 
 INSERT INTO membertracks (memberId, trackId, completedSteps) VALUES

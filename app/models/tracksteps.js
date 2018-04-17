@@ -14,7 +14,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING(10000),
       allowNull: false
     },
-    stepNumber:{
+    stepNumber:{ //100 for practice
       type: DataTypes.INTEGER,
       allowNull: false,
     }

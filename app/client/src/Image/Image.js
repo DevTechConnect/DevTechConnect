@@ -12,7 +12,6 @@ export default class Image extends Component {
     let defaults = {
       height: height || 100,
       width: width || 100,
-      backgroundColor: 'gray'
     };
 
     let important = {
@@ -22,6 +21,6 @@ export default class Image extends Component {
       backgroundRepeat: 'no-repeat'
     };
 
-    return <div {...props} style={{...defaults, ...style, ...important}} />
+    return <div {...props} style={{...defaults, ...style,  ...important}} />
   }
 }

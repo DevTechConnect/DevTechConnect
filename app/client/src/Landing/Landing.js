@@ -102,7 +102,7 @@ class Landing extends Component {
                     loginClick={this.loginClickHandler}
                     signupClick={this.signClickHandler}
                 />
-                {this.state.tryNow === false ?
+                {this.state.tryNow === false && this.state.trialHTML === false ?
 
                     <div>
                         <h1>
@@ -153,7 +153,7 @@ class Landing extends Component {
                 {
                 this.state.trialHTML ?
                     <LimitedFModule
-                    trackName={'HTML/CSS'} /> : null
+                        trackName={'HTML/CSS'} /> : null
                 }
             </div>
         )

@@ -39,15 +39,10 @@ app.use(passport.session());
 passport.use(new LocalStrategy(
   function(username, password, done) {
     var query = "Select M.id, M.email, M.firstName, M.lastName, M.joinDate, M.password, "
-                +" MT.trackId, MT.completedSteps, M.lastLogin from Members as M "
-                +" Left JOIN membertracks as MT ON M.id = MT.memberId "
-                +" Left JOIN tracksteps as TS on MT.trackId = TS.trackId "
-                +" WHERE M.email = ? GROUP BY TS.trackId;";
-    db.sequelize
-        .query(
-                query
-                , { replacements: [username], type: db.sequelize.QueryTypes.SELECT}
-              )
+                +" M.lastLogin from Members as M WHERE M.email = ?;";
+    db.Members.findAll({
+                        where: {email:username}
+                      })
         .then(function(results){
           if(results.length==0){
             return done(null, false, { message: 'Incorrect Login Information.' });
@@ -125,10 +120,15 @@ app.post('/api/login', function(req, res, next) {
           //get the tracks and track information for this user
           db.sequelize
               .query(
-                      "Select id, firstName, lastName, email, joinDate from Members where id = ?;"
-                      , { replacements: [id], type: db.sequelize.QueryTypes.SELECT}
+                      " Select MT.addedDate, MT.completedSteps, MT.markedComplete, T.id as trackid, "
+                      +" T.trackname, T.description, T.introVideoLink, TS.link as stepLink, "
+                      +" TS.description as stepdescription, TS.stepNumber from membertracks as MT  "
+                      +" JOIN tracks as T ON MT.trackId = T.id JOIN tracksteps as TS ON T.id = TS.trackId "
+                      + " WHERE MT.memberId = ? ORDER BY T.id, TS.stepNumber;"
+                      , { replacements: [user.id], type: db.sequelize.QueryTypes.SELECT}
                     )
               .then(function(results){
+                console.log(JSON.stringify(results));
 
               });
 

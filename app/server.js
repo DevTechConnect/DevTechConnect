@@ -128,7 +128,37 @@ app.post('/api/login', function(req, res, next) {
                       , { replacements: [user.id], type: db.sequelize.QueryTypes.SELECT}
                     )
               .then(function(results){
-                console.log(JSON.stringify(results));
+                var currentTrack;
+                var completedSteps;
+                var tracks = [];
+                var aTrack =  getNewTrack();
+                for(i=0; i<results.length; i++){
+                    if(i==0){
+                      //initial set up
+                      currentTrack = results[i].trackname;
+                      completedSteps = getCompletedStepsArray(results[i].completedSteps);
+                    }
+                    if(results[i].trackname !== currentTrack){
+                        //finish the old track and start a new track
+                        tracks.push(aTrack);
+                        aTrack = getNewTrack();
+                        currentTrack = results[i].trackname;
+                        completedSteps = getCompletedStepsArray(results[i].completedSteps);
+                    }
+                    aTrack.trackName = results[i].trackname;
+                    aTrack.description = results[i].description;
+                    aTrack.trackAddedDate = results[i].addedDate;
+                    aTrack.trackCompletedSteps = results[i].completedSteps
+                    aTrack.trackMarkedComplete = results[i].markedComplete;
+                    aTrack.trackId  = results[i].trackid;
+                    aTrack.trackIntroVideoLink = results[i].introVideoLink;
+                    var aStep = { trackNumber:results[i].id, stepNumber:results[i].stepNumber,
+                                  stepLink: results[i].stepLink,stepdescription: results[i].stepdescription,
+                                  stepComplete:completedSteps.includes(results[i].stepNumber)};
+                    aTrack.steps.push(aStep);
+                }//close for loop
+                user.tracks = tracks;
+                console.log("USER TRACKS", user.tracks);
                 res.status(200).send(JSON.stringify(user));
               });
         });
@@ -136,6 +166,16 @@ app.post('/api/login', function(req, res, next) {
   })(req, res, next);
 });
 
+
+function getNewTrack(){
+  return { trackId: "", trackName:"", trackIntroVideoLink:"",
+             trackDescription: "", trackAddedDate:"", trackCompletedSteps: "",
+             trackMarkedComplete: "", steps:[]};
+}
+
+function getCompletedStepsArray(stepsArrayString){
+  return stepsArrayString ? stepsArrayString.split(",") : [];
+}
 
 app.post('/api/logout', function(req, res){
   req.session.destroy(function(err) {

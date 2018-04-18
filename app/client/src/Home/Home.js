@@ -36,7 +36,8 @@ class Home extends Component {
                 memClickHandler={this.memClickHandler} 
                 trackClickHandler={this.trackClickHandler} 
                 homeClickHandler={this.homeClickHandler} />
-            <Sidebar />
+            <Sidebar 
+                user={this.props.user} />
             <div className='head'>
                 <h1>DevTech Connect</h1>
                 <h2>Keep Moving</h2>

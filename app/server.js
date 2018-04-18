@@ -38,8 +38,6 @@ app.use(passport.session());
 
 passport.use(new LocalStrategy(
   function(username, password, done) {
-    var query = "Select M.id, M.email, M.firstName, M.lastName, M.joinDate, M.password, "
-                +" M.lastLogin from Members as M WHERE M.email = ?;";
     db.Members.findAll({
                         where: {email:username}
                       })
@@ -88,10 +86,15 @@ app.post('/api/addUser', (req, res) => {
       // search for attributes
       db.Members.count({ where: {email: email} })
                 .then(function(count){
-                  if(count<=0){
+                  if(count==0){ //create a new user
                     db.Members.create(newUser)
-                              .then(function(result) {
-                                res.json(result);
+                              .then(function(user) {
+                                user.password = ""; //dont return hashed password
+                                console.log("RESULT", JSON.stringify(user));
+                                req.logIn(user, function(err) {
+                                  if (err) {console.log("ERROR**************",err); return next(err); }
+                                });
+                                res.status(200).send(JSON.stringify(user));
                               }).catch(function(err){
                                 console.log(err);
                                 throw err;

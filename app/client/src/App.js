@@ -23,7 +23,8 @@ class App extends Component {
         psw2:'',
         loginEmail: '',
         loginPass:'',
-        user:[]
+        user:[],
+        userComplTracks:[],
     };
 
     setAppState = (page) => {
@@ -59,7 +60,7 @@ class App extends Component {
           } else {
             console.log("response", response);
             console.log("data", response.data);
-            this.setState({user:response.data, page:"Home"});
+            this.setState({user:response.data, userComplTracks: response.data.tracks, page:"Home"});
           }
         }
       ).catch(err => console.log(err));
@@ -89,7 +90,8 @@ class App extends Component {
             <Home
                 setAppState={this.setAppState}
                 handleInputChange={this.handleInputChange} 
-                user={this.state.user} /> : null
+                user={this.state.user} 
+                userComplTracks={this.state.userComplTracks} /> : null
         }
         {
         this.state.page === 'MemberP' ?

@@ -111,7 +111,7 @@ Keep clicking through. We’ll teach you more in a bit.", "https://www.youtube.c
 (2, "JavaScript And jQuery", "JavaScript is a programming language that makes interactivity in websites possible. One of the many things you can do with JavaScript is to add content ‘dynamically,’ which means a section may be revealed based off of another action, like clicking a button to expand a dropdown menu or pulling a set number of gifs into your website based off what the user searched.
 jQuery is a JavaScript library which helps you get to the point a bit quicker. You definitely want to be able to work with JavaScript before you dive into jQuery. Like we indicated in the HTML and CSS track, skipping some steps can limit your knowledge on the tools available, but once you have a good grasp on JavaScript, you’ll love and appreciate jQuery. Their slogan is ‘Write less, do more.” This may not seem like a huge necessity now, but when you are working on real life web pages, and you’re staring down hundreds of pages of code and thousands upon thousands of lines, every shortcut you can take helps.
 Keep clicking through. We’ll teach you more in a bit.", "https://www.youtube.com/watch?v=a6Oh2155QHw"),
-(3, "MongoDB", "MongoDB", "https://www.youtube.com/watch?v=CvIr-2lMLsk"),
+(3, "MongoDB", "MongoDB is a free and open-source cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with schemas.", "https://www.youtube.com/watch?v=CvIr-2lMLsk"),
 (4, "SQL", "SQL", "https://www.youtube.com/watch?v=FR4QIeZaPeM"),
 (5, "Computer Science Fundamentals", "Computer Science Fundamentals", "https://www.youtube.com/watch?v=SzJ46YA_RaA");
 
@@ -156,8 +156,14 @@ Course, 151 lectures, 26 hours of video"),
 Course, 85 lectures,11.5 hours of video"),
 (2, 100, "https://www.udemy.com/projects-in-javascript-jquery/","A Udemy course that takes you through projects in JavaScript and jQuery. It’s time for some practice! Course, 50 lectures, 9 hours of video");
 
+INSERT INTO TrackSteps (trackId, stepNumber, link, description) VALUES
+(3,1,"https://www.mongodb.com/what-is-mongodb", "The best place to get started is the MongoDB official website!"),
+(3,2,"https://www.youtube.com/watch?v=EE8ZTQxa0AM", "A quick introduction to MongoDB and its advantages."),
+(3,3,"https://university.mongodb.com/courses/M001/about", "MongoDB University is the best place to learn Mongo. Get started with this introductory course."),
+(3,4,"https://www.youtube.com/watch?v=pWbMrx5rVBE", "30 minute Mongo tutorial"),
+(3,100,"https://www.tutorialspoint.com/mongodb/mongodb_questions_answers.htm", "Good source of common MongoDB questions");
 
-INSERT INTO membertracks (memberId, trackId, completedSteps) VALUES
-((Select id from members where email="a@a.com"), 1, "1,2"),
-((Select id from members where email="a@a.com"), 2, ""),
-((Select id from members where email="b@b.com"), 1, "");
+INSERT INTO membertracks (memberId, trackId, completedSteps, markedComplete) VALUES
+((Select id from members where email="z@z.com"), 1, "1,2", false),
+((Select id from members where email="z@z.com"), 2, "", false),
+((Select id from members where email="z@z.com"), 3, "", true);

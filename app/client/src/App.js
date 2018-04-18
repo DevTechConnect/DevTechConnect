@@ -56,12 +56,12 @@ class App extends Component {
       .then( (response) => {
           if(response.status!=200){
             //TODO show error cannot log in
+              console.log("UNABLE TO LOGIN. USERNAME AND PASSWORD ARE INCORRECT");
+          } else {
+            console.log("response", response);
+            console.log("data", response.data);
+            this.setState({user:response.data, page:"Home"});
           }
-          console.log("response", response);
-          console.log("data", response.data);
-
-          this.setState({user:response.data, page:"Home"});
-
         }
       ).catch(err => console.log(err));
     };

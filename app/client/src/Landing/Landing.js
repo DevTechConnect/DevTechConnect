@@ -69,8 +69,8 @@ class Landing extends Component {
                     loginClick={this.loginClickHandler}
                     signupClick={this.signClickHandler}
                 />
-                {this.state.tryNow === false && this.state.trialHTML === false ?
-
+                {
+                this.state.tryNow === false && this.state.trialHTML === false ?
                     <div>
                         <h1>
                             DevTech Connect

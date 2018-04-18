@@ -27,27 +27,27 @@ class MemberP extends Component {
     }
     
     render() {
-    return (
-        <div>
-            <Navbar 
-                memClickHandler={this.memClickHandler} 
-                trackClickHandler={this.trackClickHandler} 
-                homeClickHandler={this.homeClickHandler} />
-            <Sidebar 
-                user={this.props.user} />
-            <MemberInfo 
-                user={this.props.user} />
-            <p>Hop back in where you left off.</p>
-            <button type='button' name='pickUpMemTop' onClick={this.startTrackHandler}>last track name</button>
-            <Achievement />
-            <Achievement />
-            <Achievement />
-            <Achievement />
-            <Achievement />
-            <MemTracks 
-                startTrackHandler={() => this.startTrackHandler()} />
-        </div>
-    )
+        return (
+            <div>
+                <Navbar 
+                    memClickHandler={this.memClickHandler} 
+                    trackClickHandler={this.trackClickHandler} 
+                    homeClickHandler={this.homeClickHandler} />
+                <Sidebar 
+                    user={this.props.user} />
+                <MemberInfo 
+                    user={this.props.user} />
+                <p>Hop back in where you left off.</p>
+                <button type='button' name='pickUpMemTop' onClick={this.startTrackHandler}>last track name</button>
+                <Achievement />
+                <Achievement />
+                <Achievement />
+                <Achievement />
+                <Achievement />
+                <MemTracks 
+                    startTrackHandler={() => this.startTrackHandler()} />
+            </div>
+        )
     }
 };
 

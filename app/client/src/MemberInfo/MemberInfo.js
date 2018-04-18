@@ -5,7 +5,7 @@ import './MemberInfo.css';
 const MemberInfo = (props) => {
     return (
         <div>
-            <h1>Welcome back Member!</h1>
+            <h1>Welcome back {props.user}!</h1>
             <p>Member Since: 2018</p>
             <p>Total Tracks Completed: 5</p>
         </div>

@@ -26,15 +26,17 @@ class MemberP extends Component {
         this.props.setAppState("LimitedFocus")
     }
     
-    render(props) {
+    render() {
     return (
         <div>
             <Navbar 
                 memClickHandler={this.memClickHandler} 
                 trackClickHandler={this.trackClickHandler} 
                 homeClickHandler={this.homeClickHandler} />
-            <Sidebar />
-            <MemberInfo />
+            <Sidebar 
+                user={this.props.user} />
+            <MemberInfo 
+                user={this.props.user} />
             <p>Hop back in where you left off.</p>
             <button type='button' name='pickUpMemTop' onClick={this.startTrackHandler}>last track name</button>
             <Achievement />

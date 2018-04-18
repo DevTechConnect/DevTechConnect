@@ -13,18 +13,18 @@ import './App.css';
 
 class App extends Component {
 
-  state = {
-    page: "Landing",
+    state = {
+        page: "Landing",
         firstName: '',
-            lastName:'',
-            email:'',
-            email2:'',
-            psw:'',
-            psw2:'',
-            loginEmail: '',
-            loginPass:'',
-            user:[]
-  };
+        lastName:'',
+        email:'',
+        email2:'',
+        psw:'',
+        psw2:'',
+        loginEmail: '',
+        loginPass:'',
+        user:[]
+    };
 
     setAppState = (page) => {
         this.setState({
@@ -89,25 +89,29 @@ class App extends Component {
             this.state.page === 'Home' ?
         <Home
             setAppState={this.handleHolderPage}
-            handleInputChange={this.handleInputChange} /> : null
+            handleInputChange={this.handleInputChange} 
+            user={this.state.user} /> : null
         }
         {
             this.state.page === 'MemberP' ?
         <MemberP
             setAppState={this.handleHolderPage}
-            handleInputChange={this.handleInputChange} /> : null
+            handleInputChange={this.handleInputChange} 
+            user={this.state.user}  /> : null
         }
         {
         this.state.page === 'AllTracks' ?
         <AllTracks
             setAppState={this.handleHolderPage}
-            handleInputChange={this.handleInputChange} /> : null
+            handleInputChange={this.handleInputChange} 
+            user={this.state.user}  /> : null
         }
         {
         this.state.page === 'LimitedFocus' ?
         <LimitedFocus
             setAppState={this.handleHolderPage}
-            handleInputChange={this.handleInputChange} /> : null
+            handleInputChange={this.handleInputChange} 
+            user={this.state.user}  /> : null
         }
       </div>
     );

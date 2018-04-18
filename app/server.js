@@ -129,13 +129,8 @@ app.post('/api/login', function(req, res, next) {
                     )
               .then(function(results){
                 console.log(JSON.stringify(results));
-
+                res.status(200).send(JSON.stringify(user));
               });
-
-
-
-          console.log("user "+JSON.stringify(user));
-          res.status(200).json(user);
         });
     }
   })(req, res, next);

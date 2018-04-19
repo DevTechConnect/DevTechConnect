@@ -68,53 +68,55 @@ class App extends Component {
 
   render() {
     return (
-      <div className='App'>
-        {
-        this.state.page === 'Landing' ?
-            <Landing
-                setAppState={this.setAppState}
-                handleInputChange={this.handleInputChange}
-                handleSignupSubmit={this.handleSignupSubmit}
-                handleLoginSubmit={this.handleLoginSubmit}
-                firstName={this.state.firstName}
-                lastName={this.state.lastName}
-                email={this.state.email}
-                email2={this.state.email2}
-                psw={this.state.psw}
-                psw2={this.state.psw2}
-                loginEmail={this.state.loginEmail}
-                loginPass={this.state.loginPass} /> : null
-        }
-        {
-        this.state.page === 'Home' ?
-            <Home
-                setAppState={this.setAppState}
-                handleInputChange={this.handleInputChange} 
-                user={this.state.user} 
-                userComplTracks={this.state.userComplTracks} /> : null
-        }
-        {
-        this.state.page === 'MemberP' ?
-            <MemberP
-                setAppState={this.setAppState}
-                handleInputChange={this.handleInputChange} 
-                user={this.state.user}  /> : null
-        }
-        {
-        this.state.page === 'AllTracks' ?
-            <AllTracks
-                setAppState={this.setAppState}
-                handleInputChange={this.handleInputChange} 
-                user={this.state.user}  /> : null
-        }
-        {
-        this.state.page === 'LimitedFocus' ?
-            <LimitedFocus
-                setAppState={this.setAppState}
-                handleInputChange={this.handleInputChange} 
-                user={this.state.user}  /> : null
-        }
-      </div>
+        <div className="row">
+          <div className='App col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12'>
+            {
+            this.state.page === 'Landing' ?
+                <Landing
+                    setAppState={this.setAppState}
+                    handleInputChange={this.handleInputChange}
+                    handleSignupSubmit={this.handleSignupSubmit}
+                    handleLoginSubmit={this.handleLoginSubmit}
+                    firstName={this.state.firstName}
+                    lastName={this.state.lastName}
+                    email={this.state.email}
+                    email2={this.state.email2}
+                    psw={this.state.psw}
+                    psw2={this.state.psw2}
+                    loginEmail={this.state.loginEmail}
+                    loginPass={this.state.loginPass} /> : null
+            }
+            {
+            this.state.page === 'Home' ?
+                <Home
+                    setAppState={this.setAppState}
+                    handleInputChange={this.handleInputChange} 
+                    user={this.state.user} 
+                    userComplTracks={this.state.userComplTracks} /> : null
+            }
+            {
+            this.state.page === 'MemberP' ?
+                <MemberP
+                    setAppState={this.setAppState}
+                    handleInputChange={this.handleInputChange} 
+                    user={this.state.user}  /> : null
+            }
+            {
+            this.state.page === 'AllTracks' ?
+                <AllTracks
+                    setAppState={this.setAppState}
+                    handleInputChange={this.handleInputChange} 
+                    user={this.state.user}  /> : null
+            }
+            {
+            this.state.page === 'LimitedFocus' ?
+                <LimitedFocus
+                    setAppState={this.setAppState}
+                    handleInputChange={this.handleInputChange} 
+                    user={this.state.user}  /> : null
+            }
+          </div>
+        </div>
     );
   }
 }

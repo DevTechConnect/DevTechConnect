@@ -6,8 +6,8 @@ import './Achievement.css';
 
 const Achievement = () => {
     return (
-        <div>
-            <Image className='inline' src={require('./html_css_gold_seal.png')} width={100} height={100} mode='fit' />
+        <div className="inline-block">
+            <Image className='inline' src={require('./html_css_gold_seal.png')} width={75} height={75} mode='fit' />
         </div>
     )
 }

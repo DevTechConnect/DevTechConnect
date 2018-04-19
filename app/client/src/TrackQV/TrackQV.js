@@ -7,7 +7,7 @@ import './TrackQV.css';
 const TrackQV = (props) => {
     return (
         <div>
-            <Image className='inline' src={require('./html_css_track.png')} width={200} height={200} mode='fit' />
+            <Image className='inline-block' src={require('./html_css_track.png')} width={100} height={100} mode='fit' />
             <h3>Track Name</h3>
             <p>Track Duration: 00:00h</p>
             <p>This is where we will insert a short description about the track being shown.</p>

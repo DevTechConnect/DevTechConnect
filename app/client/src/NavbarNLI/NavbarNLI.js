@@ -5,14 +5,16 @@ import './NavbarNLI.css';
 
 const NavbarNLI = (props) => {
     return (
-        <div>
-            <nav>
-                <Image className='inline logo' src={require('./logo.png')} width={300} height={81.25} mode='fit' />  
-                <ul className='inline'>
-                    <li onClick={props.loginClick}>Login</li>
-                    <li onClick={props.signupClick}>Sign Up</li>
-                </ul>
-            </nav>
+        <div className="row">
+            <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <nav>
+                    <Image className='inline logo' src={require('./logo.png')} width={300} height={81.25} mode='fit' />  
+                    <ul className='inline'>
+                        <li onClick={props.loginClick}>Login</li>
+                        <li onClick={props.signupClick}>Sign Up</li>
+                    </ul>
+                </nav>
+            </div>
         </div>
     )
 };

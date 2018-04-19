@@ -36,20 +36,18 @@ class Home extends Component {
                 memClickHandler={this.memClickHandler} 
                 trackClickHandler={this.trackClickHandler} 
                 homeClickHandler={this.homeClickHandler} />
-            <Sidebar 
-                user={this.props.user} />
-            <div className='head'>
-                <h1>DevTech Connect</h1>
-                <h2>Keep Moving</h2>
-            </div>
-            <div className='article-holder'>
+            <div className="row">
+                <Sidebar 
+                    user={this.props.user} />
+                <div className="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 inline-block">
+                    <h1>DevTech Connect</h1>
+                    <h2>Keep Moving</h2>
+                </div>
                 <Article />
                 <Article />
                 <Article />
                 <Article />
                 <Article />
-            </div>
-            <div className='rec-tracks'>
                 <RecTracks 
                     startTrackHandler={this.startTrackHandler} />
             </div>

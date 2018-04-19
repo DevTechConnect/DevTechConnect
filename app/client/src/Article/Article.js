@@ -4,7 +4,11 @@ import './Article.css';
 
 const Article = (props) => {
     return (
-        <a href='#'>Link Name</a>
+        <div className="row">
+            <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <a href='#'>Link Name</a>
+            </div>
+        </div>
     )
 }
         

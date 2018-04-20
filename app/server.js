@@ -91,10 +91,23 @@ app.post('/api/addUser', (req, res) => {
                               .then(function(user) {
                                 user.password = ""; //dont return hashed password
                                 console.log("RESULT", JSON.stringify(user));
-                                req.logIn(user, function(err) {
-                                  if (err) {console.log("ERROR**************",err); return next(err); }
-                                });
-                                res.status(200).send(JSON.stringify(user));
+                                db.sequelize
+                                    .query( "Select * from Members where id = ?;"
+                                            , { replacements: [user.id], type: db.sequelize.QueryTypes.SELECT}
+                                          )
+                                          .then(function(results){
+                                                var theNewUser = results[0];
+                                                theNewUser.password = "";
+                                                console.log("TheNewUser", theNewUser);
+                                                req.logIn(theNewUser, function(err) {
+                                                  if (err) {console.log("ERROR HERE**************",err); throw err; }
+                                                });
+                                                res.status(200).send(JSON.stringify(theNewUser));
+                                              })
+                                          .catch(function(err){
+                                            console.log(err);
+                                            throw err;
+                                          });
                               }).catch(function(err){
                                 console.log(err);
                                 throw err;
@@ -161,7 +174,7 @@ app.post('/api/login', function(req, res, next) {
                     aTrack.steps.push(aStep);
                 }//close for loop
                 user.tracks = tracks;
-                console.log("USER TRACKS", user.tracks);
+                console.log("COMPLETE USER", JSON.stringify(user));
                 res.status(200).send(JSON.stringify(user));
               });
         });

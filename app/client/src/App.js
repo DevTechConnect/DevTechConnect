@@ -46,7 +46,9 @@ class App extends Component {
         event.preventDefault();
         alert(`Your signup was successful ${this.state.firstName}!`);
         API.addNewUser({firstName:this.state.firstName, lastName:this.state.lastName, email:this.state.email, password:this.state.psw})
-            .then(this.setAppState("MemberP"))
+            .then((response) => {
+                this.setState({user:response.data, page:"MemberP"});
+             })
             .catch(err => console.log(err));
     };
 
@@ -90,29 +92,29 @@ class App extends Component {
             this.state.page === 'Home' ?
                 <Home
                     setAppState={this.setAppState}
-                    handleInputChange={this.handleInputChange} 
-                    user={this.state.user} 
+                    handleInputChange={this.handleInputChange}
+                    user={this.state.user}
                     userComplTracks={this.state.userComplTracks} /> : null
             }
             {
             this.state.page === 'MemberP' ?
                 <MemberP
                     setAppState={this.setAppState}
-                    handleInputChange={this.handleInputChange} 
+                    handleInputChange={this.handleInputChange}
                     user={this.state.user}  /> : null
             }
             {
             this.state.page === 'AllTracks' ?
                 <AllTracks
                     setAppState={this.setAppState}
-                    handleInputChange={this.handleInputChange} 
+                    handleInputChange={this.handleInputChange}
                     user={this.state.user}  /> : null
             }
             {
             this.state.page === 'LimitedFocus' ?
                 <LimitedFocus
                     setAppState={this.setAppState}
-                    handleInputChange={this.handleInputChange} 
+                    handleInputChange={this.handleInputChange}
                     user={this.state.user}  /> : null
             }
           </div>

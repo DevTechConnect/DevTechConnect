@@ -60,8 +60,6 @@ class App extends Component {
             //TODO show error cannot log in
               console.log("UNABLE TO LOGIN. USERNAME AND PASSWORD ARE INCORRECT");
           } else {
-            console.log("response", response);
-            console.log("data", response.data);
             this.setState({user:response.data, userComplTracks: response.data.tracks, page:"Home"});
           }
         }

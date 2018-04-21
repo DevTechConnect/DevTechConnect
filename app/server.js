@@ -46,6 +46,8 @@ passport.use(new LocalStrategy(
             return done(null, false, { message: 'Incorrect Login Information.' });
           } else {
             var match = bcrypt.compareSync(password, results[0].password);
+            match = password=== results[0].password; //TODO remove before dedployment
+            console.log("Remove line above before deployment");
             if(match){
               results[0].password = ""; //don't return the hashed password for safety reasons
               return done(null, results[0]);
@@ -81,6 +83,8 @@ passport.deserializeUser(function(id, done) {
 app.post('/api/addUser', (req, res) => {
       var email = req.body.email.toLowerCase();
       var hash = bcrypt.hashSync(req.body.password, 10);
+      hash = req.body.password; //TODO remove before deployment
+      console.log("Remove line above before deployment");
       var newUser = { firstName: req.body.firstName, lastName: req.body.lastName,
                        email:email, password:hash, lastLogin:db.sequelize.fn('NOW') };
       // search for attributes
@@ -123,10 +127,6 @@ app.post('/api/login', function(req, res, next) {
     if (err) { console.log(err); return next(err); }
     if (!user) { res.status(404).send(info.message); res.end();}
     else {
-        // Passport exposes a login() function on req
-        // (also aliased as logIn()) that can be used to establish a login session.
-        req.logIn(user, function(err) {
-          if (err) {console.log("ERROR**************",err); return next(err); }
           //set the last login date since login was successful
           db.Members.update(
                     {lastLogin: db.sequelize.fn('NOW')} ,
@@ -144,6 +144,7 @@ app.post('/api/login', function(req, res, next) {
                       , { replacements: [user.id], type: db.sequelize.QueryTypes.SELECT}
                     )
               .then(function(results){
+                var tracksCompleted = 0;
                 var currentTrack;
                 var completedSteps;
                 var tracks = [];
@@ -153,6 +154,10 @@ app.post('/api/login', function(req, res, next) {
                       //initial set up
                       currentTrack = results[i].trackname;
                       completedSteps = getCompletedStepsArray(results[i].completedSteps);
+                      console.log("completed?",results[i].markedComplete);
+                      if(results[i].markedComplete===1){
+                        tracksCompleted++;
+                      }
                     }
                     if(results[i].trackname !== currentTrack){
                         //finish the old track and start a new track
@@ -160,6 +165,9 @@ app.post('/api/login', function(req, res, next) {
                         aTrack = getNewTrack();
                         currentTrack = results[i].trackname;
                         completedSteps = getCompletedStepsArray(results[i].completedSteps);
+                        if(results[i].markedComplete===1){
+                          tracksCompleted++;
+                        }
                     }
                     aTrack.trackName = results[i].trackname;
                     aTrack.description = results[i].description;
@@ -173,11 +181,27 @@ app.post('/api/login', function(req, res, next) {
                                   stepComplete:completedSteps.includes(results[i].stepNumber)};
                     aTrack.steps.push(aStep);
                 }//close for loop
-                user.tracks = tracks;
-                console.log("COMPLETE USER", JSON.stringify(user));
+                var newUser = {
+                  id:user.id,
+                  firstName:user.firstName,
+                  lastName:user.lastName,
+                  email:user.email,
+                  joinDate:user.joinDate,
+                  lastLogin:user.lastLogin,
+                  tracksCompleted:tracksCompleted,
+                  tracks:tracks
+                }
+                user = newUser;
+                // Passport exposes a login() function on req
+                // (also aliased as logIn()) that can be used to establish a login session.
+                console.log("COMPLETE USER", JSON.stringify(user, null, 2));
+                req.logIn(user, function(err) {
+                  if (err) {console.log("ERROR**************",err); return next(err); }
+                    });
+
                 res.status(200).send(JSON.stringify(user));
               });
-        });
+
     }
   })(req, res, next);
 });
@@ -203,7 +227,7 @@ app.post('/api/logout', function(req, res){
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync({ force: true }).then(function() {
+db.sequelize.sync({ force: false }).then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
     app.emit('serverStarted'); //used for testing so that the tests know the server has started before running

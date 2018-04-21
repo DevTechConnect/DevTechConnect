@@ -61,6 +61,7 @@ class App extends Component {
                         userTrackHolder.push(this.state.user.tracks[i].trackId);
                     }
                 }
+            console.log(complTrackHolder);
             this.setState({userSavedTracks: userTrackHolder, userComplTracks: complTrackHolder});
              })
             .catch(err => console.log(err));
@@ -87,6 +88,7 @@ class App extends Component {
                             userTrackHolder.push(this.state.user.tracks[i].trackId);
                         }
                     }
+                  console.log(complTrackHolder);
                 this.setState({userSavedTracks: userTrackHolder, userComplTracks: complTrackHolder});
               }
             }
@@ -97,10 +99,6 @@ class App extends Component {
         this.state.user.tracks.forEach((i) => {
             console.log(i);
         })
-    }
-    
-    complTrackHandler = (event) => {
-        
     }
 
   render() {

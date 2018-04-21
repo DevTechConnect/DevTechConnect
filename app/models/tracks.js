@@ -15,11 +15,11 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     introVideoLink: {
-      type: DataTypes.STRING(10000),
+      type: DataTypes.STRING,
       allowNull: false
     },
     achievementLink: {
-      type: DataTypes.STRING(10000),
+      type: DataTypes.STRING,
       allowNull: false
     }
   },

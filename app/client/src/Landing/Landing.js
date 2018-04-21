@@ -82,8 +82,11 @@ class Landing extends Component {
                                 <h2>
                                     Keep Moving
                                 </h2>
+                                <hr />
                                 <p className='mission-state'>
-                                    Web development is constantly evolving. Trying to learn a skill that changes faster than bipolar weather can be intimidating - there are resources everywhere. So, where you start? <br />Right <a href='#' className='call-to-act' onClick={this.tryNowClickHandler}>here</a>.
+                                    Web development is constantly evolving. Trying to learn a skill that changes faster than bipolar weather can be intimidating - there are resources everywhere. 
+                                    <br />So, where you start? 
+                                    <br />Right <a href='#' className='call-to-act' onClick={this.tryNowClickHandler}>here</a>.
                                 </p>
                                 <button type='button' className='get-started' name='getStarted' onClick={this.tryNowClickHandler}>
                                     Get Started

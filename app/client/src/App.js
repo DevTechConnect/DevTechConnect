@@ -49,6 +49,19 @@ class App extends Component {
         API.addNewUser({firstName:this.state.firstName, lastName:this.state.lastName, email:this.state.email, password:this.state.psw})
             .then((response) => {
                 this.setState({user:response.data, page:"MemberP"});
+                let complTrackHolder = [];
+                let userTrackHolder = [];
+                for (let i = 0; i < this.state.user.tracks.length; i++) {
+                    if (this.state.user.tracks[i].trackMarkedComplete === 1) {
+                        console.log("Completed: " + this.state.user.tracks[i].trackId);
+                        complTrackHolder.push(this.state.user.tracks[i].trackId);
+
+                    } else {
+                        console.log("Incomplete: " + this.state.user.tracks[i].trackId);
+                        userTrackHolder.push(this.state.user.tracks[i].trackId);
+                    }
+                }
+            this.setState({userSavedTracks: userTrackHolder, userComplTracks: complTrackHolder});
              })
             .catch(err => console.log(err));
     };

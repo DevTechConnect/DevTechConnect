@@ -35,7 +35,8 @@ class MemberP extends Component {
                     homeClickHandler={this.homeClickHandler} />
                 <Sidebar 
                     user={this.props.user} 
-                    complTracks={this.props.complTracks} />
+                    userComplTracks={this.props.userComplTracks}
+                    userSavedTracks={this.props.userSavedTracks} />
                 <MemberInfo 
                     user={this.props.user} 
                     complTracks={this.props.complTracks} />

@@ -1,16 +1,37 @@
-import React from 'react';
+import React, { Component } from 'react';
+
+import Achievement from '../Achievement/Achievement';
 
 import './MemberInfo.css';
 
-const MemberInfo = (props) => {
-
-    return (
-        <div>
-            <h1>Welcome back {props.user.firstName}!</h1>
-            <p>Member Since: {props.user.joinDate.substr(0, 4)}</p>
-            <p>Tracks Completed: {props.user.complTracks}</p>
-        </div>
-    )
+class MemberInfo extends Component {
+  
+    render() {
+        
+        let complTracks = null;
+        
+        if (this.props.userComplTracks.length > 0) {
+            complTracks = (
+                <div>
+                    {this.props.userComplTracks.map((index) => {
+                        for (let i = 0; i < this.props.userComplTracks.length; i++ ) {
+                            return <Achievement 
+                                trackNum={1}
+                                key={index} />
+                        }
+                    })}
+                </div>
+            );
+        }      
+     
+        return (
+            <div>
+                <h1>Welcome back {this.props.user.firstName}!</h1>
+                <p>Member Since: {this.props.user.joinDate.substr(0, 4)}</p>
+                {complTracks}
+            </div>
+        )
+    }
 }
 
 export default MemberInfo;

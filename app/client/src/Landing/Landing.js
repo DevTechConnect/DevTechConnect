@@ -68,60 +68,65 @@ class Landing extends Component {
                 <NavbarNLI
                     loginClick={this.loginClickHandler}
                     signupClick={this.signClickHandler}
+                    tryNow={this.tryNowClickHandler}
                 />
-                {
-                this.state.tryNow === false && this.state.trialHTML === false ?
-                    <div>
-                        <h1>
-                            DevTech Connect
-                        </h1>
-                        <h2>
-                            Keep Moving
-                        </h2>
-                        <p>
-                            Web development is constantly evolving. Trying to learn a skill that changes faster than bipolar weather can be intimidating - there are resources everywhere. So, where you start? Right <a href='#' onClick={this.tryNowClickHandler}>here</a>.
-                        </p>
-                        <button type='button' name='getStarted' onClick={this.tryNowClickHandler}>
-                            Get Started
-                        </button>
-                    </div> : null
-                }
-                {
-                this.state.loginClick ?
-                    <Login
-                        email={this.props.loginEmail}
-                        psw={this.props.loginPass}
-                        inputUpdate={this.props.handleInputChange}
-                        loginSubmit={this.props.handleLoginSubmit}
-                    /> : null
-                }
+                <div className="row">
+                    <div className="col-0 col-sm-0 col-md-3 col-lg-3 col-xl-3"></div>
+                    <div className="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 land-box">
+                        {
+                        this.state.tryNow === false && this.state.trialHTML === false && this.state.loginClick === false && this.state.signupClick === false ?
+                            <div>
+                                <h1>
+                                    DevTech Connect
+                                </h1>
+                                <h2>
+                                    Keep Moving
+                                </h2>
+                                <p className='mission-state'>
+                                    Web development is constantly evolving. Trying to learn a skill that changes faster than bipolar weather can be intimidating - there are resources everywhere. So, where you start? <br />Right <a href='#' className='call-to-act' onClick={this.tryNowClickHandler}>here</a>.
+                                </p>
+                                <button type='button' className='get-started' name='getStarted' onClick={this.tryNowClickHandler}>
+                                    Get Started
+                                </button>
+                            </div> : null
+                        }
+                        {
+                        this.state.loginClick ?
+                            <Login
+                                email={this.props.loginEmail}
+                                psw={this.props.loginPass}
+                                inputUpdate={this.props.handleInputChange}
+                                loginSubmit={this.props.handleLoginSubmit} /> : null
+                        }
 
-                {
-                this.state.signupClick ?
-                    <Signup
-                        fName={this.props.firstName}
-                        lName={this.props.lastName}
-                        email={this.props.email}
-                        email2={this.props.email2}
-                        psw={this.props.psw}
-                        psw2={this.props.psw2}
-                        inputUpdate={this.props.handleInputChange}
-                        signupSubmit={this.props.handleSignupSubmit}
-                    /> : null
-                }
-                {
-                this.state.tryNow ?
-                    <Trial
-                        signupClick={this.signClickHandler}
-                        htmlTrialClick={this.trialClickHandler}
-                        tryNow={this.state.tryNow}
-                    /> : null
-                }
-                {
-                this.state.trialHTML ?
-                    <LimitedFModule
-                        trackName={'HTML/CSS'} /> : null
-                }
+                        {
+                        this.state.signupClick ?
+                            <Signup
+                                fName={this.props.firstName}
+                                lName={this.props.lastName}
+                                email={this.props.email}
+                                email2={this.props.email2}
+                                psw={this.props.psw}
+                                psw2={this.props.psw2}
+                                inputUpdate={this.props.handleInputChange}
+                                signupSubmit={this.props.handleSignupSubmit} /> : null
+                        }
+                        {
+                        this.state.tryNow ?
+                            <Trial
+                                signupClick={this.signClickHandler}
+                                htmlTrialClick={this.trialClickHandler}
+                                tryNow={this.state.tryNow}
+                            /> : null
+                        }
+                        {
+                        this.state.trialHTML ?
+                            <LimitedFModule
+                                trackName={'HTML/CSS'} /> : null
+                        }
+                    </div>
+                    <div className="col-0 col-sm-0 col-md-3 col-lg-3 col-xl-3"></div>
+                </div>
             </div>
         )
     };

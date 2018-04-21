@@ -30,7 +30,10 @@ class Home extends Component {
     }
     
     render () {
-        this.props.complTrackHandler();
+
+//    this.props.complTrackHandler();
+    this.props.memTrackHandler();
+        
     return (
         <div>
             <Navbar 
@@ -39,18 +42,31 @@ class Home extends Component {
                 homeClickHandler={this.homeClickHandler} />
             <div className="row">
                 <Sidebar 
-                    user={this.props.user} />
-                <div className="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 inline-block">
-                    <h1>DevTech Connect</h1>
-                    <h2>Keep Moving</h2>
+                    user={this.props.user} 
+                    userComplTracks={this.props.userComplTracks}
+                    userSavedTracks={this.props.userSavedTracks} />
+                <div className="col-12 col-sm-12 col-md- col-lg-8 col-xl-8 inline-block">
+                    <h1>Welcome to DevTech Connect</h1>
+                    <h2>Where You Can Keep Moving</h2>
+                    <hr />
+                    <div className='row inline-block'>
+                        <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <h1>Popular Articles</h1>
+                            <Article />
+                            <Article />
+                            <Article />
+                            <Article />
+                            <Article />
+                        </div>
+                    </div>
+                    <hr />
+                     <div className='row inline-block'>
+                        <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                            <RecTracks 
+                                startTrackHandler={this.startTrackHandler} />
+                        </div>
+                    </div>
                 </div>
-                <Article />
-                <Article />
-                <Article />
-                <Article />
-                <Article />
-                <RecTracks 
-                    startTrackHandler={this.startTrackHandler} />
             </div>
         </div>
     )

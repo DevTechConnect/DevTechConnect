@@ -2,3 +2,17 @@
     background-size: cover;
     height: 100%;
 }
+.mission-state {
+    font-size: 1.5em;
+}
+.get-started {
+    background-color: #48276a;
+    color: white;
+    width: 10em;
+    height: 4em;
+    border-radius: 25px;
+}
+.land-box {
+    padding: 2em;
+    margin: 3em auto;
+}

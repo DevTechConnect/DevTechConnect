@@ -1,5 +1,9 @@
-.loginBox {
+.login-box {
     text-align: left;
+    padding: 3em;
+    margin: 0 auto;
+    border: solid 2px white;
+    border-radius: 25px;
 }
 label,
 input {

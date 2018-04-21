@@ -8,6 +8,7 @@ body {
   margin: 0;
   padding: 1em;
   font-family: sans-serif;
+  color: white;
   background: #fff url(./background.png) no-repeat right top;
   background-attachment: fixed;
 }
@@ -28,4 +29,18 @@ body {
 }
 .vert-top {
     vertical-align: top;
+}
+hr {
+    border-color: white;
+    margin: .5em;
+}
+.call-to-act {
+    color: #48276a;
+    font-weight: 500;
+    border-bottom: 2px solid white;
+}
+button {
+    cursor: pointer;
+    border-radius: 25px;
+    padding: 1em;
 }

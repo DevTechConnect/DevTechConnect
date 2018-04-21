@@ -34,9 +34,12 @@ class MemberP extends Component {
                     trackClickHandler={this.trackClickHandler} 
                     homeClickHandler={this.homeClickHandler} />
                 <Sidebar 
-                    user={this.props.user} />
+                    user={this.props.user} 
+                    userComplTracks={this.props.userComplTracks}
+                    userSavedTracks={this.props.userSavedTracks} />
                 <MemberInfo 
-                    user={this.props.user} />
+                    user={this.props.user} 
+                    complTracks={this.props.complTracks} />
                 <p>Hop back in where you left off.</p>
                 <button type='button' name='pickUpMemTop' onClick={this.startTrackHandler}>last track name</button>
                 <Achievement />

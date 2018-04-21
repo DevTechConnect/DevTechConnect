@@ -24,6 +24,7 @@ class App extends Component {
         loginEmail: '',
         loginPass:'',
         user:[],
+        userSavedTracks:[],
         userComplTracks:[],
     };
 
@@ -48,25 +49,61 @@ class App extends Component {
         API.addNewUser({firstName:this.state.firstName, lastName:this.state.lastName, email:this.state.email, password:this.state.psw})
             .then((response) => {
                 this.setState({user:response.data, page:"MemberP"});
+                let complTrackHolder = [];
+                let userTrackHolder = [];
+                for (let i = 0; i < this.state.user.tracks.length; i++) {
+                    if (this.state.user.tracks[i].trackMarkedComplete === 1) {
+                        console.log("Completed: " + this.state.user.tracks[i].trackId);
+                        complTrackHolder.push(this.state.user.tracks[i].trackId);
+
+                    } else {
+                        console.log("Incomplete: " + this.state.user.tracks[i].trackId);
+                        userTrackHolder.push(this.state.user.tracks[i].trackId);
+                    }
+                }
+            console.log(complTrackHolder);
+            this.setState({userSavedTracks: userTrackHolder, userComplTracks: complTrackHolder});
              })
             .catch(err => console.log(err));
     };
 
     handleLoginSubmit = (event) => {
-    event.preventDefault();
-    API.login({username:this.state.loginEmail, password:this.state.loginPass})
-      .then( (response) => {
-          if(response.status!=200){
-            //TODO show error cannot log in
-              console.log("UNABLE TO LOGIN. USERNAME AND PASSWORD ARE INCORRECT");
-          } else {
-            this.setState({user:response.data, userComplTracks: response.data.tracks, page:"Home"});
-          }
-        }
-      ).catch(err => console.log(err));
+        event.preventDefault();
+        API.login({username:this.state.loginEmail, password:this.state.loginPass})
+          .then( (response) => {
+              if(response.status!=200){
+                //TODO show error cannot log in
+                  console.log("UNABLE TO LOGIN. USERNAME AND PASSWORD ARE INCORRECT");
+              } else {
+                this.setState({user:response.data, userComplTracks: response.data.tracks, page:"Home"});
+                    let complTrackHolder = [];
+                    let userTrackHolder = [];
+                    for (let i = 0; i < this.state.user.tracks.length; i++) {
+                        if (this.state.user.tracks[i].trackMarkedComplete === 1) {
+                            console.log("Completed: " + this.state.user.tracks[i].trackId);
+                            complTrackHolder.push(this.state.user.tracks[i].trackId);
+
+                        } else {
+                            console.log("Incomplete: " + this.state.user.tracks[i].trackId);
+                            userTrackHolder.push(this.state.user.tracks[i].trackId);
+                        }
+                    }
+                  console.log(complTrackHolder);
+                this.setState({userSavedTracks: userTrackHolder, userComplTracks: complTrackHolder});
+              }
+            }
+          ).catch(err => console.log(err));
     };
 
+    memTrackHandler = () => {
+        this.state.user.tracks.forEach((i) => {
+            console.log(i);
+        })
+    }
+
   render() {
+
+      
     return (
         <div className="row">
           <div className='App col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12'>
@@ -84,7 +121,8 @@ class App extends Component {
                     psw={this.state.psw}
                     psw2={this.state.psw2}
                     loginEmail={this.state.loginEmail}
-                    loginPass={this.state.loginPass} /> : null
+                    loginPass={this.state.loginPass} 
+                    complTrackHandler={this.complTrackHandler} /> : null
             }
             {
             this.state.page === 'Home' ?
@@ -92,28 +130,44 @@ class App extends Component {
                     setAppState={this.setAppState}
                     handleInputChange={this.handleInputChange}
                     user={this.state.user}
-                    userComplTracks={this.state.userComplTracks} /> : null
+                    userComplTracks={this.state.userComplTracks}
+                    memTrackHandler={this.memTrackHandler}
+                    complTrackHandler={this.complTrackHandler} 
+                    userComplTracks={this.state.userComplTracks}
+                    userSavedTracks={this.state.userSavedTracks} /> : null
             }
             {
             this.state.page === 'MemberP' ?
                 <MemberP
                     setAppState={this.setAppState}
                     handleInputChange={this.handleInputChange}
-                    user={this.state.user}  /> : null
+                    user={this.state.user}  
+                    memTrackHandler={this.memTrackHandler}
+                    complTrackHandler={this.complTrackHandler} 
+                    userComplTracks={this.state.userComplTracks}
+                    userSavedTracks={this.state.userSavedTracks} /> : null
             }
             {
             this.state.page === 'AllTracks' ?
                 <AllTracks
                     setAppState={this.setAppState}
                     handleInputChange={this.handleInputChange}
-                    user={this.state.user}  /> : null
+                    user={this.state.user}  
+                    memTrackHandler={this.memTrackHandler}
+                    complTrackHandler={this.complTrackHandler} 
+                    userComplTracks={this.state.userComplTracks}
+                    userSavedTracks={this.state.userSavedTracks} /> : null
             }
             {
             this.state.page === 'LimitedFocus' ?
                 <LimitedFocus
                     setAppState={this.setAppState}
                     handleInputChange={this.handleInputChange}
-                    user={this.state.user}  /> : null
+                    user={this.state.user}  
+                    memTrackHandler={this.memTrackHandler}
+                    complTrackHandler={this.complTrackHandler} 
+                    userComplTracks={this.state.userComplTracks}
+                    userSavedTracks={this.state.userSavedTracks} /> : null
             }
           </div>
         </div>

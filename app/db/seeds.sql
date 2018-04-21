@@ -163,6 +163,6 @@ INSERT INTO TrackSteps (trackId, stepNumber, link, description) VALUES
 (3,100,"https://www.tutorialspoint.com/mongodb/mongodb_questions_answers.htm", "Good source of common MongoDB questions");
 
 INSERT INTO membertracks (memberId, trackId, completedSteps, markedComplete) VALUES
-((Select id from members where email="z@z.com"), 1, "1,2", false),
-((Select id from members where email="z@z.com"), 2, "", false),
-((Select id from members where email="z@z.com"), 3, "", true);
+((Select id from members where email="a@a.com"), 1, "1,2", false),
+((Select id from members where email="a@a.com"), 2, "", false),
+((Select id from members where email="a@a.com"), 3, "", true);

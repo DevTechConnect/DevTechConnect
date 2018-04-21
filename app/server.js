@@ -122,6 +122,22 @@ app.post('/api/addUser', (req, res) => {
               });//close then
 });
 
+app.post('/api/getAllTracks', function(req, res, next){
+  db.sequelize
+      .query(
+              " Select MT.addedDate, MT.completedSteps, MT.markedComplete, T.id as trackid, "
+              +" T.trackname, T.description, T.introVideoLink, TS.link as stepLink, "
+              +" TS.description as stepdescription, TS.stepNumber from membertracks as MT  "
+              +" JOIN tracks as T ON MT.trackId = T.id JOIN tracksteps as TS ON T.id = TS.trackId "
+              + " WHERE MT.memberId = ? ORDER BY T.id, TS.stepNumber;"
+              , { replacements: [user.id], type: db.sequelize.QueryTypes.SELECT}
+            )
+      .then(function(results){
+
+      })
+      .catch(function(err){console.log("Error getting tracks", err); throw err;});
+
+}); //close /api/getAllTracks
 app.post('/api/login', function(req, res, next) {
   passport.authenticate('local', function(err, user, info) {
     if (err) { console.log(err); return next(err); }
@@ -181,6 +197,9 @@ app.post('/api/login', function(req, res, next) {
                                   stepComplete:completedSteps.includes(results[i].stepNumber)};
                     aTrack.steps.push(aStep);
                 }//close for loop
+                //add the last track that was built
+                tracks.push(aTrack);
+
                 var newUser = {
                   id:user.id,
                   firstName:user.firstName,

@@ -69,6 +69,12 @@ class App extends Component {
     };
 
   render() {
+  
+    let complTracks = this.state.user.tracks.filter((i) => {for (i = 0; i < this.state.user.tracks.length; i++) {
+        this.state.user.tracks[i].trackMarkedComplete === 1;
+    }})
+    console.log(complTracks);
+      
     return (
         <div className="row">
           <div className='App col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12'>
@@ -86,7 +92,8 @@ class App extends Component {
                     psw={this.state.psw}
                     psw2={this.state.psw2}
                     loginEmail={this.state.loginEmail}
-                    loginPass={this.state.loginPass} /> : null
+                    loginPass={this.state.loginPass} 
+                    complTracks={complTracks} /> : null
             }
             {
             this.state.page === 'Home' ?
@@ -94,28 +101,32 @@ class App extends Component {
                     setAppState={this.setAppState}
                     handleInputChange={this.handleInputChange}
                     user={this.state.user}
-                    userComplTracks={this.state.userComplTracks} /> : null
+                    userComplTracks={this.state.userComplTracks} 
+                    complTracks={complTracks} /> : null
             }
             {
             this.state.page === 'MemberP' ?
                 <MemberP
                     setAppState={this.setAppState}
                     handleInputChange={this.handleInputChange}
-                    user={this.state.user}  /> : null
+                    user={this.state.user}  
+                    complTracks={complTracks} /> : null
             }
             {
             this.state.page === 'AllTracks' ?
                 <AllTracks
                     setAppState={this.setAppState}
                     handleInputChange={this.handleInputChange}
-                    user={this.state.user}  /> : null
+                    user={this.state.user}  
+                    complTracks={complTracks} /> : null
             }
             {
             this.state.page === 'LimitedFocus' ?
                 <LimitedFocus
                     setAppState={this.setAppState}
                     handleInputChange={this.handleInputChange}
-                    user={this.state.user}  /> : null
+                    user={this.state.user}  
+                    complTracks={complTracks} /> : null
             }
           </div>
         </div>

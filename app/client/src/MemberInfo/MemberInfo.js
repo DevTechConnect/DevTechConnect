@@ -8,7 +8,7 @@ const MemberInfo = (props) => {
         <div>
             <h1>Welcome back {props.user.firstName}!</h1>
             <p>Member Since: {props.user.joinDate.substr(0, 4)}</p>
-            <p>Tracks Completed: {props.user.tracks}</p>
+            <p>Tracks Completed: {props.user.complTracks}</p>
         </div>
     )
 }

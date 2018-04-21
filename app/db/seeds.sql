@@ -144,7 +144,6 @@ INSERT INTO TrackSteps (trackId, stepNumber, link, description) VALUES
 (2,6,"https://www.youtube.com/watch?v=1PKOdfj7P6Q", "Free, jQuery, .9 hours – Your first video on jQuery. This video is short and sweet. Don’t worry, we’ll throw plenty of practice at you later."),
 (2,7,"https://www.youtube.com/watch?v=BWXggB-T1jQ", "Free, jQuery, 1.1 hours - We are giving you double videos for your fourth step of this track. We want to show you a quick run through of just what all is possible with jQuery, while also taking you through object-oriented programming with JavaScript in your second video. If you went through our HTML and CSS track, you met Derek Banas in a few videos. He’s back. Get your note taking hand ready."),
 (2,8,"https://www.youtube.com/watch?v=O8wwnhdkPE4&t=354s", "Free, Object-Oriented JavaScript, 1 hour – Derek Banas is back, this time, with your all-encompassing guide to OO JavaScript. This is an important lesson to prepare you for some more complex coding down the line. Pay attention to this one. "),
-(2,9,"https://www.codecademy.com/en/tracks/javascript", "An exercise-based course that will take you through functions, ‘for’ and ‘while’ loops, arrays and objects, and more."),
 (2, 100, "https://www.codecademy.com/en/tracks/javascript","An exercise-based course that will take you through functions, ‘for’ and ‘while’ loops, arrays and objects, and more."),
 (2, 100, "https://www.youtube.com/watch?v=46Jz0QJyhN0&list=PLUoqTnNH-2Xwmr2GvOdZMJnrp6b51ndZE&index=1","YouTube jQuery tutorial.
 Playlist, 12 videos, average 12 minutes each"),

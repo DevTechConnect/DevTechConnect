@@ -3,7 +3,7 @@ import React from 'react';
 import './MemberInfo.css';
 
 const MemberInfo = (props) => {
-      
+
     return (
         <div>
             <h1>Welcome back {props.user.firstName}!</h1>
@@ -12,5 +12,5 @@ const MemberInfo = (props) => {
         </div>
     )
 }
-        
+
 export default MemberInfo;

@@ -30,6 +30,7 @@ class Home extends Component {
     }
     
     render () {
+        this.props.complTrackHandler();
     return (
         <div>
             <Navbar 

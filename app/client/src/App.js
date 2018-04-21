@@ -60,20 +60,20 @@ class App extends Component {
             //TODO show error cannot log in
               console.log("UNABLE TO LOGIN. USERNAME AND PASSWORD ARE INCORRECT");
           } else {
-            console.log("response", response);
-            console.log("data", response.data);
             this.setState({user:response.data, userComplTracks: response.data.tracks, page:"Home"});
           }
         }
       ).catch(err => console.log(err));
     };
 
+    complTrackHandler = () => {
+        this.state.user.tracks.forEach((i) => {
+            console.log(i);
+        })
+    }
+
   render() {
-  
-    let complTracks = this.state.user.tracks.filter((i) => {for (i = 0; i < this.state.user.tracks.length; i++) {
-        this.state.user.tracks[i].trackMarkedComplete === 1;
-    }})
-    console.log(complTracks);
+
       
     return (
         <div className="row">
@@ -92,8 +92,7 @@ class App extends Component {
                     psw={this.state.psw}
                     psw2={this.state.psw2}
                     loginEmail={this.state.loginEmail}
-                    loginPass={this.state.loginPass} 
-                    complTracks={complTracks} /> : null
+                    loginPass={this.state.loginPass} /> : null
             }
             {
             this.state.page === 'Home' ?
@@ -102,7 +101,7 @@ class App extends Component {
                     handleInputChange={this.handleInputChange}
                     user={this.state.user}
                     userComplTracks={this.state.userComplTracks} 
-                    complTracks={complTracks} /> : null
+                    complTrackHandler={this.complTrackHandler} /> : null
             }
             {
             this.state.page === 'MemberP' ?
@@ -110,7 +109,7 @@ class App extends Component {
                     setAppState={this.setAppState}
                     handleInputChange={this.handleInputChange}
                     user={this.state.user}  
-                    complTracks={complTracks} /> : null
+                    complTrackHandler={this.complTrackHandler} /> : null
             }
             {
             this.state.page === 'AllTracks' ?
@@ -118,7 +117,7 @@ class App extends Component {
                     setAppState={this.setAppState}
                     handleInputChange={this.handleInputChange}
                     user={this.state.user}  
-                    complTracks={complTracks} /> : null
+                     complTrackHandler={this.complTrackHandler} /> : null
             }
             {
             this.state.page === 'LimitedFocus' ?
@@ -126,7 +125,7 @@ class App extends Component {
                     setAppState={this.setAppState}
                     handleInputChange={this.handleInputChange}
                     user={this.state.user}  
-                    complTracks={complTracks} /> : null
+                    complTrackHandler={this.complTrackHandler} /> : null
             }
           </div>
         </div>

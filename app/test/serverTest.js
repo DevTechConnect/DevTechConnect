@@ -82,6 +82,7 @@ chai.use(chaiHttp);
                     .post('/api/login')
                     .send(credentials)
                     .end(function(err, res){
+                      console.log("res.body", JSON.stringify(res.body,null,2));
                       res.should.have.status(200);
                       res.body.email.should.equal("testemail@testemail.com");
                       res.body.email.should.not.equal("tEStEmail@testEmail.com");//should be all lower case
@@ -128,7 +129,30 @@ chai.use(chaiHttp);
                     .post('/api/getAllTracks')
                     .end(function(err, res){
                       res.should.have.status(200);
-                      expect(res.text).to.be.equal("incorrect login information.");
+                      done();
+                    });
+              });
+          });
+
+          describe('Add a Track',function() {
+              it('Should add a track', function(done) {
+                chai.request(server)
+                    .post('/api/addTrack')
+                    .send({memberid:"3", trackid:"1"})
+                    .end(function(err, res){
+                      res.should.have.status(200);
+                      done();
+                    });
+              });
+          });
+
+          describe('Mark Step Complete',function() {
+              it('Should mark a step for a track complete', function(done) {
+                chai.request(server)
+                    .post('/api/markStepComplete')
+                    .send({stepnumber:"3", completedSteps:"1,2", membertrackId:"6"})
+                    .end(function(err, res){
+                      res.should.have.status(200);
                       done();
                     });
               });

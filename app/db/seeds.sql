@@ -101,19 +101,19 @@ INSERT INTO LINKS (id, topicId, isOnline, linkName, url, description) VALUES
 
 
 
-INSERT INTO Tracks (id, trackname, description, introVideoLink) VALUES
-(1, "HTML/CSS", "HTML stands for Hypertext Markup Language. But that’s not why you’re here. You can find a standard definition anywhere. You’re here for the short and simple answer.
+INSERT INTO Tracks (id, trackname, achievementLink, description, introVideoLink) VALUES
+(1, "HTML/CSS", "./1.png", "HTML stands for Hypertext Markup Language. But that’s not why you’re here. You can find a standard definition anywhere. You’re here for the short and simple answer.
 With HTML, you designate what is displayed on a screen. You create your layout, insert your content, create forms, insert images, etc.
 There are a lot of handy tools for organizing websites, a lot more than available than even ten years ago. It can take a little while to learn them all, but once you dig in, it won’t be as daunting.
 CSS stands for Cascading Stylesheets – it’s what you will use to style your sites. Now this doesn’t only give you tools to change the color of your font and your background image. You can add transitions to create animations and control your entire layout as well.
 Keep clicking through. We’ll teach you more in a bit.", "https://www.youtube.com/watch?v=IsXEVQRaTX8"),
 
-(2, "JavaScript And jQuery", "JavaScript is a programming language that makes interactivity in websites possible. One of the many things you can do with JavaScript is to add content ‘dynamically,’ which means a section may be revealed based off of another action, like clicking a button to expand a dropdown menu or pulling a set number of gifs into your website based off what the user searched.
+(2, "JavaScript And jQuery", "./2.png", "JavaScript is a programming language that makes interactivity in websites possible. One of the many things you can do with JavaScript is to add content ‘dynamically,’ which means a section may be revealed based off of another action, like clicking a button to expand a dropdown menu or pulling a set number of gifs into your website based off what the user searched.
 jQuery is a JavaScript library which helps you get to the point a bit quicker. You definitely want to be able to work with JavaScript before you dive into jQuery. Like we indicated in the HTML and CSS track, skipping some steps can limit your knowledge on the tools available, but once you have a good grasp on JavaScript, you’ll love and appreciate jQuery. Their slogan is ‘Write less, do more.” This may not seem like a huge necessity now, but when you are working on real life web pages, and you’re staring down hundreds of pages of code and thousands upon thousands of lines, every shortcut you can take helps.
 Keep clicking through. We’ll teach you more in a bit.", "https://www.youtube.com/watch?v=a6Oh2155QHw"),
-(3, "MongoDB", "MongoDB is a free and open-source cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with schemas.", "https://www.youtube.com/watch?v=CvIr-2lMLsk"),
-(4, "SQL", "SQL", "https://www.youtube.com/watch?v=FR4QIeZaPeM"),
-(5, "Computer Science Fundamentals", "Computer Science Fundamentals", "https://www.youtube.com/watch?v=SzJ46YA_RaA");
+(3, "MongoDB", "./3.png", "MongoDB is a free and open-source cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with schemas.", "https://www.youtube.com/watch?v=CvIr-2lMLsk"),
+(4, "SQL", "./4.png", "SQL", "https://www.youtube.com/watch?v=FR4QIeZaPeM"),
+(5, "Computer Science Fundamentals", "./5.png", "Computer Science Fundamentals", "https://www.youtube.com/watch?v=SzJ46YA_RaA");
 
 INSERT INTO RelatedTracks (trackId, relatedTrackId) VALUES
 (1,2), (2,1), (3,4), (4,3), (1,5);

@@ -17,6 +17,10 @@ module.exports = function(sequelize, DataTypes) {
     introVideoLink: {
       type: DataTypes.STRING(10000),
       allowNull: false
+    },
+    achievementLink: {
+      type: DataTypes.STRING(10000),
+      allowNull: false
     }
   },
   {
@@ -25,7 +29,6 @@ module.exports = function(sequelize, DataTypes) {
 
   Tracks.associate = function(models){
     models.Tracks.hasMany(models.TrackSteps, {foreignKey: "trackId"});
-    models.Tracks.hasMany(models.TrackPractice, {foreignKey: "trackId"});
   }
 
   return Tracks;

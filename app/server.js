@@ -125,14 +125,42 @@ app.post('/api/addUser', (req, res) => {
 app.post('/api/getAllTracks', function(req, res, next){
   db.sequelize
       .query(
-              " Select MT.addedDate, MT.completedSteps, MT.markedComplete, T.id as trackid, "
-              +" T.trackname, T.description, T.introVideoLink, TS.link as stepLink, "
-              +" TS.description as stepdescription, TS.stepNumber from membertracks as MT  "
-              +" JOIN tracks as T ON MT.trackId = T.id JOIN tracksteps as TS ON T.id = TS.trackId "
-              + " WHERE MT.memberId = ? ORDER BY T.id, TS.stepNumber;"
-              , { replacements: [user.id], type: db.sequelize.QueryTypes.SELECT}
+              " Select T.id as trackid, T.trackname , T.achievementLink, T.description as trackDescription, T.introVideoLink, TS.link as stepLink, "
+              +" TS.description as stepdescription, TS.stepNumber FROM tracks as T JOIN tracksteps as TS ON T.id = TS.trackId "
+              +" ORDER BY T.id, TS.stepNumber;"
+              , {type: db.sequelize.QueryTypes.SELECT}
             )
       .then(function(results){
+        var currentTrack;
+        var tracks = [];
+        var aTrack =  { trackId: "", trackName:"", trackIntroVideoLink:"",
+                   trackDescription: "", steps:[]};
+
+        for(i=0; i<results.length; i++){
+            if(i==0){
+              //initial set up
+              currentTrack = results[i].trackname;
+            }
+            if(results[i].trackname !== currentTrack){
+                //finish the old track and start a new track
+                tracks.push(aTrack);
+                aTrack = { trackId: "", trackName:"", trackIntroVideoLink:"",
+                           trackDescription: "", steps:[]};
+                currentTrack = results[i].trackname;
+            }
+            aTrack.trackId  = results[i].trackid;
+            aTrack.achievementLink = results[i].achievementLink;
+            aTrack.trackName = results[i].trackname;
+            aTrack.trackDescription = results[i].trackDescription;
+            aTrack.trackIntroVideoLink = results[i].introVideoLink;
+
+            var aStep = { trackNumber:results[i].id, stepNumber:results[i].stepNumber,
+                          stepLink: results[i].stepLink,stepdescription: results[i].stepdescription};
+            aTrack.steps.push(aStep);
+        }//close for loop
+        tracks.push(aTrack); //add the last track that was built
+        console.log(JSON.stringify(tracks, null, 2));
+        res.status(200).send(JSON.stringify(tracks));
 
       })
       .catch(function(err){console.log("Error getting tracks", err); throw err;});
@@ -153,7 +181,7 @@ app.post('/api/login', function(req, res, next) {
           db.sequelize
               .query(
                       " Select MT.addedDate, MT.completedSteps, MT.markedComplete, T.id as trackid, "
-                      +" T.trackname, T.description, T.introVideoLink, TS.link as stepLink, "
+                      +" T.trackname, T.description, T.achievementLink, T.introVideoLink, TS.link as stepLink, "
                       +" TS.description as stepdescription, TS.stepNumber from membertracks as MT  "
                       +" JOIN tracks as T ON MT.trackId = T.id JOIN tracksteps as TS ON T.id = TS.trackId "
                       + " WHERE MT.memberId = ? ORDER BY T.id, TS.stepNumber;"
@@ -186,6 +214,7 @@ app.post('/api/login', function(req, res, next) {
                         }
                     }
                     aTrack.trackName = results[i].trackname;
+                    aTrack.achievementLink = results[i].achievementLink;
                     aTrack.description = results[i].description;
                     aTrack.trackAddedDate = results[i].addedDate;
                     aTrack.trackCompletedSteps = results[i].completedSteps
@@ -197,8 +226,7 @@ app.post('/api/login', function(req, res, next) {
                                   stepComplete:completedSteps.includes(results[i].stepNumber)};
                     aTrack.steps.push(aStep);
                 }//close for loop
-                //add the last track that was built
-                tracks.push(aTrack);
+                tracks.push(aTrack); //add the last track that was built
 
                 var newUser = {
                   id:user.id,
@@ -227,7 +255,7 @@ app.post('/api/login', function(req, res, next) {
 
 
 function getNewTrack(){
-  return { trackId: "", trackName:"", trackIntroVideoLink:"",
+  return { trackId: "", achievementLink:"", trackName:"", trackIntroVideoLink:"",
              trackDescription: "", trackAddedDate:"", trackCompletedSteps: "",
              trackMarkedComplete: "", steps:[]};
 }
@@ -246,7 +274,7 @@ app.post('/api/logout', function(req, res){
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync({ force: false }).then(function() {
+db.sequelize.sync({ force: true }).then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
     app.emit('serverStarted'); //used for testing so that the tests know the server has started before running

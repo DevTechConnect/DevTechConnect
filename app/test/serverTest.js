@@ -122,6 +122,18 @@ chai.use(chaiHttp);
               });
           });
 
+          describe('Test Get All Tracks',function() {
+              it('Should return all the tracks', function(done) {
+                chai.request(server)
+                    .post('/api/getAllTracks')
+                    .end(function(err, res){
+                      res.should.have.status(200);
+                      expect(res.text).to.be.equal("incorrect login information.");
+                      done();
+                    });
+              });
+          });
+
 
 
 }); //close Server Tests

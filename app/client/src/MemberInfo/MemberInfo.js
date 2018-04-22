@@ -11,11 +11,11 @@ class MemberInfo extends Component {
         
         let complTracks = null;
         
-        for (let j = 0; j < this.props.user.tracks.length; j++) {
+        for (let j = 0; j < this.props.userComplTracks; j++) {
             if (this.props.user.tracks[j].trackMarkedComplete === 1 && this.props.user.tracks[j].trackMarkedComplete !== 0) {
                 complTracks = (
                     <div>
-                        {this.props.user.tracks.map((index) => {
+                        {this.props.userComplTracks.map((index) => {
                             console.log(this.props.user.tracks)
                                 return <Achievement 
                                     trackId={this.props.user.tracks[j].trackId}

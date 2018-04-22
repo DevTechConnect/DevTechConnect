@@ -63,7 +63,7 @@ class App extends Component {
                 //TODO show error cannot log in
                   console.log("UNABLE TO LOGIN. USERNAME AND PASSWORD ARE INCORRECT");
               } else {
-                this.setState({user:response.data, userComplTracks: response.data.tracks, page:"Home"});
+                this.setState({user:response.data, page:"Home"});
                     let complTrackHolder = [];
                     let userTrackHolder = [];
                     for (let i = 0; i < this.state.user.tracks.length; i++) {

@@ -24,25 +24,36 @@ class Sidebar extends Component {
 //            </div>
 //        );
 //    }      
+   
     
     render() {
+        
+        let savedTracks = null;
+        
+        if (this.props.user.tracks) {
+            for (let j = 0; j < this.props.user.tracks.length; j++) {
+                savedTracks = (
+                    <div>
+                        {this.props.user.tracks.map((index) => {
+                            console.log(this.props.user.tracks)
+                            return <TrackQV 
+                                    trackId={this.props.user.tracks[j].trackId}
+                                    imgDim={75} 
+                                    key={index} />
+                        })}
+                    </div>
+                );
+            }
+        }
+        
         return (
             <div className="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 inline-block sidebar">
                 <MemberInfo 
                     user={this.props.user} 
                     userComplTracks={this.props.userComplTracks}
                     userSavedTracks={this.props.userSavedTracks} />
-                <h4>This is the last track you were working on.</h4>
-                <TrackQV 
-                    user={this.props.user} 
-                    imgDim={100} />
                 <h4>Jump into one of your saved tracks:</h4>
-                <TrackQV 
-                    imgDim={75} />
-                <TrackQV 
-                    imgDim={75} />
-                <TrackQV 
-                    imgDim={75} />
+                {savedTracks}
                 <h4>These are your last 3 bookmarked articles.</h4>
                 <Article />
                 <Article />

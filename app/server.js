@@ -80,6 +80,43 @@ passport.deserializeUser(function(id, done) {
 
 
 //********************* ROUTES *******************************//
+
+app.post('/api/addBookmark', function(req, res, next) {
+  db.MemberLinks.create({memberId:req.body.memberid, linkId:req.body.linkid})
+                .then(res.status(200).send("added bookmark"))
+                .catch(function(err){console.log(err); throw err;});
+});
+
+app.post('/api/addTrack', function(req, res, next) {
+  db.MemberTracks.create({memberId:req.body.memberid, trackId:req.body.trackid})
+                 .then(res.status(200).send("added track"))
+                 .catch(function(err){console.log(err); throw err;});
+});
+
+app.post('/api/markStepComplete', function(req, res, next) {
+  var stepnumber = req.body.stepnumber;
+  var completedSteps = req.body.completedSteps;
+  completedSteps += ","+stepnumber;
+
+  db.MemberTracks.update({completedSteps:completedSteps}, {where:{id:req.body.membertrackId}})
+                 .then(res.status(200).send("marked step completed"))
+                 .catch(function(err){console.log(err); throw err;});
+});
+
+app.post('/api/markStepIncomplete', function(req, res, next) {
+  var stepnumber = req.body.stepnumber;
+  var completedSteps = req.body.completedSteps;
+  console.log("completedSteps", completedSteps);
+  var completedStepsArray = completedSteps.split(",");
+  completedStepsArray.splice(completedStepsArray.indexOf(stepNum),1);
+  completedSteps = completedStepsArray.join();
+  console.log("completedSteps", completedSteps);
+
+  db.MemberTracks.update({completedSteps:completedSteps}, {where:{id:req.body.membertrackId}})
+                 .then(res.status(200).send("marked step incomplete"))
+                 .catch(function(err){console.log(err); throw err;});
+});
+
 app.post('/api/addUser', (req, res) => {
       var email = req.body.email.toLowerCase();
       var hash = bcrypt.hashSync(req.body.password, 10);
@@ -164,8 +201,8 @@ app.post('/api/getAllTracks', function(req, res, next){
 
       })
       .catch(function(err){console.log("Error getting tracks", err); throw err;});
-
 }); //close /api/getAllTracks
+
 app.post('/api/login', function(req, res, next) {
   passport.authenticate('local', function(err, user, info) {
     if (err) { console.log(err); return next(err); }
@@ -177,91 +214,130 @@ app.post('/api/login', function(req, res, next) {
                     {where: {id: user.id}}
                   ).catch(function(err){console.log(err)});//no need to wait for the promise to return
 
-          //get the tracks and track information for this user
-          db.sequelize
-              .query(
-                      " Select MT.addedDate, MT.completedSteps, MT.markedComplete, T.id as trackid, "
-                      +" T.trackname, T.description, T.achievementLink, T.introVideoLink, TS.link as stepLink, "
-                      +" TS.description as stepdescription, TS.stepNumber from membertracks as MT  "
-                      +" JOIN tracks as T ON MT.trackId = T.id JOIN tracksteps as TS ON T.id = TS.trackId "
-                      + " WHERE MT.memberId = ? ORDER BY T.id, TS.stepNumber;"
-                      , { replacements: [user.id], type: db.sequelize.QueryTypes.SELECT}
-                    )
-              .then(function(results){
-                var tracksCompleted = 0;
-                var currentTrack;
-                var completedSteps;
-                var tracks = [];
-                var aTrack =  getNewTrack();
-                for(i=0; i<results.length; i++){
-                    if(i==0){
-                      //initial set up
-                      currentTrack = results[i].trackname;
-                      completedSteps = getCompletedStepsArray(results[i].completedSteps);
-                      console.log("completed?",results[i].markedComplete);
-                      if(results[i].markedComplete===1){
-                        tracksCompleted++;
-                      }
-                    }
-                    if(results[i].trackname !== currentTrack){
-                        //finish the old track and start a new track
-                        tracks.push(aTrack);
-                        aTrack = getNewTrack();
-                        currentTrack = results[i].trackname;
-                        completedSteps = getCompletedStepsArray(results[i].completedSteps);
-                        if(results[i].markedComplete===1){
-                          tracksCompleted++;
-                        }
-                    }
-                    aTrack.trackName = results[i].trackname;
-                    aTrack.achievementLink = results[i].achievementLink;
-                    aTrack.description = results[i].description;
-                    aTrack.trackAddedDate = results[i].addedDate;
-                    aTrack.trackCompletedSteps = results[i].completedSteps
-                    aTrack.trackMarkedComplete = results[i].markedComplete;
-                    aTrack.trackId  = results[i].trackid;
-                    aTrack.trackIntroVideoLink = results[i].introVideoLink;
-                    var aStep = { trackNumber:results[i].id, stepNumber:results[i].stepNumber,
-                                  stepLink: results[i].stepLink,stepdescription: results[i].stepdescription,
-                                  stepComplete:completedSteps.includes(results[i].stepNumber)};
-                    aTrack.steps.push(aStep);
-                }//close for loop
-                tracks.push(aTrack); //add the last track that was built
+          //get user bookmarks
+          var bookmarkQuery = "Select L.linkName, L.description as linkDescription, L.url, L.isonline, L.id, L.topicId, ML.addedDate, "
+                                +" T.name as topicName, T.description as topicDescription "
+                                +" from Links as L JOIN Topics as T ON T.id = L.topicId "
+                                +" JOIN memberlinks as ML ON ML.linkId = L.id "
+                                +" WHERE ML.memberId = ?";
 
-                var newUser = {
-                  id:user.id,
-                  firstName:user.firstName,
-                  lastName:user.lastName,
-                  email:user.email,
-                  joinDate:user.joinDate,
-                  lastLogin:user.lastLogin,
-                  tracksCompleted:tracksCompleted,
-                  tracks:tracks
-                }
-                user = newUser;
-                // Passport exposes a login() function on req
-                // (also aliased as logIn()) that can be used to establish a login session.
-                console.log("COMPLETE USER", JSON.stringify(user, null, 2));
-                req.logIn(user, function(err) {
-                  if (err) {console.log("ERROR**************",err); return next(err); }
+
+          db.sequelize.query(bookmarkQuery, {replacements:[user.id], type: db.sequelize.QueryTypes.SELECT})
+                     .then(function(results){
+                          var bookmarks = [];
+                          for(i=0; i<results.length; i++){
+                            bookmarks.push(
+                                        {
+                                          linkName: results[i].linkName,
+                                          linkDescription: results[i].linkDescription,
+                                          url: results[i].url,
+                                          isonline: results[i].isonline,
+                                          linkid:results[i].id,
+                                          topicId: results[i].topicId,
+                                          addedDate: results[i].addedDate,
+                                          topicName: results[i].topicName,
+                                          topicDescription: results[i].topicDescription
+                                        }
+                            );
+                          }//close for loop
+
+                          console.log(JSON.stringify(bookmarks, null, 2));
+                          getUserTracks(user, function(userTracks){
+                                var user = userTracks;
+                                user.bookmarks = bookmarks;
+                                console.log("COMPLETE USER", JSON.stringify(user, null, 2));
+                                // Passport exposes a login() function on req
+                                // (also aliased as logIn()) that can be used to establish a login session.
+                                req.logIn(user, function(err) {
+                                  if (err) {console.log("ERROR**************",err); return next(err); }
+                                    });
+                                res.status(200).send(JSON.stringify(user));
+                          });// close getUserTracks
+                    }) //close get user bookmarks
+                    .catch(function(err){
+                      console.log(err);
+                      throw err;
                     });
 
-                res.status(200).send(JSON.stringify(user));
-              });
-
-    }
+    }//close else
   })(req, res, next);
 });
 
 
 function getNewTrack(){
   return { trackId: "", achievementLink:"", trackName:"", trackIntroVideoLink:"",
-             trackDescription: "", trackAddedDate:"", trackCompletedSteps: "",
+             trackDescription: "", trackAddedDate:"", membertrackId:"", trackCompletedSteps: "",
              trackMarkedComplete: "", steps:[]};
 }
 
 function getCompletedStepsArray(stepsArrayString){
   return stepsArrayString ? stepsArrayString.split(",") : [];
+}
+
+function getUserTracks(user, cb){
+  db.sequelize
+      .query(
+              " Select MT.id as membertrackId, MT.addedDate, MT.completedSteps, MT.markedComplete, T.id as trackid, "
+              +" T.trackname, T.description, T.achievementLink, T.introVideoLink, TS.link as stepLink, "
+              +" TS.description as stepdescription, TS.stepNumber from membertracks as MT  "
+              +" JOIN tracks as T ON MT.trackId = T.id JOIN tracksteps as TS ON T.id = TS.trackId "
+              + " WHERE MT.memberId = ? ORDER BY T.id, TS.stepNumber;"
+              , { replacements: [user.id], type: db.sequelize.QueryTypes.SELECT}
+            )
+      .then(function(results){
+          var tracksCompleted = 0;
+          var currentTrack;
+          var completedSteps;
+          var tracks = [];
+          var aTrack =  getNewTrack();
+          for(i=0; i<results.length; i++){
+              if(i==0){
+                //initial set up
+                currentTrack = results[i].trackname;
+                completedSteps = getCompletedStepsArray(results[i].completedSteps);
+                console.log("completed?",results[i].markedComplete);
+                if(results[i].markedComplete===1){
+                  tracksCompleted++;
+                }
+              }
+              if(results[i].trackname !== currentTrack){
+                  //finish the old track and start a new track
+                  tracks.push(aTrack);
+                  aTrack = getNewTrack();
+                  currentTrack = results[i].trackname;
+                  completedSteps = getCompletedStepsArray(results[i].completedSteps);
+                  if(results[i].markedComplete===1){
+                    tracksCompleted++;
+                  }
+              }
+              aTrack.trackName = results[i].trackname;
+              aTrack.achievementLink = results[i].achievementLink;
+              aTrack.description = results[i].description;
+              aTrack.trackAddedDate = results[i].addedDate;
+              aTrack.trackCompletedSteps = results[i].completedSteps
+              aTrack.trackMarkedComplete = results[i].markedComplete;
+              aTrack.trackId  = results[i].trackid;
+              aTrack.membertrackId = results[i].membertrackId;
+              aTrack.trackIntroVideoLink = results[i].introVideoLink;
+              var aStep = { trackNumber:results[i].id, stepNumber:results[i].stepNumber,
+                            stepLink: results[i].stepLink,stepdescription: results[i].stepdescription,
+                            stepComplete:completedSteps.includes(results[i].stepNumber)};
+              aTrack.steps.push(aStep);
+          }//close for loop
+          if(aTrack.trackId!==""){tracks.push(aTrack)}; //add the last track that was built,  but dont add a blank track
+
+          var newUser = {
+            id:user.id,
+            firstName:user.firstName,
+            lastName:user.lastName,
+            email:user.email,
+            joinDate:user.joinDate,
+            lastLogin:user.lastLogin,
+            tracksCompleted:tracksCompleted,
+            tracks:tracks
+          }
+          cb(newUser);
+      });
 }
 
 app.post('/api/logout', function(req, res){

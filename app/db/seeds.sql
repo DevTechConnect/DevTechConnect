@@ -166,3 +166,10 @@ INSERT INTO membertracks (memberId, trackId, completedSteps, markedComplete) VAL
 ((Select id from members where email="a@a.com"), 1, "1,2", false),
 ((Select id from members where email="a@a.com"), 2, "", false),
 ((Select id from members where email="a@a.com"), 3, "", true);
+
+INSERT INTO memberlinks (memberId, linkId) VALUES
+((Select id from members where email="a@a.com"), 1),
+((Select id from members where email="a@a.com"), 13),
+((Select id from members where email="a@a.com"), 22),
+((Select id from members where email="a@a.com"), 58),
+((Select id from members where email="a@a.com"), 57);

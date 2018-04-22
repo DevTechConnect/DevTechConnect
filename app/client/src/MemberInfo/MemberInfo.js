@@ -7,19 +7,17 @@ import './MemberInfo.css';
 class MemberInfo extends Component {
   
     render() {
-        console.log(this.props.userComplTracks)
         
         let complTracks = null;
         
         for (let j = 0; j < this.props.userComplTracks; j++) {
-            if (this.props.user.tracks[j].trackMarkedComplete === 1 && this.props.user.tracks[j].trackMarkedComplete !== 0) {
+            if (this.props.userComplTracks) {
                 complTracks = (
                     <div>
                         {this.props.userComplTracks.map((index) => {
-                            console.log(this.props.user.tracks)
-                                return <Achievement 
-                                    trackId={this.props.user.tracks[j].trackId}
-                                    key={index} />
+                            return <Achievement 
+                                trackId={this.props.user.tracks[j].trackId}
+                                key={index} />
                         })}
                     </div>
                 );

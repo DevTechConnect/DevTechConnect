@@ -8,7 +8,7 @@ class Achievement extends Component {
     render() {
         return (
             <div className="inline-block">
-                <Image className='inline' src={require(`./${this.props.trackId}.png`)} width={75} height={75} mode='fit' />
+                <Image className='inline' src={require(`./${1}.png`)} width={75} height={75} mode='fit' />
             </div>
         )
     }

@@ -130,7 +130,6 @@ class App extends Component {
             this.state.page === 'MemberP' ?
                 <MemberP
                     setAppState={this.setAppState}
-                    handleInputChange={this.handleInputChange}
                     user={this.state.user}  
                     memTrackHandler={this.memTrackHandler}
                     complTrackHandler={this.complTrackHandler} 

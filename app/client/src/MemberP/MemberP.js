@@ -5,11 +5,12 @@ import Sidebar from '../Sidebar/Sidebar';
 import MemberInfo from '../MemberInfo/MemberInfo';
 import Achievement from '../Achievement/Achievement';
 import MemTracks from '../MemTracks/MemTracks';
+import TrackQV from '../TrackQV/TrackQV';
 
 import './MemberP.css';
 
 class MemberP extends Component {
-    
+
     memClickHandler = () => {
         this.props.setAppState("MemberP")
     }
@@ -27,6 +28,46 @@ class MemberP extends Component {
     }
     
     render() {
+        
+        let complTracks = null;
+        if (this.props.userComplTracks) {
+            for (let j = 0; j < this.props.userComplTracks.length; j++) {
+                complTracks = (
+                    <div>
+                        {this.props.userComplTracks.map((index) => {
+                            return <Achievement 
+                                trackId={this.props.userComplTracks[j]}
+                                key={index} />
+                        })}
+                    </div>
+                );
+            }
+        }
+    
+        let savedTracks = null;
+
+        if (this.props.user.tracks) {
+            savedTracks = (
+                <div>
+                    {this.props.user.tracks.map((user, index) => {
+                     if (this.props.user.tracks[index].trackMarkedComplete === 0 && this.props.user.tracks[index].trackMarkedComplete !== 1 && index < 3) {
+                       return  <div className='user-saved-main'>
+                            <div  className='mem-saved-track-qv'>
+                                <TrackQV
+                                    trackId={this.props.user.tracks[index].trackId}
+                                    imgDim={75}
+                                    trackName={this.props.user.tracks[index].trackName}
+                                    key={index} 
+                                    startTrackHandler={() => this.startTrackHandler()} />
+                            </div>
+                        </div>
+                }
+                    })}
+                </div>
+            );
+        }
+        
+        console.log(this.props.userComplTracks)
         return (
             <div>
                 <Navbar 
@@ -37,18 +78,16 @@ class MemberP extends Component {
                     user={this.props.user} 
                     userComplTracks={this.props.userComplTracks}
                     userSavedTracks={this.props.userSavedTracks} />
-                <MemberInfo 
-                    user={this.props.user} 
-                    complTracks={this.props.complTracks} />
-                <p>Hop back in where you left off.</p>
-                <button type='button' name='pickUpMemTop' onClick={this.startTrackHandler}>last track name</button>
-                <Achievement />
-                <Achievement />
-                <Achievement />
-                <Achievement />
-                <Achievement />
-                <MemTracks 
-                    startTrackHandler={() => this.startTrackHandler()} />
+                <div className='mem-box'>
+                    <MemberInfo 
+                        user={this.props.user} 
+                        complTracks={this.props.userComplTracks} />
+                    <p>Hop back in where you left off.</p>
+                    <button type='button' name='pickUpMemTop' onClick={this.startTrackHandler}>last track name</button>
+                    <p className='compl-track-header' />
+                    {complTracks}
+                    {savedTracks}
+            </div>
             </div>
         )
     }

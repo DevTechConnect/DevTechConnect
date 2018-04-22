@@ -7,11 +7,10 @@ import './MemberInfo.css';
 class MemberInfo extends Component {
   
     render() {
-        
+        console.log(this.props.userComplTracks);
         let complTracks = null;
-        
-        for (let j = 0; j < this.props.userComplTracks.length; j++) {
-            if (this.props.userComplTracks) {
+        if (this.props.userComplTracks) {
+            for (let j = 0; j < this.props.userComplTracks.length; j++) {
                 complTracks = (
                     <div>
                         {this.props.userComplTracks.map((index) => {

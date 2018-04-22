@@ -32,7 +32,7 @@ body {
 }
 hr {
     border-color: white;
-    margin: .5em;
+    margin: 1em 0;
 }
 .call-to-act {
     color: #48276a;

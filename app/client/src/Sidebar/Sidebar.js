@@ -51,14 +51,16 @@ class Sidebar extends Component {
         }
         
         let articles = null;
-
+        
         if (this.props.user.bookmarks) {
+            let bookmarks = this.props.user.bookmarks.slice(0, 3);
             articles = (
                 <div>
-                    {this.props.user.bookmarks.map((user, index) => {
+                    {bookmarks.map((p, index) => {
                         console.log(this.props.user.bookmarks)
                         return <Article 
                             artName={this.props.user.bookmarks[index].linkName}
+                            link={this.props.user.bookmarks[index].url}
                             key={index} />
                     })}
                 </div>
@@ -72,9 +74,13 @@ class Sidebar extends Component {
                     user={this.props.user} 
                     userComplTracks={this.props.userComplTracks}
                     userSavedTracks={this.props.userSavedTracks} />
-                <h4>Jump into one of your saved tracks:</h4>
+                <hr />
+                <h4 className='sidebar-head'>Jump into one of your saved tracks:</h4>
+                <hr />
                 {savedTracks}
-                <h4>These are your last 3 bookmarked articles.</h4>
+                <hr />
+                <h4 className='sidebar-head'>These are your last 3 bookmarked articles.</h4>
+                <hr />
                 {articles}
             </div>
         )

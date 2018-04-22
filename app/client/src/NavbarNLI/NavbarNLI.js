@@ -10,9 +10,9 @@ const NavbarNLI = (props) => {
                 <nav>
                     <Image className='inline logo' src={require('./logo.png')} width={300} height={81.25} mode='fit' />  
                     <ul className='inline'>
-                        <li onClick={props.loginClick}>Login</li>
-                        <li onClick={props.signupClick}>Sign Up</li>
-                        <li onClick={props.tryNow}>Get Started</li>
+                        <li className='nav-item' onClick={props.loginClick}>Login</li>
+                        <li className='nav-item' onClick={props.signupClick}>Sign Up</li>
+                        <li className='nav-item' onClick={props.tryNow}>Get Started</li>
                     </ul>
                 </nav>
             </div>

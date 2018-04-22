@@ -1,5 +1,6 @@
-.compl-track-header {
-    font-size: 18px;
+.user-track-header {
+    font-size: 22px;
+    border-bottom: solid 1px white;
 }
 .user-saved-main {
     padding: .5em;

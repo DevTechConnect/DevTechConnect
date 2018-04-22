@@ -6,3 +6,8 @@
     width: 30%;
     display: inline-block;
 }
+.sidebar-head {
+    padding: .5em;
+    margin: .2em auto;
+    font-size: 1.3em;
+}

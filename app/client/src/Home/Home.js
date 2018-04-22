@@ -51,7 +51,7 @@ class Home extends Component {
                     <hr />
                     <div>
                         <div>
-                        <h1>Popular Articles</h1>
+                        <h1>Recently Added Articles</h1>
                             <Article />
                             <Article />
                             <Article />

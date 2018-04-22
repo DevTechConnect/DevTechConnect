@@ -4,7 +4,6 @@ import Navbar from '../Navbar/Navbar';
 import Sidebar from '../Sidebar/Sidebar';
 import MemberInfo from '../MemberInfo/MemberInfo';
 import Achievement from '../Achievement/Achievement';
-import MemTracks from '../MemTracks/MemTracks';
 import TrackQV from '../TrackQV/TrackQV';
 
 import './MemberP.css';
@@ -82,11 +81,15 @@ class MemberP extends Component {
                     <MemberInfo 
                         user={this.props.user} 
                         complTracks={this.props.userComplTracks} />
-                    <p>Hop back in where you left off.</p>
-                    <button type='button' name='pickUpMemTop' onClick={this.startTrackHandler}>last track name</button>
-                    <p className='compl-track-header' />
-                    {complTracks}
+                    <p className='user-track-header'>
+                        Your Saved Tracks
+                    </p>
                     {savedTracks}
+                    <p className='user-track-header'>
+                        Your Completed Tracks
+                    </p>
+                    {complTracks}
+                    
             </div>
             </div>
         )

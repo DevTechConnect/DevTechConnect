@@ -10,9 +10,9 @@ const Navbar = (props) => {
                 <nav>
                     <Image src={require('./logo.png')} width={300} height={81.25} mode='fit' onClick={props.homeClickHandler}/>  
                     <ul>
-                        <li onClick={props.homeClickHandler}>Home</li>
-                        <li onClick={props.memClickHandler}>Member Page</li>
-                        <li onClick={props.trackClickHandler}>Limited Focus Tracks</li>
+                        <li className='nav-item' onClick={props.homeClickHandler}>Home</li>
+                        <li className='nav-item' onClick={props.memClickHandler}>Member Page</li>
+                        <li className='nav-item' onClick={props.trackClickHandler}>Limited Focus Tracks</li>
                     </ul>
                 </nav>
             </div>

@@ -4,7 +4,11 @@ import './Article.css';
 
 const Article = (props) => {
     return (
-        <a className='article-link inline-block' href='#'>Article Link</a>
+        <ul>
+            <li>
+                <a className='article-link' href={props.link} target='_blank'>{props.artName}</a>
+            </li>
+        </ul>
     )
 }
         

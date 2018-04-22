@@ -2,4 +2,9 @@
     color: #535353;
     padding: .2em;
     margin: .8em;
+    display: inline-block;
+    vertical-align: middle;
+}
+.article-link:first-letter {
+    text-transform:capitalize;
 }

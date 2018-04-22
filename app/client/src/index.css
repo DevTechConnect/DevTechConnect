@@ -32,7 +32,7 @@ body {
 }
 hr {
     border-color: white;
-    margin: .5em;
+    margin: 1em 0;
 }
 .call-to-act {
     color: #48276a;
@@ -43,4 +43,7 @@ button {
     cursor: pointer;
     border-radius: 25px;
     padding: 1em;
+}
+h1 {
+    font-size: 2.5em;
 }

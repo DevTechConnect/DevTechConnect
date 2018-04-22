@@ -1,7 +1,8 @@
 .track-qv {
-    border: .1em solid white;
+    border-right: .1em solid white;
+    border-left: .1em solid white;
     padding: .2em;
-    margin: .5em auto;
+    margin: 1.3em auto;
     border-radius: 25px;
 }
 .track-image {

@@ -1,0 +1,24 @@
+.content-header {
+    padding: .5em;
+}
+.content-box {
+    width:100%;
+}
+.iframe {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1em;
+    width: 50%;
+    padding: .8em 3em 1em 1em;
+    border-left: solid 2px white;
+    vertical-align: middle;
+}
+@media screen and (max-width: 860px) {
+    .iframe {
+        border-style: none;
+        padding: 1em;
+        display: block;
+        width: 100%;
+    }
+}

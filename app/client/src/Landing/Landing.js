@@ -71,8 +71,7 @@ class Landing extends Component {
                     tryNow={this.tryNowClickHandler}
                 />
                 <div className="row">
-                    <div className="col-0 col-sm-0 col-md-3 col-lg-3 col-xl-3"></div>
-                    <div className="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 land-box">
+                    <div className="land-box">
                         {
                         this.state.tryNow === false && this.state.trialHTML === false && this.state.loginClick === false && this.state.signupClick === false ?
                             <div>
@@ -122,13 +121,14 @@ class Landing extends Component {
                                 tryNow={this.state.tryNow}
                             /> : null
                         }
+                    </div>
                         {
                         this.state.trialHTML ?
-                            <LimitedFModule
-                                trackName={'HTML/CSS'} /> : null
+                        <div className="trial-plugin">
+                                <LimitedFModule
+                                    trackName={'HTML/CSS'} /> 
+                        </div> : null
                         }
-                    </div>
-                    <div className="col-0 col-sm-0 col-md-3 col-lg-3 col-xl-3"></div>
                 </div>
             </div>
         )

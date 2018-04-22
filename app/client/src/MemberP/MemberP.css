@@ -1,0 +1,17 @@
+.user-track-header {
+    font-size: 22px;
+    border-bottom: solid 1px white;
+}
+.user-saved-main {
+    padding: .5em;
+    margin: 1em auto;
+    display: inline-block;
+}
+.mem-saved-track-qv {
+    width: 15em;
+}
+.mem-box {
+    width: 70%;
+    display: inline-block;
+    vertical-align: top;
+}

@@ -6,8 +6,11 @@ const Trial = (props) => {
     return (
         <div>
             <h1>
-                Welcome to DevTech Connect. <br />We are happy you're here.
+                Welcome to DevTech Connect.
             </h1>
+            <h2>
+                We are happy you're here.
+            </h2>
             <hr />
             <p>
                 Once you sign up, you will not only have access to our large resource library, you will also have access to our limited focus learning tracks. We know learning code isn't quick or easy. That's why we regularly scour the net for the most useful links, then we put them in an order to help you learn in a more organized fashion. At the end of each track is a practice area with links to more resources to help you, well, practice.

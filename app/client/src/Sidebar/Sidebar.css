@@ -1,6 +1,13 @@
 .sidebar {
     border: .2em solid white;
     padding: 1em;
-    margin: 5em auto;
+    margin: 0 auto;
     border-radius: 25px;
+    width: 30%;
+    display: inline-block;
+}
+.sidebar-head {
+    padding: .5em;
+    margin: .2em auto;
+    font-size: 1.3em;
 }

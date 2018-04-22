@@ -40,18 +40,18 @@ class Home extends Component {
                 memClickHandler={this.memClickHandler} 
                 trackClickHandler={this.trackClickHandler} 
                 homeClickHandler={this.homeClickHandler} />
-            <div className="row">
+            <div>
                 <Sidebar 
                     user={this.props.user} 
                     userComplTracks={this.props.userComplTracks}
                     userSavedTracks={this.props.userSavedTracks} />
-                <div className="col-12 col-sm-12 col-md- col-lg-8 col-xl-8 inline-block">
+                <div className='home-box'>
                     <h1>Welcome to DevTech Connect</h1>
                     <h2>Where You Can Keep Moving</h2>
                     <hr />
-                    <div className='row inline-block'>
-                        <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                        <h1>Popular Articles</h1>
+                    <div>
+                        <div>
+                        <h1>Recently Added Articles</h1>
                             <Article />
                             <Article />
                             <Article />
@@ -60,8 +60,8 @@ class Home extends Component {
                         </div>
                     </div>
                     <hr />
-                     <div className='row inline-block'>
-                        <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                     <div className='inline-block'>
+                        <div>
                             <RecTracks 
                                 startTrackHandler={this.startTrackHandler} />
                         </div>

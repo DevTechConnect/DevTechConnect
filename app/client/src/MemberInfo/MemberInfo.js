@@ -7,23 +7,21 @@ import './MemberInfo.css';
 class MemberInfo extends Component {
   
     render() {
-        console.log(this.props.userComplTracks)
-        
+        console.log(this.props.userComplTracks);
         let complTracks = null;
-        
-        if (this.props.userComplTracks && this.props.userComplTracks.length > 0) {
-            complTracks = (
-                <div>
-                    {this.props.userComplTracks.map((index) => {
-                        for (let i = 0; i < this.props.userComplTracks.length; i++ ) {
+        if (this.props.userComplTracks) {
+            for (let j = 0; j < this.props.userComplTracks.length; j++) {
+                complTracks = (
+                    <div>
+                        {this.props.userComplTracks.map((index) => {
                             return <Achievement 
-                                trackNum={1}
+                                trackId={this.props.userComplTracks[j]}
                                 key={index} />
-                        }
-                    })}
-                </div>
-            );
-        }      
+                        })}
+                    </div>
+                );
+            }
+        }
      
         return (
             <div>
@@ -36,3 +34,4 @@ class MemberInfo extends Component {
 }
 
 export default MemberInfo;
+

@@ -11,19 +11,20 @@ class MemberInfo extends Component {
         
         let complTracks = null;
         
-        if (this.props.userComplTracks && this.props.userComplTracks.length > 0) {
-            complTracks = (
-                <div>
-                    {this.props.userComplTracks.map((index) => {
-                        for (let i = 0; i < this.props.userComplTracks.length; i++ ) {
-                            return <Achievement 
-                                trackNum={1}
-                                key={index} />
-                        }
-                    })}
-                </div>
-            );
-        }      
+        for (let j = 0; j < this.props.user.tracks.length; j++) {
+            if (this.props.user.tracks[j].trackMarkedComplete === 1 && this.props.user.tracks[j].trackMarkedComplete !== 0) {
+                complTracks = (
+                    <div>
+                        {this.props.user.tracks.map((index) => {
+                            console.log(this.props.user.tracks)
+                                return <Achievement 
+                                    trackId={this.props.user.tracks[j].trackId}
+                                    key={index} />
+                        })}
+                    </div>
+                );
+            }
+        }
      
         return (
             <div>
@@ -36,3 +37,4 @@ class MemberInfo extends Component {
 }
 
 export default MemberInfo;
+

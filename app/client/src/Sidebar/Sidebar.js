@@ -29,25 +29,45 @@ class Sidebar extends Component {
     render() {
         
         let savedTracks = null;
+        console.log(this.props.userSavedTracks)
+        
+   
+     
         
         if (this.props.user.tracks) {
-            for (let j = 0; j < this.props.user.tracks.length; j++) {
-                savedTracks = (
-                    <div>
-                        {this.props.user.tracks.map((index) => {
-                            console.log(this.props.user.tracks)
-                            return <TrackQV 
-                                    trackId={this.props.user.tracks[j].trackId}
-                                    imgDim={75} 
-                                    key={index} />
-                        })}
-                    </div>
-                );
-            }
+            savedTracks = (
+                <div>
+                    {this.props.user.tracks.map((user, index) => {
+                     if (this.props.user.tracks[index].trackMarkedComplete === 0 && this.props.user.tracks[index].trackMarkedComplete !== 1) {
+                        return <TrackQV 
+                            trackId={this.props.user.tracks[index].trackId}
+                            imgDim={75}
+                            trackName={this.props.user.tracks[index].trackName}
+                            key={index} />
+                }
+                    })}
+                </div>
+            );
         }
         
+        let articles = null;
+
+        if (this.props.user.bookmarks) {
+            articles = (
+                <div>
+                    {this.props.user.bookmarks.map((user, index) => {
+                        console.log(this.props.user.bookmarks)
+                        return <Article 
+                            artName={this.props.user.bookmarks[index].linkName}
+                            key={index} />
+                    })}
+                </div>
+            );
+        }
+     
+        
         return (
-            <div className="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 inline-block sidebar">
+            <div className="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 inline-block sidebar">
                 <MemberInfo 
                     user={this.props.user} 
                     userComplTracks={this.props.userComplTracks}
@@ -55,9 +75,7 @@ class Sidebar extends Component {
                 <h4>Jump into one of your saved tracks:</h4>
                 {savedTracks}
                 <h4>These are your last 3 bookmarked articles.</h4>
-                <Article />
-                <Article />
-                <Article />
+                {articles}
             </div>
         )
     }

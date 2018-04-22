@@ -63,22 +63,27 @@ class App extends Component {
                 //TODO show error cannot log in
                   console.log("UNABLE TO LOGIN. USERNAME AND PASSWORD ARE INCORRECT");
               } else {
-                this.setState({user:response.data, page:"Home"});
-                    let complTrackHolder = [];
-                    let userTrackHolder = [];
-                    for (let i = 0; i < this.state.user.tracks.length; i++) {
-                        if (this.state.user.tracks[i].trackMarkedComplete === 1 && this.state.user.tracks[i].trackMarkedComplete !== 0) {
-                            console.log("Completed: " + this.state.user.tracks[i].trackId);
-                            complTrackHolder.push(this.state.user.tracks[i].trackId);
-                        } else {
-                            console.log("Incomplete: " + this.state.user.tracks[i].trackId);
-                            userTrackHolder.push(this.state.user.tracks[i].trackId);
-                        }
+                this.setState({user:response.data})
+            }})
+            .then(() => { 
+                let complTrackHolder = [];
+                let userTrackHolder = [];
+                for (let i = 0; i < this.state.user.tracks.length; i++) {
+                    if (this.state.user.tracks[i].trackMarkedComplete === 1 && this.state.user.tracks[i].trackMarkedComplete !== 0) {
+                        console.log("Completed: " + this.state.user.tracks[i].trackId);
+                        complTrackHolder.push(this.state.user.tracks[i].trackId);
+                    } else {
+                        console.log("Incomplete: " + this.state.user.tracks[i].trackId);
+                        userTrackHolder.push(this.state.user.tracks[i].trackId);
                     }
-                this.setState({userSavedTracks: userTrackHolder, userComplTracks: complTrackHolder});
-              }
-            }
-          ).catch(err => console.log(err));
+                }
+            this.setState({userSavedTracks: userTrackHolder, userComplTracks: complTrackHolder});
+          }
+        )
+        .then(() => {
+            this.setState({page:'Home'})
+        })
+        .catch(err => console.log(err));
     };
 
     memTrackHandler = () => {
@@ -116,7 +121,6 @@ class App extends Component {
                     setAppState={this.setAppState}
                     handleInputChange={this.handleInputChange}
                     user={this.state.user}
-                    userComplTracks={this.state.userComplTracks}
                     memTrackHandler={this.memTrackHandler}
                     complTrackHandler={this.complTrackHandler} 
                     userComplTracks={this.state.userComplTracks}

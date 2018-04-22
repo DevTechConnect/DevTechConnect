@@ -159,7 +159,7 @@ app.post('/api/addUser', (req, res) => {
               });//close then
 });
 
-app.post('/api/getAllTracks', function(req, res, next){
+app.get('/api/getAllTracks', function(req, res, next){
   db.sequelize
       .query(
               " Select T.id as trackid, T.trackname , T.achievementLink, T.description as trackDescription, T.introVideoLink, TS.link as stepLink, "
@@ -343,6 +343,7 @@ function getUserTracks(user, cb){
 app.post('/api/logout', function(req, res){
   req.session.destroy(function(err) {
     req.logout();
+    res.status(200).send("logged out");
   });
 });
 

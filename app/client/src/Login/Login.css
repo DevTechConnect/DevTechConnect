@@ -1,12 +1,19 @@
 .login-box {
     text-align: left;
     padding: 3em;
-    margin: 0 auto;
+    margin: 1em auto;
     border: solid 2px white;
     border-radius: 25px;
+    width: 50%;
 }
 label,
 input {
     padding: .2em;
     margin: .5em;
+    width: 90%
+}
+@media screen and (max-width: 790px) {
+    .login-box {
+        width:90%;
+    }
 }

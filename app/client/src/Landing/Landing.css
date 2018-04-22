@@ -13,6 +13,13 @@
     border-radius: 25px;
 }
 .land-box {
+    width: 95%;
     padding: 2em;
-    margin: 3em auto;
+    margin: .5em auto;
+}
+.trial-plugin {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2em;
+    width: 80%;
 }

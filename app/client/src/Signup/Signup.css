@@ -4,9 +4,16 @@
     margin: 0 auto;
     border: solid 2px white;
     border-radius: 25px;
+    width:50%;
 }
 label,
 input {
     padding: .2em;
     margin: .5em;
+    width: 90%;
+}
+@media screen and (max-width: 795px) {
+    .signup-box {
+        width:90%;
+    }
 }

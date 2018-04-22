@@ -9,16 +9,19 @@ import './LangDef.css';
 const LangDef = () => {
     return (
         <div>
-            <h1>LangDefTitle</h1>
-            <TextDef />
-            <Iframe url="http://www.youtube.com/embed/xDMP3i36naA"
-                    width="450px"
-                    height="450px"
-                    id="myId"
-                    className="myClassname"
-                    display="initial"
-                    position="relative"
-                    allowFullScreen/>
+            <h1 className='content-header'>What is [Track Name]?</h1>
+            <hr />
+            <div className='content-box'>
+                <TextDef />
+                <Iframe url="http://www.youtube.com/embed/xDMP3i36naA"
+                        width="300"
+                        height="250px"
+                        id="myId"
+                        className="iframe"
+                        display="initial"
+                        position="relative"
+                        allowFullScreen/>
+            </div>
         </div>
     )
 };

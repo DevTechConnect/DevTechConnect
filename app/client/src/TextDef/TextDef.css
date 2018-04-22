@@ -1,0 +1,16 @@
+.text-def {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    padding: .8em 3em 1em 1em;
+    vertical-align: top;
+}
+@media screen and (max-width: 860px) {
+    .text-def {
+        padding: .8em;
+        display: block;
+        width: 100%;
+        border-bottom: solid 1px white;
+    }
+}

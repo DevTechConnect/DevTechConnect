@@ -53,44 +53,46 @@ class LimitedFModule extends Component {
 
     render () {
         return (
-            <div>
+            <div className='track-box'>
                 <ul className="nav nav-tabs">
-                    <li onClick={this.langDefHandler}>Language Definition</li>
-                    <li onClick={this.step1Handler}>Step 1</li>
-                    <li onClick={this.step2Handler}>Step 2</li>
-                    <li onClick={this.step3Handler}>Step 3</li>
-                    <li onClick={this.step4Handler}>Step 4</li>
-                    <li onClick={this.practiceHandler}>Practice</li>
-                    <li onClick={this.relTrackHandler}>Related Tracks</li>
+                    <li className='tab-title' onClick={this.langDefHandler}>Language Definition</li>
+                    <li className='tab-title' onClick={this.step1Handler}>Step 1</li>
+                    <li className='tab-title' onClick={this.step2Handler}>Step 2</li>
+                    <li className='tab-title' onClick={this.step3Handler}>Step 3</li>
+                    <li className='tab-title' onClick={this.step4Handler}>Step 4</li>
+                    <li className='tab-title' onClick={this.practiceHandler}>Practice</li>
+                    <li className='tab-title' onClick={this.relTrackHandler}>Related Tracks</li>
                 </ul>
-                {
-                this.state.page === 'LangDef' ?
-                    <LangDef /> : null
-                }
-                {
-                this.state.page === 'Step1' ?
-                    <Step1 /> : null
-                }
-                {
-                this.state.page === 'Step2' ?
-                    <Step2 /> : null
-                }
-                {
-                this.state.page === 'Step3' ?
-                    <Step3 /> : null
-                }
-                {
-                this.state.page === 'Step4' ?
-                    <Step4 /> : null
-                }
-                {
-                this.state.page === 'Practice' ?
-                    <Practice /> : null
-                }
-                {
-                this.state.page === 'RelTrack' ?
-                    <RelTrack /> : null
-                }
+                <div className='track-content-box'>
+                    {
+                    this.state.page === 'LangDef' ?
+                        <LangDef /> : null
+                    }
+                    {
+                    this.state.page === 'Step1' ?
+                        <Step1 /> : null
+                    }
+                    {
+                    this.state.page === 'Step2' ?
+                        <Step2 /> : null
+                    }
+                    {
+                    this.state.page === 'Step3' ?
+                        <Step3 /> : null
+                    }
+                    {
+                    this.state.page === 'Step4' ?
+                        <Step4 /> : null
+                    }
+                    {
+                    this.state.page === 'Practice' ?
+                        <Practice /> : null
+                    }
+                    {
+                    this.state.page === 'RelTrack' ?
+                        <RelTrack /> : null
+                    }
+                </div>
             </div>
         )
     }

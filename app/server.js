@@ -159,6 +159,42 @@ app.post('/api/addUser', (req, res) => {
               });//close then
 });
 
+app.get('/api/getArticles', function(req, res, next){
+  var lastestNum = req.body.lastestNum;
+  var query = "Select L.linkName, L.description as linkDescription, L.url, L.isonline, L.id as linkId, L.addedDate, L.topicId, T.name as topicName, T.description as topicDescription from Links as L JOIN Topics as T ON L.topicId = T.id ORDER BY addedDate ";
+  var parameters = {type: db.sequelize.QueryTypes.SELECT};
+  if(lastestNum!=0) {
+    query += "LIMIT ?";
+    parameters.replacements = [lastestNum];
+  }
+  query+=" ;";
+  console.log(query);
+
+  db.sequelize.query(query,parameters)
+              .then(function(results){
+                var links = [];
+                for(i=0; i<results.length; i++){
+                var aLink = {
+                    linkName: results[i].linkName,
+                    linkDescription: results[i].linkDescription,
+                    url: results[i].url,
+                    isonline: results[i].isonline,
+                    linkId: results[i].linkId,
+                    addedDate: results[i].addedDate,
+                    topicId: results[i].topicId,
+                    topicName: results[i].topicName,
+                    topicDescription: results[i].topicDescription
+                  };
+                  links.push(aLink);
+                }
+                res.status(200).send(JSON.stringify(links));
+              })
+              .catch(function(err){
+                console.log("UNABLE TO GET LINKS AND ARTICLES", err);
+                throw err;
+              });
+});
+
 app.get('/api/getAllTracks', function(req, res, next){
   db.sequelize
       .query(

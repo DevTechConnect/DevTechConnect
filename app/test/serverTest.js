@@ -20,6 +20,8 @@ chai.use(chaiHttp);
             });
           });
 
+          /**
+
           describe('Test POST that a new user can be added /api/addUser',function() {
               it('it should POST new user information to the DB', function(done) {
                 let newUser = {firstName:"TestFirstName", lastName:"TestLastName", email:"testEmail@testEmail.com", password:"12345"};
@@ -153,6 +155,32 @@ chai.use(chaiHttp);
                     .send({stepnumber:"3", completedSteps:"1,2", membertrackId:"6"})
                     .end(function(err, res){
                       res.should.have.status(200);
+                      done();
+                    });
+              });
+          });
+**/
+          describe('Get Links',function() {
+              it('Should get all links', function(done) {
+                chai.request(server)
+                    .get('/api/getArticles')
+                    .send({lastestNum:0})
+                    .end(function(err, res){
+                      res.should.have.status(200);
+                      console.log(JSON.stringify(res,null,2));
+                      done();
+                    });
+              });
+          });
+
+          describe('Get Links',function() {
+              it('Should get 5 links', function(done) {
+                chai.request(server)
+                    .get('/api/getArticles')
+                    .send({lastestNum:5})
+                    .end(function(err, res){
+                      res.should.have.status(200);
+                      console.log(JSON.stringify(res,null,2));
                       done();
                     });
               });

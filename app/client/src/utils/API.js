@@ -12,6 +12,13 @@ export default {
       return results;
     },
 
+    getArticles: function(lastestNum = 0) { //latestNum is the number of articles to retrieve.
+      var results = axios.get("/api/getArticles", lastestNum);
+      console.log("Articles "+results);
+      return results;
+    },
+
+
     login: function(credentials) {
       console.log("LOGGING IN");
       var results = axios.post("/api/login", credentials);

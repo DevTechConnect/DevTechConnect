@@ -3,12 +3,15 @@
     padding: .8em;
     margin: .5em;
     border-style: ridge;
+    border-radius: 25px;
+    position: relative;
+    left: 42em;
+    vertical-align: middle;
+    cursor: pointer;
 }
-
-.inline {
-    display: inline-block;
-}
-.logo {
-    position: absolute;
+.logo-nli {
+    position: relative;
     left: .5em;
+    display: inline-block;
+    vertical-align: middle;
 }

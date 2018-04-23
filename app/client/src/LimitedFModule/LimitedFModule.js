@@ -66,31 +66,45 @@ class LimitedFModule extends Component {
                 <div className='track-content-box'>
                     {
                     this.state.page === 'LangDef' ?
-                        <LangDef /> : null
+                        <LangDef 
+                            allTracks={this.props.allTracks} 
+                            trackId={this.props.trackId} /> : null
                     }
                     {
                     this.state.page === 'Step1' ?
-                        <Step1 /> : null
+                        <Step1 
+                            allTracks={this.props.allTracks} 
+                            trackId={this.props.trackId} /> : null
                     }
                     {
                     this.state.page === 'Step2' ?
-                        <Step2 /> : null
+                        <Step2 
+                            allTracks={this.props.allTracks} 
+                            trackId={this.props.trackId} /> : null
                     }
                     {
                     this.state.page === 'Step3' ?
-                        <Step3 /> : null
+                        <Step3 
+                            allTracks={this.props.allTracks} 
+                            trackId={this.props.trackId} /> : null
                     }
                     {
                     this.state.page === 'Step4' ?
-                        <Step4 /> : null
+                        <Step4 
+                            allTracks={this.props.allTracks} 
+                            trackId={this.props.trackId} /> : null
                     }
                     {
                     this.state.page === 'Practice' ?
-                        <Practice /> : null
+                        <Practice 
+                            allTracks={this.props.allTracks} 
+                            trackId={this.props.trackId} /> : null
                     }
                     {
                     this.state.page === 'RelTrack' ?
-                        <RelTrack /> : null
+                        <RelTrack 
+                            allTracks={this.props.allTracks} 
+                            trackId={this.props.trackId} /> : null
                     }
                 </div>
             </div>

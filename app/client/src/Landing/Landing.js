@@ -48,6 +48,7 @@ class Landing extends Component {
             signupClick: false,
             trialHTML: false
         });
+        this.props.trialTrackHandler();
     };
 
     trialClickHandler = () => {
@@ -119,14 +120,16 @@ class Landing extends Component {
                                 signupClick={this.signClickHandler}
                                 htmlTrialClick={this.trialClickHandler}
                                 tryNow={this.state.tryNow}
-                            /> : null
+                                trialTrackHandler={this.props.trialTrackHandler}/> : null
                         }
                     </div>
                         {
                         this.state.trialHTML ?
                         <div className="trial-plugin">
                                 <LimitedFModule
-                                    trackName={'HTML/CSS'} /> 
+                                    trackName={'HTML/CSS'} 
+                                    allTracks={this.props.allTracks}
+                                    trackId={0} /> 
                         </div> : null
                         }
                 </div>

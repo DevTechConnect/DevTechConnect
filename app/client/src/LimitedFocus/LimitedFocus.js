@@ -39,14 +39,14 @@ class LimitedFocus extends Component {
                     homeClickHandler={this.homeClickHandler} />
                 {
                 this.state.startTrack === false ?
-                    <div>
+                    <div className='land-box'>
                         <h1>Limited Focus Track</h1>
                         <div>
                             <h2>
                                 Welcome to your {this.state.trackName} learning track.
                             </h2>
                             <p>
-                                Follow along and check off each step you complete to track of your progress. Most importantly, don/'t skip the practice; practice will be your quickest teacher in code. We will give you achievements along the way - you can find those on your <a href="#" onClick={this.memClickHandler}>Member Page</a>. 
+                                Follow along and check off each step you complete to track of your progress. Most importantly, don/'t skip the practice; practice will be your quickest teacher in code. We will give you achievements along the way - you can find those on your <a className='link' href="#" onClick={this.memClickHandler}>Member Page</a>. 
                             </p>
                             <p>
                                 We're' happy you're here. Stick around, and like always, keep moving.
@@ -59,7 +59,12 @@ class LimitedFocus extends Component {
                 }
                 {
                 this.state.startTrack ?
-                    <LimitedFModule /> : null
+                    <div className='land-box'>
+                        <LimitedFModule 
+                            trackName={'HTML/CSS'} 
+                                allTracks={this.props.allTracks}
+                                trackId={0}/> 
+                    </div> : null
                 }
             </div>
         )

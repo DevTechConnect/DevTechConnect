@@ -383,6 +383,10 @@ app.post('/api/logout', function(req, res){
   });
 });
 
+app.get("*", function(req,res){
+  res.status(200).send({information:"starting"});
+});
+
 
 
 // Syncing our sequelize models and then starting our Express app

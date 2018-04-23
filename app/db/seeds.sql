@@ -106,27 +106,27 @@ INSERT INTO Tracks (id, trackname, achievementLink, description, introVideoLink)
 With HTML, you designate what is displayed on a screen. You create your layout, insert your content, create forms, insert images, etc.
 There are a lot of handy tools for organizing websites, a lot more than available than even ten years ago. It can take a little while to learn them all, but once you dig in, it won’t be as daunting.
 CSS stands for Cascading Stylesheets – it’s what you will use to style your sites. Now this doesn’t only give you tools to change the color of your font and your background image. You can add transitions to create animations and control your entire layout as well.
-Keep clicking through. We’ll teach you more in a bit.", "https://www.youtube.com/watch?v=IsXEVQRaTX8"),
+Keep clicking through. We’ll teach you more in a bit.", "https://www.youtube.com/embed?v=IsXEVQRaTX8"),
 
 (2, "JavaScript And jQuery", "./2.png", "JavaScript is a programming language that makes interactivity in websites possible. One of the many things you can do with JavaScript is to add content ‘dynamically,’ which means a section may be revealed based off of another action, like clicking a button to expand a dropdown menu or pulling a set number of gifs into your website based off what the user searched.
 jQuery is a JavaScript library which helps you get to the point a bit quicker. You definitely want to be able to work with JavaScript before you dive into jQuery. Like we indicated in the HTML and CSS track, skipping some steps can limit your knowledge on the tools available, but once you have a good grasp on JavaScript, you’ll love and appreciate jQuery. Their slogan is ‘Write less, do more.” This may not seem like a huge necessity now, but when you are working on real life web pages, and you’re staring down hundreds of pages of code and thousands upon thousands of lines, every shortcut you can take helps.
-Keep clicking through. We’ll teach you more in a bit.", "https://www.youtube.com/watch?v=a6Oh2155QHw"),
-(3, "MongoDB", "./3.png", "MongoDB is a free and open-source cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with schemas.", "https://www.youtube.com/watch?v=CvIr-2lMLsk"),
-(4, "SQL", "./4.png", "SQL", "https://www.youtube.com/watch?v=FR4QIeZaPeM"),
-(5, "Computer Science Fundamentals", "./5.png", "Computer Science Fundamentals", "https://www.youtube.com/watch?v=SzJ46YA_RaA");
+Keep clicking through. We’ll teach you more in a bit.", "https://www.youtube.com/embed?v=a6Oh2155QHw"),
+(3, "MongoDB", "./3.png", "MongoDB is a free and open-source cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with schemas.", "https://www.youtube.com/embed?v=CvIr-2lMLsk"),
+(4, "SQL", "./4.png", "SQL", "https://www.youtube.com/embed?v=FR4QIeZaPeM"),
+(5, "Computer Science Fundamentals", "./5.png", "Computer Science Fundamentals", "https://www.youtube.com/embed?v=SzJ46YA_RaA");
 
 INSERT INTO RelatedTracks (trackId, relatedTrackId) VALUES
 (1,2), (2,1), (3,4), (4,3), (1,5);
 
 INSERT INTO TrackSteps (trackId, stepNumber, link, description) VALUES
 (1,1,"https://learn.shayhowe.com/html-css/", "Thorough. Not quick, but worth your time. This lesson will take you through all the basics on HTML and CSS. Take notes. You will have a great grasp on both languages when you’re done." ),
-(1,2,"https://www.youtube.com/watch?v=UB1O30fR-EE","Free, HTML only, 1.1 hours" ),
+(1,2,"https://www.youtube.com/embed?v=UB1O30fR-EE","Free, HTML only, 1.1 hours" ),
 (1,3,"https://learn.shayhowe.com/advanced-html-css/", "From the same resource as the first step, but it’s time to dig in deeper. Get your notepad back out. You’ll also get a small intro to JavaScript in jQuery in this lesson. Hang on tight." ),
-(1,4,"https://www.youtube.com/watch?v=yfoY53QXEnI","Free, CSS only, 1.4 hours" ),
+(1,4,"https://www.youtube.com/embed?v=yfoY53QXEnI","Free, CSS only, 1.4 hours" ),
 (1,5,"https://theblog.adobe.com/learn-to-code-series-html-basics-resources-and-activities/","You’ve been through a lot. This site has a variety of resources and links. Look through it, pick through it, add bookmarks to important sites, check out the tutorials linked – you’re gradually wading into the world of code. Don’t get overwhelmed. Take your time and keep plugging away." ),
-(1,6,"https://www.youtube.com/watch?v=kDyJN7qQETA","Free, HTML5, 1.1 hours – Another video on HTML. Get your pause finger ready. Derek Banas talks fast, but he will take you through HTML like a great tour guide steering you down a gondola in Italy – or maybe more like you’re on a motorbike. Either way, this is a great resource. Pause when you need to and take notes. Don’t worry, we’ll provide plenty of practice links at the end of the track." ),
+(1,6,"https://www.youtube.com/embed?v=kDyJN7qQETA","Free, HTML5, 1.1 hours – Another video on HTML. Get your pause finger ready. Derek Banas talks fast, but he will take you through HTML like a great tour guide steering you down a gondola in Italy – or maybe more like you’re on a motorbike. Either way, this is a great resource. Pause when you need to and take notes. Don’t worry, we’ll provide plenty of practice links at the end of the track." ),
 (1,7,"https://www.quora.com/What-are-the-bests-courses-to-learn-advanced-HTML-CSS","This isn’t an instructional link, but a community response to a question. A great way to learn code is from those who have been there. Read through the comments and find what resources help you. " ),
-(1,8,"https://www.youtube.com/watch?v=CUxH_rWSI1k","Free, CSS3, 1 hour – Derek Banas is back, this time, with your all-encompassing guide to CSS3. " ),
+(1,8,"https://www.youtube.com/embed?v=CUxH_rWSI1k","Free, CSS3, 1 hour – Derek Banas is back, this time, with your all-encompassing guide to CSS3. " ),
 (1, 100, "https://www.codecademy.com/en/tracks/projects", "A great place for practice. Practice is absolutely necessary if you want to learn code. We will repeat this, a lot. During practice, if you get stuck. Hop on Google. It’s what all the cool coders do. There’s a good chance you’ll end up on StackOverflow.com in your searched for a solution. Course, 77 lectures, 12 hours of video"),
 (1,  100,"https://www.youtube.com/watch?v=yTHTo28hwTQ&list=PLgGbWId6zgaWZkPFI4Sc9QXDmmOWa1v5F", "YouTube HTML and CSS tutorial. Playlist, 32 videos, average 10-15 minutes each"),
 (1, 100, "https://www.youtube.com/watch?v=LqvFIuVlyP8&list=PL41lfR-6DnOruqMacTfff1zrEcqtmm7Fv", "Another HTML and CSS walkthrough with practice. Playlist, 52 videos, average under 10 minutes each"),
@@ -137,13 +137,13 @@ INSERT INTO TrackSteps (trackId, stepNumber, link, description) VALUES
 
 INSERT INTO TrackSteps (trackId, stepNumber, link, description) VALUES
 (2,1,"http://www.learn-js.org/", "A limited focus introduction to some of the tools available in JavaScript. Short lessons with an exercise for you at the end of each one. We highly recommend you go through the tutorials here."),
-(2,2,"https://www.youtube.com/watch?v=zPHerhks2Vg", "Free, JavaScript only, 30 minutes"),
+(2,2,"https://www.youtube.com/embed?v=zPHerhks2Vg", "Free, JavaScript only, 30 minutes"),
 (2,3,"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types", "A thorough lesson to ALL things JavaScript. This is dry– don’t expect to be amused, but you might as well get used to reading documentation now. Reading and understanding documentation is an important skill in web development."),
-(2,4,"https://www.youtube.com/watch?v=vEROU2XtPR8&t=1s", "Free, JavaScript only, 1.1 hours"),
+(2,4,"https://www.youtube.com/embed?v=vEROU2XtPR8&t=1s", "Free, JavaScript only, 1.1 hours"),
 (2,5,"https://www.codecademy.com/en/tracks/jquery", "An exercise-based course on jQuery for beginners."),
-(2,6,"https://www.youtube.com/watch?v=1PKOdfj7P6Q", "Free, jQuery, .9 hours – Your first video on jQuery. This video is short and sweet. Don’t worry, we’ll throw plenty of practice at you later."),
-(2,7,"https://www.youtube.com/watch?v=BWXggB-T1jQ", "Free, jQuery, 1.1 hours - We are giving you double videos for your fourth step of this track. We want to show you a quick run through of just what all is possible with jQuery, while also taking you through object-oriented programming with JavaScript in your second video. If you went through our HTML and CSS track, you met Derek Banas in a few videos. He’s back. Get your note taking hand ready."),
-(2,8,"https://www.youtube.com/watch?v=O8wwnhdkPE4&t=354s", "Free, Object-Oriented JavaScript, 1 hour – Derek Banas is back, this time, with your all-encompassing guide to OO JavaScript. This is an important lesson to prepare you for some more complex coding down the line. Pay attention to this one. "),
+(2,6,"https://www.youtube.com/embed?v=1PKOdfj7P6Q", "Free, jQuery, .9 hours – Your first video on jQuery. This video is short and sweet. Don’t worry, we’ll throw plenty of practice at you later."),
+(2,7,"https://www.youtube.com/embed?v=BWXggB-T1jQ", "Free, jQuery, 1.1 hours - We are giving you double videos for your fourth step of this track. We want to show you a quick run through of just what all is possible with jQuery, while also taking you through object-oriented programming with JavaScript in your second video. If you went through our HTML and CSS track, you met Derek Banas in a few videos. He’s back. Get your note taking hand ready."),
+(2,8,"https://www.youtube.com/embed?v=O8wwnhdkPE4&t=354s", "Free, Object-Oriented JavaScript, 1 hour – Derek Banas is back, this time, with your all-encompassing guide to OO JavaScript. This is an important lesson to prepare you for some more complex coding down the line. Pay attention to this one. "),
 (2, 100, "https://www.codecademy.com/en/tracks/javascript","An exercise-based course that will take you through functions, ‘for’ and ‘while’ loops, arrays and objects, and more."),
 (2, 100, "https://www.youtube.com/watch?v=46Jz0QJyhN0&list=PLUoqTnNH-2Xwmr2GvOdZMJnrp6b51ndZE&index=1","YouTube jQuery tutorial.
 Playlist, 12 videos, average 12 minutes each"),
@@ -157,15 +157,15 @@ Course, 85 lectures,11.5 hours of video"),
 
 INSERT INTO TrackSteps (trackId, stepNumber, link, description) VALUES
 (3,1,"https://www.mongodb.com/what-is-mongodb", "The best place to get started is the MongoDB official website!"),
-(3,2,"https://www.youtube.com/watch?v=EE8ZTQxa0AM", "A quick introduction to MongoDB and its advantages."),
+(3,2,"https://www.youtube.com/embed?v=EE8ZTQxa0AM", "A quick introduction to MongoDB and its advantages."),
 (3,3,"https://university.mongodb.com/courses/M001/about", "MongoDB University is the best place to learn Mongo. Get started with this introductory course."),
-(3,4,"https://www.youtube.com/watch?v=pWbMrx5rVBE", "30 minute Mongo tutorial"),
+(3,4,"https://www.youtube.com/embed?v=pWbMrx5rVBE", "30 minute Mongo tutorial"),
 (3,100,"https://www.tutorialspoint.com/mongodb/mongodb_questions_answers.htm", "Good source of common MongoDB questions");
 
 INSERT INTO membertracks (memberId, trackId, completedSteps, markedComplete) VALUES
-((Select id from members where email="a@a.com"), 1, "1,2", false),
-((Select id from members where email="a@a.com"), 2, "", false),
-((Select id from members where email="a@a.com"), 3, "", true);
+((Select id from members where email="z@z.com"), 1, "1,2", false),
+((Select id from members where email="z@z.com"), 2, "", false),
+((Select id from members where email="z@z.com"), 3, "", true);
 
 INSERT INTO memberlinks (memberId, linkId) VALUES
 ((Select id from members where email="a@a.com"), 1),

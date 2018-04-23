@@ -2,10 +2,10 @@ import React from 'react';
 
 import './Link.css';
 
-const Link = () => {
+const Link = (props) => {
     return (
         <div>
-            <a>This will be our link.</a>
+            <a className='link text-link' target='_blank' href={props.link}>{props.link}</a>
         </div>
     )
 };

@@ -9,10 +9,6 @@ import './Home.css';
 
 class Home extends Component {
     
-    constructor (props) {
-        super(props)
-    }
-    
     memClickHandler = () => {
         this.props.setAppState("MemberP")
     }
@@ -30,9 +26,6 @@ class Home extends Component {
     }
     
     render () {
-
-//    this.props.complTrackHandler();
-    this.props.memTrackHandler();
         
     return (
         <div>
@@ -44,7 +37,8 @@ class Home extends Component {
                 <Sidebar 
                     user={this.props.user} 
                     userComplTracks={this.props.userComplTracks}
-                    userSavedTracks={this.props.userSavedTracks} />
+                    userSavedTracks={this.props.userSavedTracks} 
+                    allTracks={this.props.allTracks} />
                 <div className='home-box'>
                     <h1>Welcome to DevTech Connect</h1>
                     <h2>Where You Can Keep Moving</h2>
@@ -63,7 +57,8 @@ class Home extends Component {
                      <div className='inline-block'>
                         <div>
                             <RecTracks 
-                                startTrackHandler={this.startTrackHandler} />
+                                startTrackHandler={this.startTrackHandler} 
+                                allTracks={this.props.allTracks} />
                         </div>
                     </div>
                 </div>

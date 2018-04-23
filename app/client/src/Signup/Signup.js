@@ -28,7 +28,7 @@ const Signup = (props) => {
                 <label>Re-Enter Password:</label>
                     <input type='password' name='psw2' value={props.psw2} onChange={props.inputUpdate} placeholder='Re-Enter Password' />
                 <br />
-                <input type='submit' value='Submit'/>
+                <input className='trial-btn' type='submit' value='Submit'/>
             </form>
         </div>
     )

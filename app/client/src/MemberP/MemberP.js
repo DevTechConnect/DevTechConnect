@@ -57,7 +57,7 @@ class MemberP extends Component {
                                     imgDim={75}
                                     trackName={this.props.user.tracks[index].trackName}
                                     key={index} 
-                                    startTrackHandler={() => this.startTrackHandler()} />
+                                    startTrackHandler={this.startTrackHandler} />
                             </div>
                         </div>
                 }
@@ -89,8 +89,7 @@ class MemberP extends Component {
                         Your Completed Tracks
                     </p>
                     {complTracks}
-                    
-            </div>
+                </div>
             </div>
         )
     }

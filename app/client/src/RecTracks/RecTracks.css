@@ -1,6 +1,7 @@
 .track-qv-rec {
-    padding: .2em;
+    padding: .8em;
     margin: .8em auto;
+    display: inline-block;
 }
 .rec-tracks-bar {
     padding: .2em;

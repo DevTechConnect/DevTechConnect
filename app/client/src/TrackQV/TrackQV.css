@@ -1,13 +1,20 @@
 .track-qv {
-    border-right: .1em solid white;
-    border-left: .1em solid white;
-    padding: .2em;
-    margin: 1.3em auto;
+    border-right: .1em solid #48276a;
+    border-left: .1em solid #48276a;
+    padding: .8em;
+    margin: .8em auto;
     border-radius: 25px;
+    width: 10em;
+    height: 20em;
+    display: inline-block;
+    vertical-align: middle;
 }
 .track-image {
     padding: 1em;
     margin: 1em auto;
     border: .05em solid white;
     border-radius: 3px;
+}
+.track-name {
+    font-size: 22px;
 }

@@ -1,3 +1,23 @@
 .navbar {
     color: #343434;
+    width: 100%;
+    background-color: rgba(238, 238, 238, .7);
+    height: 7em;
+    top: -2em;
+}
+.logo {
+    vertical-align: middle;
+    position: relative;
+    top: 2.5em;
+}
+.nav-item-li {
+    display: inline-block;
+    padding: .8em;
+    margin: .5em;
+    border-style: ridge;
+    border-radius: 25px;
+    position: relative;
+    left: 52em;
+    bottom: 2.2em;
+    cursor: pointer;
 }

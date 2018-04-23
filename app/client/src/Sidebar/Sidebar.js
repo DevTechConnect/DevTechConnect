@@ -38,12 +38,13 @@ class Sidebar extends Component {
             savedTracks = (
                 <div>
                     {this.props.user.tracks.map((user, index) => {
-                     if (this.props.user.tracks[index].trackMarkedComplete === 0 && this.props.user.tracks[index].trackMarkedComplete !== 1 && index < 3) {
+                     if (this.props.user.tracks[index].trackMarkedComplete === 0 && this.props.user.tracks[index].trackMarkedComplete !== 1) {
                         return <TrackQV 
                             trackId={this.props.user.tracks[index].trackId}
                             imgDim={75}
                             trackName={this.props.user.tracks[index].trackName}
-                            key={index} />
+                            key={index} 
+                            allTracks={this.props.allTracks} />
                 }
                     })}
                 </div>

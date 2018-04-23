@@ -4,7 +4,7 @@
     margin-right: auto;
     width: 50%;
     padding: .8em 3em 1em 1em;
-    vertical-align: top;
+    vertical-align: middle;
 }
 @media screen and (max-width: 860px) {
     .text-def {

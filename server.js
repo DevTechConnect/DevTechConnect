@@ -10,6 +10,7 @@ const session = require("express-session");
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcryptjs');
+const path = require('path');
 
 
 
@@ -30,7 +31,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // Static directory
-app.use(express.static("./app/public"));
+//app.use(express.static("./app/client/public"));
+app.use(express.static(path.resolve(__dirname,'/client/public')));
+
 app.use(session({ secret: SECRET}));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
@@ -384,7 +387,7 @@ app.post('/api/logout', function(req, res){
 });
 
 app.get("*", function(req,res){
-  res.status(200).send({information:"starting"});
+  res.sendFile(path.resolve(__dirname, 'client/public/index.html'));
 });
 
 

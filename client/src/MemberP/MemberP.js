@@ -15,7 +15,8 @@ class MemberP extends Component {
     }
     
     resourceClickHandler = () => {
-        this.props.setAppState("Resources")
+        this.props.setAppState("Resources");
+        this.props.fetchArticlesHandler(10);
     }
     
     homeClickHandler = () => {

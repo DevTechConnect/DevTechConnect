@@ -15,10 +15,10 @@ class TrackQV extends Component {
     }
     
     render() {
-        console.log(this.state.allTracks)
+        console.log("All tracks at quickview props: " + this.state.allTracks)
         return (
             <div className='track-qv'>
-            {console.log(this.props.trackId)}
+            {console.log("This track id: " + this.props.trackId)}
                 <Image className='inline-block track-image' src={require(`./${1}.png`)} width={this.props.imgDim} height={this.props.imgDim} mode='fit' />
                     <hr />
                     <h3 className='track-name'>{this.props.trackName}</h3>

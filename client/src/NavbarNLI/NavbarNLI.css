@@ -5,13 +5,13 @@
     border-style: ridge;
     border-radius: 25px;
     position: relative;
-    left: 42em;
     vertical-align: middle;
     cursor: pointer;
 }
 .logo-nli {
     position: relative;
-    left: .5em;
     display: inline-block;
     vertical-align: middle;
+    position: absolute;
+    left: 0;
 }

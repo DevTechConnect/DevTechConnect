@@ -5,7 +5,7 @@ import Sidebar from '../Sidebar/Sidebar';
 import Article from '../Article/Article';
 import RecTracks from '../RecTracks/RecTracks';
 
-import './Home.css';
+import './Resources.css';
 
 class Home extends Component {
     
@@ -14,8 +14,7 @@ class Home extends Component {
     }
     
     resourceClickHandler = () => {
-        this.props.setAppState("Resources");
-        this.props.fetchArticlesHandler(10);
+        this.props.setAppState("Resources")
     }
     
     homeClickHandler = () => {
@@ -33,8 +32,7 @@ class Home extends Component {
             <Navbar 
                 memClickHandler={this.memClickHandler} 
                 resourceClickHandler={this.resourceClickHandler} 
-                homeClickHandler={this.homeClickHandler} 
-                fetchArticlesHandler={this.fetchArticlesHandler} />
+                homeClickHandler={this.homeClickHandler} />
             <div>
                 <Sidebar 
                     user={this.props.user} 
@@ -42,12 +40,11 @@ class Home extends Component {
                     userSavedTracks={this.props.userSavedTracks} 
                     allTracks={this.props.allTracks} />
                 <div className='home-box'>
-                    <h1>Welcome to DevTech Connect</h1>
-                    <h2>Where You Can Keep Moving</h2>
+                    <h1>DevTech Connect Resources</h1>
                     <hr />
                     <div>
                         <div>
-                        <h1>Recently Added Articles</h1>
+                        <h1>Browse Our Articles</h1>
                             <Article />
                             <Article />
                             <Article />
@@ -58,6 +55,7 @@ class Home extends Component {
                     <hr />
                      <div className='inline-block'>
                         <div>
+                            <h2>All Available Tracks</h2>
                             <RecTracks 
                                 startTrackHandler={this.startTrackHandler} 
                                 allTracks={this.props.allTracks} />

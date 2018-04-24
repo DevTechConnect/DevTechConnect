@@ -14,8 +14,8 @@ class MemberP extends Component {
         this.props.setAppState("MemberP")
     }
     
-    trackClickHandler = () => {
-        this.props.setAppState("AllTracks")
+    resourceClickHandler = () => {
+        this.props.setAppState("Resources")
     }
     
     homeClickHandler = () => {
@@ -71,8 +71,9 @@ class MemberP extends Component {
             <div>
                 <Navbar 
                     memClickHandler={this.memClickHandler} 
-                    trackClickHandler={this.trackClickHandler} 
-                    homeClickHandler={this.homeClickHandler} />
+                    resourceClickHandler={this.resourceClickHandler} 
+                    homeClickHandler={this.homeClickHandler} 
+                    fetchArticlesHandler={this.fetchArticlesHandler} />
                 <Sidebar 
                     user={this.props.user} 
                     userComplTracks={this.props.userComplTracks}

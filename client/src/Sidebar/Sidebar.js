@@ -9,27 +9,10 @@ import './Sidebar.css';
 
 class Sidebar extends Component {
     
-//    let lastThreeTracks = null;
-//        
-//    if (this.props.userComplTracks.length > 0) {
-//        lastTrack = (
-//            <div>
-//                {this.props.userComplTracks.map((index) => {
-//                    for (let i = 0; i < this.props.userComplTracks.length; i++ ) {
-//                        return <Achievement 
-//                            trackNum={1}
-//                            key={index} />
-//                    }
-//                })}
-//            </div>
-//        );
-//    }      
-   
-    
     render() {
         
         let savedTracks = null;
-        console.log(this.props.userSavedTracks)
+        console.log('user saved tracks: ' + this.props.userSavedTracks)
         
    
      
@@ -58,7 +41,7 @@ class Sidebar extends Component {
             articles = (
                 <div>
                     {bookmarks.map((p, index) => {
-                        console.log(this.props.user.bookmarks)
+                        console.log('user bookmarks: '+ this.props.user.bookmarks)
                         return <Article 
                             artName={this.props.user.bookmarks[index].linkName}
                             link={this.props.user.bookmarks[index].url}

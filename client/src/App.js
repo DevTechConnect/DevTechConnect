@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import API from "./utils/API";
-import Login from './Login/Login';
-import Signup from './Signup/Signup';
 import Landing from './Landing/Landing';
 import Home from './Home/Home';
 import MemberP from './MemberP/MemberP';
-import AllTracks from './AllTracks/AllTracks';
+import Resources from './Resources/Resources';
 import LimitedFocus from './LimitedFocus/LimitedFocus';
 
 
@@ -26,7 +24,8 @@ class App extends Component {
         user:[],
         userSavedTracks:[],
         userComplTracks:[],
-        allTracks:[]
+        allTracks:[],
+        allArticles:[]
     };
 
     setAppState = (page) => {
@@ -104,17 +103,30 @@ class App extends Component {
                 //TODO show error cannot log in
                   console.log("UNABLE TO GET TRACK INFORMATION");
               } else {
-                this.setState({allTracks:response.data});
-                  console.log(this.state.allTracks);
+                this.setState({all:response.data});
+                  console.log("All site tracks: " + this.state.allTracks);
             }})
             .catch(err => console.log(err));
     }
+    
+    fetchArticlesHandler = () => {
+        API.getArticles(10)
+        .then( (response) => {
+              if(response.status!=200){
+                //TODO show error cannot log in
+                  console.log("UNABLE TO GET INFORMATION");
+              } else {
+                this.setState({allArticles:response.data});
+                  console.log('ALL ARTICLES: ' + this.state.allArticles);
+            }})
+            .catch(err => console.log(err));
+    };
 
     memTrackHandler = () => {
         this.state.user.tracks.forEach((i) => {
-            console.log(i);
+            console.log("All member tracks: " + i);
         })
-    }
+    };
 
   render() {
 
@@ -148,7 +160,8 @@ class App extends Component {
                     user={this.state.user}
                     userComplTracks={this.state.userComplTracks}
                     userSavedTracks={this.state.userSavedTracks}  
-                    allTracks={this.state.allTracks} /> : null
+                    allTracks={this.state.allTracks} 
+                    fetchArticlesHandler={this.fetchArticlesHandler} /> : null
             }
             {
             this.state.page === 'MemberP' ?
@@ -157,17 +170,20 @@ class App extends Component {
                     user={this.state.user}  
                     userComplTracks={this.state.userComplTracks}
                     userSavedTracks={this.state.userSavedTracks}  
-                    allTracks={this.state.allTracks} /> : null
+                    allTracks={this.state.allTracks} 
+                    fetchArticlesHandler={this.fetchArticlesHandler} /> : null
             }
             {
-            this.state.page === 'AllTracks' ?
-                <AllTracks
+            this.state.page === 'Resources' ?
+                <Resources
                     setAppState={this.setAppState}
                     handleInputChange={this.handleInputChange}
                     user={this.state.user}  
                     userComplTracks={this.state.userComplTracks}
                     userSavedTracks={this.state.userSavedTracks}  
-                    allTracks={this.state.allTracks} /> : null
+                    allTracks={this.state.allTracks} 
+                    fetchArticlesHandler={this.fetchArticlesHandler} 
+                    allArticles={this.state.allArticles}/> : null
             }
             {
             this.state.page === 'LimitedFocus' ?
@@ -175,7 +191,8 @@ class App extends Component {
                     setAppState={this.setAppState}
                     handleInputChange={this.handleInputChange}
                     user={this.state.user}  
-                    allTracks={this.state.allTracks} /> : null
+                    allTracks={this.state.allTracks} 
+                    fetchArticlesHandler={this.fetchArticlesHandler} /> : null
             }
           </div>
         </div>

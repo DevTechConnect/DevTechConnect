@@ -22,8 +22,8 @@ class LimitedFocus extends Component {
         this.props.setAppState("MemberP")
     }
     
-    trackClickHandler = () => {
-        this.props.setAppState("AllTracks")
+    resourceClickHandler = () => {
+        this.props.setAppState("Resources")
     }
     
     homeClickHandler = () => {
@@ -35,8 +35,9 @@ class LimitedFocus extends Component {
             <div>
                 <Navbar 
                     memClickHandler={this.memClickHandler} 
-                    trackClickHandler={this.trackClickHandler} 
-                    homeClickHandler={this.homeClickHandler} />
+                    resourceClickHandler={this.resourceClickHandler} 
+                    homeClickHandler={this.homeClickHandler} 
+                    fetchArticlesHandler={this.fetchArticlesHandler} />
                 {
                 this.state.startTrack === false ?
                     <div className='land-box'>

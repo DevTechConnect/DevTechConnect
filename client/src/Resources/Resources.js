@@ -4,6 +4,7 @@ import Navbar from '../Navbar/Navbar';
 import Sidebar from '../Sidebar/Sidebar';
 import Article from '../Article/Article';
 import RecTracks from '../RecTracks/RecTracks';
+import GlosTerm from '../GlosTerm/GlosTerm';
 
 import './Resources.css';
 
@@ -59,6 +60,23 @@ class Home extends Component {
                             <RecTracks 
                                 startTrackHandler={this.startTrackHandler} 
                                 allTracks={this.props.allTracks} />
+                        </div>
+                    </div>
+                    <hr />
+                    <div className='inline-block'>
+                        <div>
+                            <h2>Glossary</h2>
+                            <ul>
+                                <GlosTerm />
+                                <GlosTerm />
+                                <GlosTerm />
+                                <GlosTerm />
+                                <GlosTerm />
+                                <GlosTerm />
+                                <GlosTerm />
+                                <GlosTerm />
+                                <GlosTerm />
+                            </ul>
                         </div>
                     </div>
                 </div>

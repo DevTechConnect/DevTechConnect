@@ -8,18 +8,18 @@ import Info from '../Info/Info';
 import './Step4.css';
 
 class Step4 extends Component {
-    
+
     state={
         allTracks: this.props.allTracks
     }
-    
+
     render() {
         return (
             <div>
                 <h2>Your Final Step</h2>
                 <hr />
                 <div className='content-box'>
-                    <TextOpt 
+                    <TextOpt
                         allTracks={this.state.allTracks}
                         stepNum={6} />
                     <div className='vid-holder'>
@@ -31,8 +31,8 @@ class Step4 extends Component {
                                 display="initial"
                                 position="relative"
                                 allowFullScreen/>
+                                <a href='#'>URL: {this.state.allTracks[this.props.trackId].trackIntroVideoLink}</a>
                         <br />
-                        {this.state.allTracks[this.props.trackId].steps[7].stepdescription}
                     </div>
                 </div>
             </div>

@@ -8,18 +8,18 @@ import Info from '../Info/Info';
 import './Step2.css';
 
 class Step2 extends Component {
-    
+
     state={
         allTracks: this.props.allTracks
     }
-    
+
     render() {
         return (
             <div>
                 <h2>Your Second Step</h2>
                 <hr />
                 <div  className='content-box'>
-                    <TextOpt 
+                    <TextOpt
                         allTracks={this.state.allTracks}
                         stepNum={2} />
                     <div className='vid-holder'>

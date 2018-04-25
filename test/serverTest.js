@@ -20,7 +20,7 @@ chai.use(chaiHttp);
             });
           });
 
-          /**
+
 
           describe('Test POST that a new user can be added /api/addUser',function() {
               it('it should POST new user information to the DB', function(done) {
@@ -159,7 +159,7 @@ chai.use(chaiHttp);
                     });
               });
           });
-**/
+
           describe('Get Links',function() {
               it('Should get all links', function(done) {
                 chai.request(server)

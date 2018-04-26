@@ -177,3 +177,15 @@ INSERT INTO memberlinks (memberId, linkId) VALUES
 ((Select id from members where email="a@a.com"), 22),
 ((Select id from members where email="a@a.com"), 58),
 ((Select id from members where email="a@a.com"), 57);
+
+INSERT INTO Glossaries (term, acronymMeaning,definition,url) VALUES
+("Agile","","Agile is an approach to software development, defining certain principles and requirements to enable teams to deliver software more effectively in rapidly changing environments.","https://www.agilealliance.org/agile101/"),
+("API","Application Programming Interface","An API is a set of methods that an organization makes available for others to use to request data and services.","https://medium.freecodecamp.org/what-is-an-api-in-english-please-b880a3214a82"),
+("Back-End","","A general term for development that does not involve a user interface. Often involves middle tier and database programming.","https://en.wikipedia.org/wiki/Front_and_back_ends"),
+("Bug","","A bug in software is a mistake in the code that causes the code to respond in unexpected and/or incorrect ways","https://en.wikipedia.org/wiki/Software_bug"),
+("Debug","","The act of detecting and removing bugs from the code. Bugs are mistakes or errors that make the program behave in an unexpected manner.","https://en.wikipedia.org/wiki/Debugging"),
+("DRY","Don't Repeat Yourself","This is a concept in software development in which one avoids repeating code or data in different places, instead consolidating code or data in one place. This improves readability as well as the ability to update the code.","https://en.wikipedia.org/wiki/Don%27t_repeat_yourself"),
+("ECMAScript","","Also called ES, this is a trademarked, client-side scripting language that standardizes Javascript","https://en.wikipedia.org/wiki/ECMAScript"),
+("Front-End","","A general term for development of a user interface. Includes designing and data retrieval usually from a backend or an API","https://en.wikipedia.org/wiki/Front_and_back_ends"),
+("Full-stack","","Development that involved both front and back-end. ","https://codeup.com/what-is-a-full-stack-developer/"),
+("HTML","HyperText Markup Language","HTML is the code that is used to structure a webpage and display the content. HTML surrounds text with tags to style the content.","https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics");

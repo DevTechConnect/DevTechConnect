@@ -222,6 +222,29 @@ app.post('/api/getArticles', function(req, res, next){
               });
 });
 
+app.get("/api/getGlossary"), function(req,res){
+  db.sequelize
+      .query(
+              "Select id, term, acronymMeaning, definition, url from Glossaries order by term;"
+              , {type: db.sequelize.QueryTypes.SELECT}
+            )
+      .then(function(results){
+        var glossary = [];
+        for(i=0; i<results.length; i++){
+          glossary.push({
+            id: results[i].id,
+            term: results[i].term,
+            acronymMeaning: results[i].acronymMeaning,
+            definition: results[i].definition,
+            url: results[i].url
+          });
+        }
+        res.status(200).send(JSON.stringify(glossary));
+      })
+      .catch(function(err){
+        console.log("Error getting tracks", err); throw err;
+      });
+}
 app.get('/api/getAllTracks', function(req, res, next){
   db.sequelize
       .query(
@@ -415,7 +438,7 @@ app.get("*", function(req,res){
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync({ force: false }).then(function() {
+db.sequelize.sync({ force: true }).then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
     app.emit('serverStarted'); //used for testing so that the tests know the server has started before running

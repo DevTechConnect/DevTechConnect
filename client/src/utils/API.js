@@ -6,12 +6,6 @@ export default {
         return axios.post("/api/addUser", newUser);
     },
 
-    getRelatedTracksSummary: function(trackId) {
-      var results = axios.post("/api/getRelatedTracksSummary", {trackId:trackId});
-      console.log("Related TRACKS "+results);
-      return results;
-    },
-
     getAllTracks: function() {
       var results = axios.get("/api/getAllTracks");
       console.log("ALL TRACKS "+results);
@@ -21,6 +15,19 @@ export default {
     getArticles: function(latestNum = 0) { //latestNum is the number of articles to retrieve.
       var results = axios.post("/api/getArticles", {latestNum:latestNum});
       console.log("Articles "+results);
+      return results;
+    },
+
+    getGlossary: function(){
+      var results = axios.get("/api/getGlossary");
+      console.log("Glossary", JSON.stringify(results));
+      return results;
+
+    },
+
+    getRelatedTracksSummary: function(trackId) {
+      var results = axios.post("/api/getRelatedTracksSummary", {trackId:trackId});
+      console.log("Related TRACKS "+results);
       return results;
     },
 

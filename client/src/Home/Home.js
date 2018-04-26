@@ -15,7 +15,6 @@ class Home extends Component {
     
     resourceClickHandler = () => {
         this.props.setAppState("Resources");
-        this.props.fetchArticlesHandler(10);
     }
     
     homeClickHandler = () => {
@@ -40,14 +39,15 @@ class Home extends Component {
                     user={this.props.user} 
                     userComplTracks={this.props.userComplTracks}
                     userSavedTracks={this.props.userSavedTracks} 
+                    startTrackHandler={this.startTrackHandler}
                     allTracks={this.props.allTracks} />
                 <div className='home-box'>
-                    <h1>Welcome to DevTech Connect</h1>
-                    <h2>Where You Can Keep Moving</h2>
+                    <h1 className='page-head'>Welcome to DevTech Connect</h1>
+                    <h2 className='page-second'>Where You Can Keep Moving</h2>
                     <hr />
                     <div>
                         <div>
-                        <h1>Recently Added Articles</h1>
+                        <h1 className='page-second'>Recently Added Articles</h1>
                             <Article />
                             <Article />
                             <Article />

@@ -6,3 +6,9 @@
     font-weight: 700;
     border: solid 2px #48276a;
 }
+.trial-box {
+    background-color: rgba(100, 100, 100, .3);
+    border: solid .1em  white;
+    border-radius: 25px;
+    padding: 1em;
+}

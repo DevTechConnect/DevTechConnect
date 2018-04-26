@@ -4,7 +4,7 @@ import './Trial.css';
 
 const Trial = (props) => {
     return (
-        <div>
+        <div className='trial-box'>
             <h1>
                 Welcome to DevTech Connect.
             </h1>

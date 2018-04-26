@@ -5,8 +5,8 @@ import './Article.css';
 const Article = (props) => {
     return (
         <ul>
-            <li>
-                <a className='article-link' href={props.link} target='_blank'>{props.artName}</a>
+            <li className='article-link'>
+                <a className='article-link' href={props.link} target='_blank'>/   {props.artName}   /</a>
             </li>
         </ul>
     )

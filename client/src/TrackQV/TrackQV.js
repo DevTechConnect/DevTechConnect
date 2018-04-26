@@ -4,31 +4,24 @@ import Image from '../Image/Image';
 
 import './TrackQV.css';
 
-class TrackQV extends Component {
-    
-    state={
-        allTracks: this.props.allTracks
-    }
-    
-    startTrack = (event) => {
-        this.props.startTrackHandler(event);
-    }
-    
-    render() {
-        console.log("All tracks at quickview props: " + this.state.allTracks)
+const TrackQV = (props) => {
+        
         return (
             <div className='track-qv'>
-            {console.log("This track id: " + this.props.trackId)}
-                <Image className='inline-block track-image' src={require(`./${1}.png`)} width={this.props.imgDim} height={this.props.imgDim} mode='fit' />
+            {
+            props.trackId ? 
+                <div>
+                    <Image className='inline-block track-image' src={require(`./${props.trackId}.png`)} width={props.imgDim} height={props.imgDim} mode='fit' />
                     <hr />
-                    <h3 className='track-name'>{this.props.trackName}</h3>
+                    <h3 className='track-name'>{props.trackName}</h3>
                     <hr />
-                    <button type='button' name='getStarted' onClick={this.startTrack}>
+                    <button type='button' name='getStarted' onClick={props.startTrackHandler}>
                         Start Track
                     </button>
+                </div> : null
+            }
             </div>
         )
-    }
 };
 
 export default TrackQV;

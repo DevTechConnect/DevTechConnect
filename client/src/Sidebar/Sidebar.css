@@ -5,6 +5,7 @@
     border-radius: 25px;
     width: 30%;
     display: inline-block;
+    background-color: rgba(134, 133, 133, 0.2);
 }
 .sidebar-head {
     padding: .5em;

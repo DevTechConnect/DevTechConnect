@@ -76,12 +76,14 @@ class Landing extends Component {
                         {
                         this.state.tryNow === false && this.state.trialHTML === false && this.state.loginClick === false && this.state.signupClick === false ?
                             <div>
-                                <h1>
-                                    DevTech Connect
-                                </h1>
-                                <h2>
-                                    Keep Moving
-                                </h2>
+                                <div className='header-box-land'>
+                                    <h1 className='comp-name'>
+                                        DevTech Connect
+                                    </h1>
+                                    <h2 className='comp-action'>
+                                        Keep Moving
+                                    </h2>
+                                </div>
                                 <hr />
                                 <p className='mission-state'>
                                     Web development is constantly evolving.

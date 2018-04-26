@@ -1,13 +1,14 @@
 .track-qv {
     border-right: .1em solid #48276a;
     border-left: .1em solid #48276a;
-    padding: .8em;
-    margin: .8em auto;
+    padding-bottom: 4em;
+    margin: 1em;
     border-radius: 25px;
     width: 10em;
     height: 20em;
     display: inline-block;
     vertical-align: middle;
+    background-color: rgba(134, 133, 133, 0.2);
 }
 .track-image {
     padding: 1em;
@@ -17,4 +18,5 @@
 }
 .track-name {
     font-size: 22px;
+    height: 2em;
 }

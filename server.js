@@ -109,11 +109,9 @@ app.post('/api/markStepComplete', function(req, res, next) {
 app.post('/api/markStepIncomplete', function(req, res, next) {
   var stepnumber = req.body.stepnumber;
   var completedSteps = req.body.completedSteps;
-  console.log("completedSteps", completedSteps);
   var completedStepsArray = completedSteps.split(",");
   completedStepsArray.splice(completedStepsArray.indexOf(stepNum),1);
   completedSteps = completedStepsArray.join();
-  console.log("completedSteps", completedSteps);
 
   db.MemberTracks.update({completedSteps:completedSteps}, {where:{id:req.body.membertrackId}})
                  .then(res.status(200).send("marked step incomplete"))
@@ -134,7 +132,6 @@ app.post('/api/addUser', (req, res) => {
                     db.Members.create(newUser)
                               .then(function(user) {
                                 user.password = ""; //dont return hashed password
-                                console.log("RESULT", JSON.stringify(user));
                                 db.sequelize
                                     .query( "Select * from Members where id = ?;"
                                             , { replacements: [user.id], type: db.sequelize.QueryTypes.SELECT}
@@ -142,7 +139,6 @@ app.post('/api/addUser', (req, res) => {
                                           .then(function(results){
                                                 var theNewUser = results[0];
                                                 theNewUser.password = "";
-                                                console.log("TheNewUser", theNewUser);
                                                 req.logIn(theNewUser, function(err) {
                                                   if (err) {console.log("ERROR HERE**************",err); throw err; }
                                                 });
@@ -190,12 +186,13 @@ app.get('/api/getRelatedTracksSummary', function(req, res, next){
 
 
 app.get('/api/getArticles', function(req, res, next){
-  var lastestNum = req.body.lastestNum;
+  var latestNum = req.body.latestNum;
+
   var query = "Select L.linkName, L.description as linkDescription, L.url, L.isonline, L.id as linkId, L.addedDate, L.topicId, T.name as topicName, T.description as topicDescription from Links as L JOIN Topics as T ON L.topicId = T.id ORDER BY addedDate ";
   var parameters = {type: db.sequelize.QueryTypes.SELECT};
-  if(lastestNum!=0) {
+  if(latestNum!=0) {
     query += "LIMIT ?";
-    parameters.replacements = [lastestNum];
+    parameters.replacements = [latestNum];
   }
   query+=" ;";
   console.log(query);
@@ -262,7 +259,6 @@ app.get('/api/getAllTracks', function(req, res, next){
             aTrack.steps.push(aStep);
         }//close for loop
         tracks.push(aTrack); //add the last track that was built
-        console.log(JSON.stringify(tracks, null, 2));
         res.status(200).send(JSON.stringify(tracks));
 
       })
@@ -307,11 +303,9 @@ app.post('/api/login', function(req, res, next) {
                             );
                           }//close for loop
 
-                          console.log(JSON.stringify(bookmarks, null, 2));
                           getUserTracks(user, function(userTracks){
                                 var user = userTracks;
                                 user.bookmarks = bookmarks;
-                                console.log("COMPLETE USER", JSON.stringify(user, null, 2));
                                 // Passport exposes a login() function on req
                                 // (also aliased as logIn()) that can be used to establish a login session.
                                 req.logIn(user, function(err) {

@@ -19,6 +19,7 @@ export default {
     },
 
     getArticles: function(latestNum = 0) { //latestNum is the number of articles to retrieve.
+      console.log("***************latestNum", latestNum);
       var results = axios.get("/api/getArticles", latestNum);
       console.log("Articles "+results);
       return results;

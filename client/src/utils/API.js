@@ -12,8 +12,8 @@ export default {
       return results;
     },
 
-    getArticles: function(lastestNum = 0) { //latestNum is the number of articles to retrieve.
-      var results = axios.get("/api/getArticles", lastestNum);
+    getArticles: function(latestNum = 0) { //latestNum is the number of articles to retrieve.
+      var results = axios.get("/api/getArticles", latestNum);
       console.log("Articles "+results);
       return results;
     },

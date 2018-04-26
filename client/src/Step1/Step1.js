@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import Iframe from 'react-iframe'
 
 import TextOpt from '../TextOpt/TextOpt';
-import Duration from '../Duration/Duration';
-import Info from '../Info/Info';
 
 import './Step1.css';
 

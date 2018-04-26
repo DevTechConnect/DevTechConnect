@@ -158,7 +158,7 @@ app.post('/api/addUser', (req, res) => {
               });//close then
 });
 
-app.get('/api/getRelatedTracksSummary', function(req, res, next){
+app.post('/api/getRelatedTracksSummary', function(req, res, next){
   var query = "Select id, trackName, description, introVideoLink, achievementLink FROM Tracks WHERE id IN (Select relatedTrackId from relatedTracks WHERE trackId = ?);";
   var parameters = {replacements:[req.body.trackId], type: db.sequelize.QueryTypes.SELECT};
   console.log(query);
@@ -185,9 +185,9 @@ app.get('/api/getRelatedTracksSummary', function(req, res, next){
 });
 
 
-app.get('/api/getArticles', function(req, res, next){
+app.post('/api/getArticles', function(req, res, next){
   var latestNum = req.body.latestNum;
-
+  console.log("************8latestNum", latestNum);
   var query = "Select L.linkName, L.description as linkDescription, L.url, L.isonline, L.id as linkId, L.addedDate, L.topicId, T.name as topicName, T.description as topicDescription from Links as L JOIN Topics as T ON L.topicId = T.id ORDER BY addedDate ";
   var parameters = {type: db.sequelize.QueryTypes.SELECT};
   if(latestNum!=0) {

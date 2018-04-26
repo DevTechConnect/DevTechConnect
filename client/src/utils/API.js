@@ -7,7 +7,7 @@ export default {
     },
 
     getRelatedTracksSummary: function(trackId) {
-      var results = axios.get("/api/getRelatedTracksSummary", trackId);
+      var results = axios.post("/api/getRelatedTracksSummary", {trackId:trackId});
       console.log("Related TRACKS "+results);
       return results;
     },
@@ -19,8 +19,7 @@ export default {
     },
 
     getArticles: function(latestNum = 0) { //latestNum is the number of articles to retrieve.
-      console.log("***************latestNum", latestNum);
-      var results = axios.get("/api/getArticles", latestNum);
+      var results = axios.post("/api/getArticles", {latestNum:latestNum});
       console.log("Articles "+results);
       return results;
     },

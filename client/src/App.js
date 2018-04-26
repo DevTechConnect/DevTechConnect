@@ -110,7 +110,7 @@ class App extends Component {
     }
 
     fetchArticlesHandler = () => {
-        API.getArticles({latestNum:"10"})
+        API.getArticles(10)
         .then( (response) => {
               if(response.status!=200){
                 //TODO show error cannot log in

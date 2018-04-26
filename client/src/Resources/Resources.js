@@ -69,13 +69,13 @@ class Home extends Component {
                 <div>
                     <div id='top'>
                         <ul>
-                            <li><a className='cat-sel' href='#clAndTur'>Classes and Tutorials</a></li>
-                            <li><a className='cat-sel' href='#datAndPlat'>Databases and Platforms</a></li>
-                            <li><a className='cat-sel' href='#framAndLib'>Frameworks and Libraries</a></li>
-                            <li><a className='cat-sel' href='#jobAndCar'>Job Hunting and Career Resources</a></li>
-                            <li><a className='cat-sel' href='#npmPack'>NPM Packages</a></li>
-                            <li><a className='cat-sel' href='#projManAndCom'>Project Management and Communication</a></li>
-                            <li><a className='cat-sel' href='#othMis'>Other/Misc</a></li>
+                            <a className='cat-sel' href='#clAndTur'><li>Classes and Tutorials</li></a>
+                            <a className='cat-sel' href='#datAndPlat'><li>Databases and Platforms</li></a>
+                            <a className='cat-sel' href='#framAndLib'><li>Frameworks and Libraries</li></a>
+                            <a className='cat-sel' href='#jobAndCar'><li>Job Hunting and Career Resources</li></a>
+                            <a className='cat-sel' href='#npmPack'><li>NPM Packages</li></a>
+                            <a className='cat-sel' href='#projManAndCom'><li>Project Management and Communication</li></a>
+                            <a className='cat-sel' href='#othMis'><li>Other/Misc</li></a>
                         </ul>
                     </div>
                     <div>

@@ -96,7 +96,7 @@ class Home extends Component {
                         <h1 className='page-head'>Welcome to DevTech Connect</h1>
                         <h2 className='page-second'>Where You Can Keep Moving</h2>
                         <div className='rec-art-box'>
-                            <h1 className='page-second'>Recently Added Articles</h1>
+                            <h1 className='page-second'>Recently Added Articles and Links</h1>
                                 {articles}
                         </div>
                          <div className='inline-block'>

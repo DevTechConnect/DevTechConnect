@@ -22,10 +22,10 @@ class App extends Component {
         loginEmail: '',
         loginPass:'',
         user:[],
-        userSavedTracks:[],
-        userComplTracks:[],
         allTracks:[],
-        allArticles:[]
+        allArticles:[],
+        userSavedTracks: [],
+        userComplTracks: []
     };
 
     setAppState = (page) => {
@@ -43,42 +43,37 @@ class App extends Component {
     };
 
 
-    handleSignupSubmit = (event)  => {
-        event.preventDefault();
-        alert(`Your signup was successful ${this.state.firstName}!`);
-        API.addNewUser({firstName:this.state.firstName, lastName:this.state.lastName, email:this.state.email, password:this.state.psw})
-            .then((response) => {
-                this.setState({user:response.data, page:"MemberP"});
-             })
-            .catch(err => console.log(err));
-    };
-
     handleLoginSubmit = (event) => {
         event.preventDefault();
         API.login({username:this.state.loginEmail, password:this.state.loginPass})
+          .then((response) => response)
           .then( (response) => {
               if(response.status!=200){
                 //TODO show error cannot log in
                   console.log("UNABLE TO LOGIN. USERNAME AND PASSWORD ARE INCORRECT");
               } else {
                 this.setState({user:response.data})
+                  console.log(Promise.resolve(response.data))
             }})
             .then(() => { 
-                let complTrackHolder = [];
-                let userTrackHolder = [];
-                for (let i = 0; i < this.state.user.tracks.length; i++) {
-                    if (this.state.user.tracks[i].trackMarkedComplete === 1 && this.state.user.tracks[i].trackMarkedComplete !== 0) {
-                        console.log("Completed: " + this.state.user.tracks[i].trackId);
-                        complTrackHolder.push(this.state.user.tracks[i].trackId);
-                    } else {
-                        console.log("Incomplete: " + this.state.user.tracks[i].trackId);
-                        userTrackHolder.push(this.state.user.tracks[i].trackId);
+                    let complTrackHolder = [];
+                    let userTrackHolder = [];
+                    let userTrackHolderName = [];
+                    for (let i = 0; i < this.state.user.tracks.length; i++) {
+                        if (this.state.user.tracks[i].trackMarkedComplete === 1 && this.state.user.tracks[i].trackMarkedComplete !== 0) {
+                            console.log("Completed: " + this.state.user.tracks[i].trackId);
+                            complTrackHolder.push(this.state.user.tracks[i].trackId);
+                        } else {
+                            console.log("Incomplete: " + this.state.user.tracks[i].trackId);
+                            userTrackHolder.push(this.state.user.tracks[i].trackId);
+                            userTrackHolderName.push(this.state.user.tracks[i].trackName);
+                        }
                     }
+                    this.trialTrackHandler();
+                    this.fetchArticlesHandler();
+                    this.setState({userSavedTracks: userTrackHolder, userComplTracks: complTrackHolder});
                 }
-                this.trialTrackHandler();
-                this.setState({userSavedTracks: userTrackHolder, userComplTracks: complTrackHolder});
-            }
-        )
+            )
         .then(() => {
             this.setState({page:'Home'})
         })
@@ -91,6 +86,7 @@ class App extends Component {
         API.addNewUser({firstName:this.state.firstName, lastName:this.state.lastName, email:this.state.email, password:this.state.psw})
             .then((response) => {
                 this.trialTrackHandler();
+                this.fetchArticlesHandler();
                 this.setState({user:response.data, page:"MemberP"});
              })
             .catch(err => console.log(err));
@@ -103,8 +99,7 @@ class App extends Component {
                 //TODO show error cannot log in
                   console.log("UNABLE TO GET TRACK INFORMATION");
               } else {
-                this.setState({all:response.data});
-                  console.log("All site tracks: " + this.state.allTracks);
+                this.setState({allTracks:response.data});
             }})
             .catch(err => console.log(err));
     }
@@ -159,7 +154,7 @@ class App extends Component {
                     handleInputChange={this.handleInputChange}
                     user={this.state.user}
                     userComplTracks={this.state.userComplTracks}
-                    userSavedTracks={this.state.userSavedTracks}  
+                    userSavedTracks={this.state.userSavedTracks} 
                     allTracks={this.state.allTracks} 
                     fetchArticlesHandler={this.fetchArticlesHandler} /> : null
             }

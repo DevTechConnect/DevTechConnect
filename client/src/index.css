@@ -32,12 +32,15 @@ body {
 }
 hr {
     border-color: #48276a;
-    margin: 1em 0;
+    margin: 1em;
 }
 .call-to-act {
     color: #48276a;
     font-weight: 500;
     border-bottom: 2px solid white;
+    text-shadow: none;
+    font-size: 1.1em;
+    text-transform: uppercase;
 }
 button {
     cursor: pointer;
@@ -45,5 +48,23 @@ button {
     padding: 1em;
 }
 h1 {
+    font-size: 2.5em;
+}
+.comp-name {
+    color: #48276a;
+    text-shadow: .02em .02em #eee;
+    font-size: 5em;
+}
+.comp-action {
+    font-size: 3em;
+}
+.page-head {
+    color: #48276a;
+    text-shadow: .02em .02em #eee;
+    font-size: 4em;
+    padding: .1em .5em;
+}
+.page-second {
+    text-shadow: .04em .04em #575757;
     font-size: 2.5em;
 }

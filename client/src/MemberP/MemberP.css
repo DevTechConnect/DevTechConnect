@@ -1,7 +1,3 @@
-.user-track-header {
-    font-size: 22px;
-    border-bottom: solid 1px white;
-}
 .user-saved-main {
     padding: .5em;
     margin: 1em auto;
@@ -12,6 +8,31 @@
 }
 .mem-box {
     width: 70%;
-    display: inline-block;
     vertical-align: top;
+    border: solid 2px white;
+    border-bottom: 0;
+    border-radius: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1em;
+}
+.content-box-mem-p {
+    background-color: rgba(134, 133, 133, 0.2);
+    border-top: solid .1em  white;
+    border-bottom: solid .1em  white;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+.mem-p-head {
+    color: #48276a;
+    text-shadow: .02em .02em #eee;
+    font-size: 1.7em;
+    padding: .1em .5em;
+    margin: 1em;
+}
+.mem-p-second {
+    text-shadow: .02em .02em #868282;
+    font-size: 2em;
+    border-bottom: solid 1px white;
+    padding: .5em;
 }

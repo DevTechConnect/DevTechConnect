@@ -1,11 +1,14 @@
 .navbar {
     color: #343434;
-    width: 100%;
+    text-shadow: none;
+    width: 102%;
     background-color: rgba(238, 238, 238, .7);
     height: 7em;
-    top: -2em;
     text-align: right;
-    right: -.7em;
+    top: -1.7em;
+    margin-left: 0;
+    margin-right: 0;
+    right: .8em;
 }
 .logo {
     position: relative;

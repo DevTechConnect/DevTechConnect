@@ -4,14 +4,17 @@ import Image from '../Image/Image';
 
 import './Achievement.css';
 
-class Achievement extends Component {
-    render() {
+const Achievement = (props) =>   {
         return (
             <div className="inline-block">
-                <Image className='inline' src={require(`./${1}.png`)} width={75} height={75} mode='fit' />
+            {
+            props.trackId ? 
+                <div>
+                    <Image src={require(`./${props.trackId}.png`)} width={75} height={75}  />
+                </div> : null
+            }
             </div>
         )
-    }
 }
         
 export default Achievement;

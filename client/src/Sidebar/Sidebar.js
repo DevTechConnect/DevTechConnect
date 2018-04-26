@@ -11,27 +11,35 @@ class Sidebar extends Component {
     
     render() {
         
+        let complTracks = null;
+        
+        if (this.props.userComplTracks) {
+                complTracks = (
+                    <div>
+                        {this.props.userComplTracks.map((person, index) => {
+                            return <Achievement 
+                                trackId={3}
+                                key={index} />
+                        })}
+                    </div>
+                );
+        }
+        
         let savedTracks = null;
-        console.log('user saved tracks: ' + this.props.userSavedTracks)
-        
-   
-     
-        
-        if (this.props.user.tracks) {
-            savedTracks = (
-                <div>
-                    {this.props.user.tracks.map((user, index) => {
-                     if (this.props.user.tracks[index].trackMarkedComplete === 0 && this.props.user.tracks[index].trackMarkedComplete !== 1) {
-                        return <TrackQV 
-                            trackId={this.props.user.tracks[index].trackId}
-                            imgDim={75}
-                            trackName={this.props.user.tracks[index].trackName}
-                            key={index} 
-                            allTracks={this.props.allTracks} />
-                }
-                    })}
-                </div>
-            );
+
+        if (this.props.userSavedTracks) {
+                savedTracks = (
+                    <div>
+                        {this.props.userSavedTracks.map((person, index) => {
+                            return <TrackQV 
+                                trackId={this.props.user.tracks[index].trackId}
+                                trackName={this.props.user.tracks[index].trackName}
+                                userSavedTracks={this.props.userSavedTracks}
+                                startTrackHandler={this.props.startTrackHandler}
+                                key={index} />
+                        })}
+                    </div>
+                );
         }
         
         let articles = null;
@@ -41,7 +49,6 @@ class Sidebar extends Component {
             articles = (
                 <div>
                     {bookmarks.map((p, index) => {
-                        console.log('user bookmarks: '+ this.props.user.bookmarks)
                         return <Article 
                             artName={this.props.user.bookmarks[index].linkName}
                             link={this.props.user.bookmarks[index].url}
@@ -56,8 +63,8 @@ class Sidebar extends Component {
             <div className="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 inline-block sidebar">
                 <MemberInfo 
                     user={this.props.user} 
-                    userComplTracks={this.props.userComplTracks}
                     userSavedTracks={this.props.userSavedTracks} />
+                {complTracks}
                 <hr />
                 <h4 className='sidebar-head'>Jump into one of your saved tracks:</h4>
                 <hr />

@@ -9,33 +9,34 @@ import './Step1.css';
 
 class Step1 extends Component {
     
-    state={
-        allTracks: this.props.allTracks
-    }
-    
     render() {
         return (
             <div>
                 <h2>Your First Step</h2>
                 <hr />
-                <div className='content-box'>
-                    <TextOpt 
-                        allTracks={this.state.allTracks}
-                        stepNum={0} />
-                    <div className='vid-holder'>
-                        <Iframe url={this.state.allTracks[this.props.trackId].steps[1].stepLink}
-                                width="420px"
-                                height="250px"
-                                id="myId"
-                                className="iframe-step"
-                                display="initial"
-                                position="relative"
-                                allowFullScreen
-                                />
-                        <br />
-                        {this.state.allTracks[this.props.trackId].steps[1].stepdescription}
-                    </div>
-                </div>
+                {
+                this.props.allTracks ?
+                    <div className='content-box'>
+                        <TextOpt 
+                            allTracks={this.props.allTracks}
+                            stepNum={0} />
+                        <div className='vid-holder'>
+                            <Iframe url={this.props.allTracks[this.props.trackId].trackIntroVideoLink.replace('watch', 'embed')}
+                                    width="420px"
+                                    height="250px"
+                                    id="myId"
+                                    className="iframe-step"
+                                    display="initial"
+                                    position="relative"
+                                    allowFullScreen
+                                    />
+                            <br />
+                            <a href={this.props.allTracks[this.props.trackId].trackIntroVideoLink}>URL: {this.props.allTracks[this.props.trackId].trackIntroVideoLink}</a>
+                            <br />
+                            {this.props.allTracks[this.props.trackId].steps[1].stepdescription}
+                        </div>
+                    </div> : null
+                }
             </div>
         )
     }

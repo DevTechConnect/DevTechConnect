@@ -56,11 +56,17 @@ class LimitedFModule extends Component {
             <div className='track-box'>
                 <ul className="nav nav-tabs">
                     <li className='tab-title' onClick={this.langDefHandler}>Language Definition</li>
+                    <li>   /   </li>
                     <li className='tab-title' onClick={this.step1Handler}>Step 1</li>
+                    <li>   /   </li>
                     <li className='tab-title' onClick={this.step2Handler}>Step 2</li>
+                    <li>   /   </li>
                     <li className='tab-title' onClick={this.step3Handler}>Step 3</li>
+                    <li>   /   </li>
                     <li className='tab-title' onClick={this.step4Handler}>Step 4</li>
+                    <li>   /   </li>
                     <li className='tab-title' onClick={this.practiceHandler}>Practice</li>
+                    <li>   /   </li>
                     <li className='tab-title' onClick={this.relTrackHandler}>Related Tracks</li>
                 </ul>
                 <div className='track-content-box'>

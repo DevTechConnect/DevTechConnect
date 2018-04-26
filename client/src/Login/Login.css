@@ -5,6 +5,7 @@
     border: solid 2px white;
     border-radius: 25px;
     width: 50%;
+    background-color: rgba(134, 133, 133, 0.2);
 }
 label,
 input {

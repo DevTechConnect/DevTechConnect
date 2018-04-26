@@ -1,7 +1,4 @@
-import React, { Component } from 'react';
-
-import Link from '../Link/Link';
-import Info from '../Info/Info';
+import React from 'react';
 
 import './TextOpt.css';
 

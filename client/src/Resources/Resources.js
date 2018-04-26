@@ -63,6 +63,130 @@ class Home extends Component {
     
     render () {
         
+        let articles = null;
+        if (this.props.allArticles) {
+            articles = (
+                <div>
+                    <div id='top'>
+                        <ul>
+                            <li><a className='cat-sel' href='#clAndTur'>Classes and Tutorials</a></li>
+                            <li><a className='cat-sel' href='#datAndPlat'>Databases and Platforms</a></li>
+                            <li><a className='cat-sel' href='#framAndLib'>Frameworks and Libraries</a></li>
+                            <li><a className='cat-sel' href='#jobAndCar'>Job Hunting and Career Resources</a></li>
+                            <li><a className='cat-sel' href='#npmPack'>NPM Packages</a></li>
+                            <li><a className='cat-sel' href='#projManAndCom'>Project Management and Communication</a></li>
+                            <li><a className='cat-sel' href='#othMis'>Other/Misc</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 className='cat-title' id='clAndTur'>Classes and Tutorials</h3>
+                        {this.props.allArticles.map((p, index) => {
+                         if (this.props.allArticles[index].topicName === 'Classes and Tutorials') {
+                            return <div>
+                                        <Article 
+                                        artName={this.props.allArticles[index].linkName}
+                                        link={this.props.allArticles[index].url}
+                                        descr={this.props.allArticles[index].linkDescription}
+                                        key={index} />
+                                        <a className='cat-sel' href='#top'>Back to Top</a>
+                                    </div>
+                            }
+                        })}
+                    </div>
+                    <div>
+                        <h3 className='cat-title' id='datAndPlat'>Databases and Platforms</h3>
+                        {this.props.allArticles.map((p, index) => {
+                         if (this.props.allArticles[index].topicName === 'Databases and Platforms') {
+                            return <div>
+                                        <Article 
+                                        artName={this.props.allArticles[index].linkName}
+                                        link={this.props.allArticles[index].url}
+                                        descr={this.props.allArticles[index].linkDescription}
+                                        key={index} />
+                                        <a className='cat-sel' href='#top'>Back to Top</a>
+                                    </div>
+                            }
+                        })}
+                    </div>
+                    <div>
+                        <h3 className='cat-title' id='framAndLib'>Frameworks and Libraries</h3>
+                        {this.props.allArticles.map((p, index) => {
+                         if (this.props.allArticles[index].topicName === 'Frameworks and Libraries') {
+                            return <div>
+                                        <Article 
+                                        artName={this.props.allArticles[index].linkName}
+                                        link={this.props.allArticles[index].url}
+                                        descr={this.props.allArticles[index].linkDescription}
+                                        key={index} />
+                                        <a className='cat-sel' href='#top'>Back to Top</a>
+                                    </div>
+                            }
+                        })}
+                    </div>
+                    <div>
+                        <h3 className='cat-title' id='jobAndCar'>Job Hunting and Career Resources</h3>
+                        {this.props.allArticles.map((p, index) => {
+                         if (this.props.allArticles[index].topicName === 'Job Hunting and Career Resources') {
+                            return <div>
+                                        <Article 
+                                        artName={this.props.allArticles[index].linkName}
+                                        link={this.props.allArticles[index].url}
+                                        descr={this.props.allArticles[index].linkDescription}
+                                        key={index} />
+                                        <a className='cat-sel' href='#top'>Back to Top</a>
+                                    </div>
+                            }
+                        })}
+                    </div>
+                    <div>
+                        <h3 className='cat-title' id='npmPack'>NPM Packages</h3>
+                        {this.props.allArticles.map((p, index) => {
+                         if (this.props.allArticles[index].topicName === 'NPM Packages') {
+                            return <div>
+                                        <Article 
+                                        artName={this.props.allArticles[index].linkName}
+                                        link={this.props.allArticles[index].url}
+                                        descr={this.props.allArticles[index].linkDescription}
+                                        key={index} />
+                                        <a className='cat-sel' href='#top'>Back to Top</a>
+                                    </div>
+                            }
+                        })}
+                    </div>
+                    <div>
+                        <h3 className='cat-title' id='projManAndCom'>Project Management and Communication</h3>
+                        {this.props.allArticles.map((p, index) => {
+                         if (this.props.allArticles[index].topicName === 'Project Management and Communication') {
+                            return <div>
+                                        <Article 
+                                        artName={this.props.allArticles[index].linkName}
+                                        link={this.props.allArticles[index].url}
+                                        descr={this.props.allArticles[index].linkDescription}
+                                        key={index} />
+                                        <a className='cat-sel' href='#top'>Back to Top</a>
+                                    </div>
+                            }
+                        })}
+                    </div>
+                    <div>
+                        <h3 className='cat-title' id='othMis'>Other/Misc</h3>
+                        {this.props.allArticles.map((p, index) => {
+                         if (this.props.allArticles[index].topicName === 'Other/Misc') {
+                            return <div>
+                                        <Article 
+                                        artName={this.props.allArticles[index].linkName}
+                                        link={this.props.allArticles[index].url}
+                                        descr={this.props.allArticles[index].linkDescription}
+                                        key={index} />
+                                        <a className='cat-sel' href='#top'>Back to Top</a>
+                                    </div>
+                            }
+                        })}
+                    </div>
+            </div>
+            );
+        }
+        
     return (
         <div>
             {
@@ -80,16 +204,10 @@ class Home extends Component {
                             allTracks={this.props.allTracks} />
                         <div className='home-box'>
                             <h1>DevTech Connect Resources</h1>
-                            <div>
-                                <div>
-                                <h2 className='mem-p-second'>Browse Our Links and Articles</h2>
-                                    <Article />
-                                    <Article />
-                                    <Article />
-                                    <Article />
-                                    <Article />
+                                <div className='res-article-holder'>
+                                    <h2 className='mem-p-second'>Browse Our Links and Articles</h2>
+                                    {articles}
                                 </div>
-                            </div>
                             <div>
                                 <div>
                                     <h2 className='mem-p-second'>Glossary</h2>

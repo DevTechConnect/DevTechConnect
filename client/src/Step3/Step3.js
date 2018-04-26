@@ -33,7 +33,7 @@ class Step3 extends Component {
                                             position="relative"
                                             allowFullScreen/>
                                     <br />
-                                    <a className='article-link' href={this.props.allTracks[this.props.trackId].trackIntroVideoLink}>URL: {this.props.allTracks[this.props.trackId].trackIntroVideoLink}</a>
+                                    <a target='_blank' className='article-link' href={this.props.allTracks[this.props.trackId].steps[5].stepLink}>URL: {this.props.allTracks[this.props.trackId].steps[5].stepLink}</a>
                                     <br />
                                     {this.props.allTracks[this.props.trackId].steps[5].stepdescription}
                                 </div>

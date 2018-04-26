@@ -3,7 +3,7 @@
     height: 100%;
 }
 .mission-state {
-    font-size: 1.5em;
+    font-size: 1.3em;
 }
 .get-started {
     background-color: #48276a;
@@ -13,7 +13,7 @@
     border-radius: 25px;
 }
 .land-box {
-    width: 95%;
+    width: 90%;
     padding: 2em;
     margin: 0 auto;
 }

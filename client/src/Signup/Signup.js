@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './Signup.css';
-import API from "../utils/API";
 
 const Signup = (props) => {
     

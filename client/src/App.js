@@ -118,7 +118,7 @@ class App extends Component {
             .catch(err => console.log(err));
     }
 
-    fetchArticlesHandler = (num = 5) => {
+    fetchArticlesHandler = (num = 0) => {
         API.getArticles(num)
         .then( (response) => {
               if(response.status!==200){
@@ -174,7 +174,8 @@ class App extends Component {
                     allTracks={this.state.allTracks}
                     fetchArticlesHandler={this.fetchArticlesHandler}
                     relTrackHandler={this.relTrackHandler}
-                    relTracks={this.state.relTracks}/> : null
+                    relTracks={this.state.relTracks} 
+                    allArticles={this.state.allArticles} /> : null
             }
             {
             this.state.page === 'MemberP' ?
@@ -186,7 +187,7 @@ class App extends Component {
                     allTracks={this.state.allTracks}
                     fetchArticlesHandler={this.fetchArticlesHandler}
                     relTrackHandler={this.relTrackHandler}
-                    relTracks={this.state.relTracks}/> : null
+                    relTracks={this.state.relTracks} /> : null
             }
             {
             this.state.page === 'Resources' ?

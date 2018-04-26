@@ -23,7 +23,7 @@ class Step1 extends Component {
                                 <hr />
                                 <div className='vid-holder'>
                                     <h2 className='opt-header'>Video Lesson</h2>
-                                    <Iframe url={this.props.allTracks[this.props.trackId].trackIntroVideoLink.replace('watch', 'embed')}
+                                    <Iframe url={this.props.allTracks[this.props.trackId].steps[1].stepLink.replace('watch', 'embed')}
                                             width="420px"
                                             height="250px"
                                             id="myId"
@@ -33,7 +33,7 @@ class Step1 extends Component {
                                             allowFullScreen
                                             />
                                     <br />
-                                    <a className='article-link' href={this.props.allTracks[this.props.trackId].trackIntroVideoLink}>URL: {this.props.allTracks[this.props.trackId].trackIntroVideoLink}</a>
+                                    <a target='_blank' className='article-link' href={this.props.allTracks[this.props.trackId].steps[1].stepLink}>URL: {this.props.allTracks[this.props.trackId].steps[1].stepLink}</a>
                                     <br />
                                     {this.props.allTracks[this.props.trackId].steps[1].stepdescription}
                                 </div>

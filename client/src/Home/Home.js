@@ -59,6 +59,21 @@ class Home extends Component {
 
     
     render () {
+        let articles = null;
+        if (this.props.allArticles) {
+            let recArticles = this.props.allArticles.slice(0, 5);
+            articles = (
+                <div>
+                    {recArticles.map((p, index) => {
+                        return <Article 
+                            artName={recArticles[index].linkName}
+                            link={recArticles[index].url}
+                            descr={recArticles[index].linkDescription}
+                            key={index} />
+                    })}
+                </div>
+            );
+        }
         
     return (
         <div className='main-home-box'>
@@ -82,8 +97,7 @@ class Home extends Component {
                         <h2 className='page-second'>Where You Can Keep Moving</h2>
                         <div className='rec-art-box'>
                             <h1 className='page-second'>Recently Added Articles</h1>
-                                <Article />
-                                <Article />
+                                {articles}
                         </div>
                          <div className='inline-block'>
                             <div>

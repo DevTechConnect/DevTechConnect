@@ -208,6 +208,7 @@ class Home extends Component {
                                             key={index} />
                                     </li>
                                     <a className='cat-sel' href='#glos-top'>Back to Top</a>
+                                    <hr />
                                 </div>
                     })}
                 </div>
@@ -244,7 +245,6 @@ class Home extends Component {
                                         </ul>
                                     </div>
                             </div>
-                            <hr />
                              <div className='inline-block'>
                                 <div>
                                     <RecTracks 

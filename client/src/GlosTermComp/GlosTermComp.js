@@ -11,7 +11,6 @@ class GlosTermComp extends Component {
                 <div>
                     <p className='glos-term'>{this.props.term}</p>
                     <p className='glos-def'>{this.props.def}</p>
-                    <hr />
                 </div> : null
             }
             </div>

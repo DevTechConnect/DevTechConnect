@@ -103,7 +103,8 @@ class Home extends Component {
                             <div>
                                 <RecTracks 
                                     startTrkClickHandler={this.startTrkClickHandler} 
-                                    allTracks={this.props.allTracks} />
+                                    allTracks={this.props.allTracks} 
+                                    page={'home'} />
                             </div>
                         </div>
                     </div>

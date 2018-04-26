@@ -69,24 +69,30 @@ class RecTracks extends Component {
                         </div> : null
                     }
                 </div>
-                <div className="rec-tracks-bar">
-                    <h1 className='page-second rec-track-head'>Front-End Focus Tracks</h1>
-                    {
-                    this.props.allTracks ?
-                        <div className='track-qv-rec'>
-                            {frontEndTracks}
-                        </div> : null
-                    }
-                </div>
-                <div className="rec-tracks-bar">
-                    <h1 className='page-second rec-track-head'>Back-End Focus Tracks</h1>
-                    {
-                    this.props.allTracks ?
-                        <div className='track-qv-rec'>
-                            {backEndTracks}
-                        </div> : null
-                    }
-                </div>
+                {
+                this.props.page === 'home' ?
+                    <div className="rec-tracks-bar">
+                        <h1 className='page-second rec-track-head'>Front-End Focus Tracks</h1>
+                        {
+                        this.props.allTracks ?
+                            <div className='track-qv-rec'>
+                                {frontEndTracks}
+                            </div> : null
+                        }
+                    </div> : null
+                }   
+                {
+                this.props.page === 'home' ?
+                    <div className="rec-tracks-bar">
+                        <h1 className='page-second rec-track-head'>Back-End Focus Tracks</h1>
+                        {
+                        this.props.allTracks ?
+                            <div className='track-qv-rec'>
+                                {backEndTracks}
+                            </div> : null
+                        }
+                    </div> : null
+            }
             </div>
         )
     }

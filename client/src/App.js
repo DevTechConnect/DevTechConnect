@@ -216,7 +216,8 @@ class App extends Component {
                     fetchArticlesHandler={this.fetchArticlesHandler}
                     allArticles={this.state.allArticles}
                     relTrackHandler={this.relTrackHandler}
-                    relTracks={this.state.relTracks} /> : null
+                    relTracks={this.state.relTracks} 
+                    allGloss={this.state.allGloss} /> : null
             }
             {
             this.state.page === 'LimitedFocus' ?

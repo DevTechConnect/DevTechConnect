@@ -4,7 +4,7 @@ import Navbar from '../Navbar/Navbar';
 import Sidebar from '../Sidebar/Sidebar';
 import Article from '../Article/Article';
 import RecTracks from '../RecTracks/RecTracks';
-import GlosTerm from '../GlosTerm/GlosTerm';
+import GlosTermComp from '../GlosTermComp/GlosTermComp';
 import LimitedFModule from '../LimitedFModule/LimitedFModule';
 
 import './Resources.css';
@@ -89,6 +89,7 @@ class Home extends Component {
                                         descr={this.props.allArticles[index].linkDescription}
                                         key={index} />
                                         <a className='cat-sel' href='#top'>Back to Top</a>
+                                        <hr />
                                     </div>
                             }
                         })}
@@ -104,6 +105,7 @@ class Home extends Component {
                                         descr={this.props.allArticles[index].linkDescription}
                                         key={index} />
                                         <a className='cat-sel' href='#top'>Back to Top</a>
+                                        <hr />
                                     </div>
                             }
                         })}
@@ -119,6 +121,7 @@ class Home extends Component {
                                         descr={this.props.allArticles[index].linkDescription}
                                         key={index} />
                                         <a className='cat-sel' href='#top'>Back to Top</a>
+                                        <hr />
                                     </div>
                             }
                         })}
@@ -134,6 +137,7 @@ class Home extends Component {
                                         descr={this.props.allArticles[index].linkDescription}
                                         key={index} />
                                         <a className='cat-sel' href='#top'>Back to Top</a>
+                                        <hr />
                                     </div>
                             }
                         })}
@@ -149,6 +153,7 @@ class Home extends Component {
                                         descr={this.props.allArticles[index].linkDescription}
                                         key={index} />
                                         <a className='cat-sel' href='#top'>Back to Top</a>
+                                        <hr />
                                     </div>
                             }
                         })}
@@ -164,6 +169,7 @@ class Home extends Component {
                                         descr={this.props.allArticles[index].linkDescription}
                                         key={index} />
                                         <a className='cat-sel' href='#top'>Back to Top</a>
+                                        <hr />
                                     </div>
                             }
                         })}
@@ -179,11 +185,32 @@ class Home extends Component {
                                         descr={this.props.allArticles[index].linkDescription}
                                         key={index} />
                                         <a className='cat-sel' href='#top'>Back to Top</a>
+                                        <hr />
                                     </div>
                             }
                         })}
                     </div>
             </div>
+            );
+        };
+
+        let glosTerms = null;
+
+        if (this.props.allGloss) {
+            glosTerms = (
+                <div>
+                    {this.props.allGloss.map((t, index) => {
+                        return <div id='glos-top'>
+                                    <li>
+                                        <GlosTermComp 
+                                            term={this.props.allGloss[index].term}
+                                            def={this.props.allGloss[index].definition}
+                                            key={index} />
+                                    </li>
+                                    <a className='cat-sel' href='#glos-top'>Back to Top</a>
+                                </div>
+                    })}
+                </div>
             );
         }
         
@@ -203,31 +230,23 @@ class Home extends Component {
                             userSavedTracks={this.props.userSavedTracks} 
                             allTracks={this.props.allTracks} />
                         <div className='home-box'>
-                            <h1>DevTech Connect Resources</h1>
+                            <h1 className='page-head'>DevTech Connect Resources</h1>
+                            <br />
+                                <h2 className='mem-p-second'>Browse Our Links and Articles</h2>
                                 <div className='res-article-holder'>
-                                    <h2 className='mem-p-second'>Browse Our Links and Articles</h2>
                                     {articles}
                                 </div>
-                            <div>
-                                <div>
-                                    <h2 className='mem-p-second'>Glossary</h2>
-                                    <ul>
-                                        <GlosTerm />
-                                        <GlosTerm />
-                                        <GlosTerm />
-                                        <GlosTerm />
-                                        <GlosTerm />
-                                        <GlosTerm />
-                                        <GlosTerm />
-                                        <GlosTerm />
-                                        <GlosTerm />
-                                    </ul>
-                                </div>
+                            <div className='glos-box'>
+                                <h2 className='mem-p-second'>Glossary</h2>
+                                    <div className='glos-holder'>
+                                        <ul>
+                                            {glosTerms}
+                                        </ul>
+                                    </div>
                             </div>
                             <hr />
                              <div className='inline-block'>
                                 <div>
-                                    <h2>All Available Tracks</h2>
                                     <RecTracks 
                                         startTrackHandler={this.startTrackHandler} 
                                         allTracks={this.props.allTracks} 

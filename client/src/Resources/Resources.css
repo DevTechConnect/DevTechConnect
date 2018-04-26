@@ -1,4 +1,5 @@
-.res-article-holder {
+.res-article-holder,
+.glos-holder {
     height: 30em;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -17,4 +18,7 @@
     padding: 1em;
     color: #48276a;
     list-style: none
+}
+.glos-box {
+    margin: 1.5em auto 0 auto;
 }

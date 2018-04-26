@@ -160,6 +160,10 @@ INSERT INTO TrackSteps (trackId, stepNumber, link, description) VALUES
 (3,2,"https://www.youtube.com/watch?v=EE8ZTQxa0AM", "A quick introduction to MongoDB and its advantages."),
 (3,3,"https://university.mongodb.com/courses/M001/about", "MongoDB University is the best place to learn Mongo. Get started with this introductory course."),
 (3,4,"https://www.youtube.com/watch?v=pWbMrx5rVBE", "30 minute Mongo tutorial"),
+(3,5,"https://www.tutorialspoint.com/mongodb/index.htm", "Dive deeper into MongoDB with this easy to follow guide"),
+(3,6,"https://www.youtube.com/watch?v=CaKoJ9rFo8c&list=PL9ooVrP1hQOFGaB3V9mvxR-y5UHjsH3bK", "A good playlist for those looking into Mongo Certification. ~10hrs"),
+(3,7,"https://www.mongodb.com/community-support-resources", "MongoDB Online Community and Support Resources"),
+(3,8,"https://www.youtube.com/watch?v=Do_Hsb_Hs3c", "Feeling adventorous? Try this NodeJS and Mongo Tutorial, 22mins"),
 (3,100,"https://www.tutorialspoint.com/mongodb/mongodb_questions_answers.htm", "Good source of common MongoDB questions");
 
 INSERT INTO membertracks (memberId, trackId, completedSteps, markedComplete) VALUES

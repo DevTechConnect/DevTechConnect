@@ -1,5 +1,7 @@
 .content-header {
     padding: .5em;
+    background-color: rgba(72, 39, 106, .5);
+    margin: 0;
 }
 .content-box {
     width:100%;

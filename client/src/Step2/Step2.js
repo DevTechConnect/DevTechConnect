@@ -13,7 +13,7 @@ class Step2 extends Component {
     render() {
         return (
             <div>
-                <h2>Your Second Step</h2>
+                <h1 className='content-header'>Your Second Step</h1>
                 <hr />
                 {
                 this.props.allTracks ?
@@ -31,7 +31,7 @@ class Step2 extends Component {
                                     position="relative"
                                     allowFullScreen/>
                             <br />
-                            <a href={this.props.allTracks[this.props.trackId].trackIntroVideoLink}>URL: {this.props.allTracks[this.props.trackId].trackIntroVideoLink}</a>
+                            <a className='article-link' href={this.props.allTracks[this.props.trackId].trackIntroVideoLink}>URL: {this.props.allTracks[this.props.trackId].trackIntroVideoLink}</a>
                             <br />
                             {this.props.allTracks[this.props.trackId].steps[3].stepdescription}
                         </div>

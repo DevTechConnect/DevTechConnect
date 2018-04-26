@@ -33,7 +33,7 @@ class LangDef extends Component {
                                     position="relative"
                                     allowFullScreen/>
                             <br />
-                            <a href={this.props.allTracks[this.props.trackId].trackIntroVideoLink}>URL: {this.props.allTracks[this.props.trackId].trackIntroVideoLink}</a>
+                            <a className='article-link' href={this.props.allTracks[this.props.trackId].trackIntroVideoLink}>URL: {this.props.allTracks[this.props.trackId].trackIntroVideoLink}</a>
                         </div> 
                     </div> : null
                 }

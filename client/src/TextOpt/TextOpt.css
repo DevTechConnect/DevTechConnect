@@ -10,7 +10,15 @@
     display: block;
     padding: .3em;
     margin: 1em auto;
-    font-size: 22px;
+    font-size: 1.4em;
+    font-variant: small-caps;
+    color: rgb(255, 255, 255);
+    text-decoration: underline;
+    padding: .2em;
+    display: inline-block;
+    vertical-align: middle;
+    list-style-type: none;
+    text-shadow: .03em .03em #575757;
 }
 .text-descr {
     font-size: 18px;

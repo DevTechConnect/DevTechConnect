@@ -7,7 +7,7 @@ import './RelTrack.css';
 const RelTrack = () => {
     return (
         <div>
-            <h2>More Tracks to Try</h2>
+            <h1 className='content-header'>More Tracks to Try</h1>
             <hr />
             <TrackQV />
             <TrackQV />

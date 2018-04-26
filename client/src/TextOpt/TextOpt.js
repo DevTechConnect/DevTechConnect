@@ -14,7 +14,7 @@ class TextOpt extends Component {
     render() {
         return (
             <div className='text-opt'>
-                <a className='link text-link' target='_blank' href={this.state.allTracks[0].steps[this.props.stepNum].stepLink}>{this.state.allTracks[0].steps[this.props.stepNum].stepLink}</a>
+                <a className='text-link' target='_blank' href={this.state.allTracks[0].steps[this.props.stepNum].stepLink}>{this.state.allTracks[0].steps[this.props.stepNum].stepLink}</a>
                 <p className='text-descr'>{this.state.allTracks[0].steps[this.props.stepNum].stepdescription}</p>
             </div>
         )

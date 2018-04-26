@@ -17,7 +17,7 @@ class Practice extends Component {
         
         return (
             <div>
-                <h2>Practice Links</h2>
+                <h1 className='content-header'>Practice Links</h1>
                 <hr />
                 <div className='pract-link'>
                     <Link 

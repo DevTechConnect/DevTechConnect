@@ -8,7 +8,7 @@ import Info from '../Info/Info';
 import './Step1.css';
 
 class Step1 extends Component {
-    
+
     render() {
         return (
             <div>

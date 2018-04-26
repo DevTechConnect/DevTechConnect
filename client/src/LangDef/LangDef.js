@@ -8,10 +8,11 @@ import TextDef from '../TextDef/TextDef'
 import './LangDef.css';
 
 class LangDef extends Component {
-    
+
+
     render() {
-        
-        
+
+
         return (
             <div>
                 <h1 className='content-header'>What is {this.props.allTracks[this.props.trackId].trackName}?</h1>

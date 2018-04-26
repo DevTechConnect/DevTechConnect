@@ -61,7 +61,7 @@ class Landing extends Component {
         });
     };
 
-    
+
 
     render(props) {
         return (
@@ -86,12 +86,12 @@ class Landing extends Component {
                                 </div>
                                 <hr />
                                 <p className='mission-state'>
-                                    Web development is constantly evolving. Trying to learn a skill that changes faster than bipolar weather can be intimidating - there are resources everywhere. 
-                                    <br />So, where you start? 
-                                    <br />Right <a href='#' className='call-to-act' onClick={this.tryNowClickHandler}>here</a>.
+                                    Web development is constantly evolving.
+                                    <br />Trying to learn a skill that changes faster than Texas weather can be intimidating...there are resources everywhere!
+                                    <br />So, where do you start? Right Here!
                                 </p>
                                 <button type='button' className='get-started' name='getStarted' onClick={this.tryNowClickHandler}>
-                                    Get Started
+                                    Get Started!
                                 </button>
                             </div> : null
                         }
@@ -129,9 +129,9 @@ class Landing extends Component {
                         this.state.trialHTML ?
                         <div className="trial-plugin">
                                 <LimitedFModule
-                                    trackName={'HTML/CSS'} 
+                                    trackName={'HTML/CSS'}
                                     allTracks={this.props.allTracks}
-                                    trackId={0} /> 
+                                    trackId={0} />
                         </div> : null
                         }
                 </div>

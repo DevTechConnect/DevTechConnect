@@ -8,11 +8,8 @@ import Info from '../Info/Info';
 import './Step4.css';
 
 class Step4 extends Component {
-    
-    state={
-        allTracks: this.props.allTracks
-    }
-    
+
+
     render() {
         return (
             <div>

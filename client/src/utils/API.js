@@ -6,6 +6,12 @@ export default {
         return axios.post("/api/addUser", newUser);
     },
 
+    getRelatedTracksSummary: function(trackId) {
+      var results = axios.get("/api/getRelatedTracksSummary", trackId);
+      console.log("Related TRACKS "+results);
+      return results;
+    },
+
     getAllTracks: function() {
       var results = axios.get("/api/getAllTracks");
       console.log("ALL TRACKS "+results);

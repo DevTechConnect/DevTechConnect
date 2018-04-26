@@ -162,6 +162,33 @@ app.post('/api/addUser', (req, res) => {
               });//close then
 });
 
+app.get('/api/getRelatedTracksSummary', function(req, res, next){
+  var query = "Select id, trackName, description, introVideoLink, achievementLink FROM Tracks WHERE id IN (Select relatedTrackId from relatedTracks WHERE trackId = ?);";
+  var parameters = {replacements:[req.body.trackId], type: db.sequelize.QueryTypes.SELECT};
+  console.log(query);
+
+  db.sequelize.query(query,parameters)
+              .then(function(results){
+                var relatedTrackSummaries = [];
+                for(i=0; i<results.length; i++){
+                var aSummary = {
+                    relatedTrackId: results[i].id,
+                    trackName: results[i].trackName,
+                    trackDescription: results[i].description,
+                    introVideoLink: results[i].introVideoLink,
+                    achievementLink: results[i].achievementLink,
+                  };
+                  relatedTrackSummaries.push(aSummary);
+                }
+                res.status(200).send(JSON.stringify(relatedTrackSummaries));
+              })
+              .catch(function(err){
+                console.log("UNABLE TO GET RELATED TRACKS", err);
+                throw err;
+              });
+});
+
+
 app.get('/api/getArticles', function(req, res, next){
   var lastestNum = req.body.lastestNum;
   var query = "Select L.linkName, L.description as linkDescription, L.url, L.isonline, L.id as linkId, L.addedDate, L.topicId, T.name as topicName, T.description as topicDescription from Links as L JOIN Topics as T ON L.topicId = T.id ORDER BY addedDate ";

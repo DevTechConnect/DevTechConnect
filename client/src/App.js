@@ -104,7 +104,7 @@ class App extends Component {
             }})
             .catch(err => console.log(err));
     }
-    
+
     relTrackHandler = (num) => {
         API.getRelatedTracksSummary(num)
         .then( (response) => {
@@ -118,15 +118,15 @@ class App extends Component {
             .catch(err => console.log(err));
     }
 
-    fetchArticlesHandler = (num) => {
+    fetchArticlesHandler = (num = 5) => {
         API.getArticles(num)
         .then( (response) => {
               if(response.status!=200){
-                //TODO show error cannot log in
+                //TODO show error
                   console.log("UNABLE TO GET INFORMATION");
               } else {
                 this.setState({allArticles:response.data});
-                  console.log('ALL ARTICLES: ' + response.data);
+                console.log('ALL ARTICLES: ' + JSON.stringify(response.data));
             }})
             .catch(err => console.log(err));
     };
@@ -159,8 +159,8 @@ class App extends Component {
                     loginEmail={this.state.loginEmail}
                     loginPass={this.state.loginPass}
                     trialTrackHandler={this.trialTrackHandler}
-                    allTracks={this.state.allTracks} 
-                    relTrackHandler={this.relTrackHandler} 
+                    allTracks={this.state.allTracks}
+                    relTrackHandler={this.relTrackHandler}
                     relTracks={this.state.relTracks} /> : null
             }
             {
@@ -172,8 +172,8 @@ class App extends Component {
                     userComplTracks={this.state.userComplTracks}
                     userSavedTracks={this.state.userSavedTracks}
                     allTracks={this.state.allTracks}
-                    fetchArticlesHandler={this.fetchArticlesHandler} 
-                    relTrackHandler={this.relTrackHandler} 
+                    fetchArticlesHandler={this.fetchArticlesHandler}
+                    relTrackHandler={this.relTrackHandler}
                     relTracks={this.state.relTracks}/> : null
             }
             {
@@ -184,8 +184,8 @@ class App extends Component {
                     userComplTracks={this.state.userComplTracks}
                     userSavedTracks={this.state.userSavedTracks}
                     allTracks={this.state.allTracks}
-                    fetchArticlesHandler={this.fetchArticlesHandler} 
-                    relTrackHandler={this.relTrackHandler} 
+                    fetchArticlesHandler={this.fetchArticlesHandler}
+                    relTrackHandler={this.relTrackHandler}
                     relTracks={this.state.relTracks}/> : null
             }
             {
@@ -198,8 +198,8 @@ class App extends Component {
                     userSavedTracks={this.state.userSavedTracks}
                     allTracks={this.state.allTracks}
                     fetchArticlesHandler={this.fetchArticlesHandler}
-                    allArticles={this.state.allArticles} 
-                    relTrackHandler={this.relTrackHandler} 
+                    allArticles={this.state.allArticles}
+                    relTrackHandler={this.relTrackHandler}
                     relTracks={this.state.relTracks} /> : null
             }
             {
@@ -209,8 +209,8 @@ class App extends Component {
                     handleInputChange={this.handleInputChange}
                     user={this.state.user}
                     allTracks={this.state.allTracks}
-                    fetchArticlesHandler={this.fetchArticlesHandler} 
-                    relTrackHandler={this.relTrackHandler} 
+                    fetchArticlesHandler={this.fetchArticlesHandler}
+                    relTrackHandler={this.relTrackHandler}
                     relTracks={this.state.relTracks}/> : null
             }
           </div>

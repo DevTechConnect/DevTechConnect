@@ -25,6 +25,7 @@ class App extends Component {
         allTracks:[],
         relTracks: [],
         allArticles:[],
+        allGloss:[],
         userSavedTracks: [],
         userComplTracks: []
     };
@@ -72,6 +73,7 @@ class App extends Component {
                     }
                     this.trialTrackHandler();
                     this.fetchArticlesHandler();
+                    this.fetchGlossaryHandler();
                     this.setState({userSavedTracks: userTrackHolder, userComplTracks: complTrackHolder});
                 }
             )
@@ -88,6 +90,7 @@ class App extends Component {
             .then((response) => {
                 this.trialTrackHandler();
                 this.fetchArticlesHandler();
+                this.fetchGlossaryHandler();
                 this.setState({user:response.data, page:"MemberP"});
              })
             .catch(err => console.log(err));
@@ -126,7 +129,19 @@ class App extends Component {
                   console.log("UNABLE TO GET INFORMATION");
               } else {
                 this.setState({allArticles:response.data});
-                console.log('ALL ARTICLES: ' + JSON.stringify(response.data));
+            }})
+            .catch(err => console.log(err));
+    };
+
+    fetchGlossaryHandler = () => {
+        API.getGlossary()
+        .then( (response) => {
+              if(response.status!==200){
+                //TODO show error
+                  console.log("UNABLE TO GET GLOSSARY");
+              } else {
+                this.setState({allGloss:response.data});
+                console.log('ALL TERMS: ' + JSON.stringify(response.data));
             }})
             .catch(err => console.log(err));
     };

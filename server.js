@@ -408,7 +408,7 @@ app.post('/api/logout', function(req, res){
 });
 
 app.get("*", function(req,res){
-  res.sendFile(path.resolve(__dirname, 'client/public/index.html'));
+  res.sendFile(path.resolve(__dirname, 'client/build/public/index.html'));
 });
 
 

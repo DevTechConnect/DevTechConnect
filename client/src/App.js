@@ -55,7 +55,7 @@ class App extends Component {
                 this.setState({user:response.data})
                   console.log(response.data)
             }})
-            .then(() => { 
+            .then(() => {
                     let complTrackHolder = [];
                     let userTrackHolder = [];
                     let userTrackHolderName = [];
@@ -91,7 +91,7 @@ class App extends Component {
              })
             .catch(err => console.log(err));
     };
-    
+
     trialTrackHandler = () => {
         API.getAllTracks()
           .then( (response) => {
@@ -103,9 +103,9 @@ class App extends Component {
             }})
             .catch(err => console.log(err));
     }
-    
-    fetchArticlesHandler = (num) => {
-        API.getArticles(num)
+
+    fetchArticlesHandler = () => {
+        API.getArticles(10)
         .then( (response) => {
               if(response.status!=200){
                 //TODO show error cannot log in
@@ -125,7 +125,7 @@ class App extends Component {
 
   render() {
 
-      
+
     return (
         <div className="row">
           <div className='App col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12'>
@@ -143,8 +143,8 @@ class App extends Component {
                     psw={this.state.psw}
                     psw2={this.state.psw2}
                     loginEmail={this.state.loginEmail}
-                    loginPass={this.state.loginPass}  
-                    trialTrackHandler={this.trialTrackHandler} 
+                    loginPass={this.state.loginPass}
+                    trialTrackHandler={this.trialTrackHandler}
                     allTracks={this.state.allTracks} /> : null
             }
             {
@@ -154,18 +154,18 @@ class App extends Component {
                     handleInputChange={this.handleInputChange}
                     user={this.state.user}
                     userComplTracks={this.state.userComplTracks}
-                    userSavedTracks={this.state.userSavedTracks} 
-                    allTracks={this.state.allTracks} 
+                    userSavedTracks={this.state.userSavedTracks}
+                    allTracks={this.state.allTracks}
                     fetchArticlesHandler={this.fetchArticlesHandler} /> : null
             }
             {
             this.state.page === 'MemberP' ?
                 <MemberP
                     setAppState={this.setAppState}
-                    user={this.state.user}  
+                    user={this.state.user}
                     userComplTracks={this.state.userComplTracks}
-                    userSavedTracks={this.state.userSavedTracks}  
-                    allTracks={this.state.allTracks} 
+                    userSavedTracks={this.state.userSavedTracks}
+                    allTracks={this.state.allTracks}
                     fetchArticlesHandler={this.fetchArticlesHandler} /> : null
             }
             {
@@ -173,11 +173,11 @@ class App extends Component {
                 <Resources
                     setAppState={this.setAppState}
                     handleInputChange={this.handleInputChange}
-                    user={this.state.user}  
+                    user={this.state.user}
                     userComplTracks={this.state.userComplTracks}
-                    userSavedTracks={this.state.userSavedTracks}  
-                    allTracks={this.state.allTracks} 
-                    fetchArticlesHandler={this.fetchArticlesHandler} 
+                    userSavedTracks={this.state.userSavedTracks}
+                    allTracks={this.state.allTracks}
+                    fetchArticlesHandler={this.fetchArticlesHandler}
                     allArticles={this.state.allArticles}/> : null
             }
             {
@@ -185,8 +185,8 @@ class App extends Component {
                 <LimitedFocus
                     setAppState={this.setAppState}
                     handleInputChange={this.handleInputChange}
-                    user={this.state.user}  
-                    allTracks={this.state.allTracks} 
+                    user={this.state.user}
+                    allTracks={this.state.allTracks}
                     fetchArticlesHandler={this.fetchArticlesHandler} /> : null
             }
           </div>

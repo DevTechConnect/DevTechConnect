@@ -1,14 +1,20 @@
 .sidebar {
     border: .2em solid white;
     padding: 1em;
-    margin: 0 auto;
+    margin-left: 0;
     border-radius: 25px;
-    width: 30%;
+    width: 20%;
     display: inline-block;
     background-color: rgba(134, 133, 133, 0.2);
+    position: relative;
+    right: 3.5em;
+    text-align: center;
 }
 .sidebar-head {
     padding: .5em;
     margin: .2em auto;
     font-size: 1.3em;
+}
+.art-holder {
+    text-align: left;
 }

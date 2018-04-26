@@ -34,5 +34,7 @@
     text-shadow: .02em .02em #868282;
     font-size: 2em;
     border-bottom: solid 1px white;
+    border-top: solid 1px white;
+    background-color: rgba(134, 133, 133, 0.2);
     padding: .5em;
 }

@@ -81,10 +81,9 @@ class Home extends Component {
                             allTracks={this.props.allTracks} />
                         <div className='home-box'>
                             <h1>DevTech Connect Resources</h1>
-                            <hr />
                             <div>
                                 <div>
-                                <h1>Browse Our Articles</h1>
+                                <h2 className='mem-p-second'>Browse Our Links and Articles</h2>
                                     <Article />
                                     <Article />
                                     <Article />
@@ -92,10 +91,9 @@ class Home extends Component {
                                     <Article />
                                 </div>
                             </div>
-                            <hr />
-                            <div className='inline-block'>
+                            <div>
                                 <div>
-                                    <h2>Glossary</h2>
+                                    <h2 className='mem-p-second'>Glossary</h2>
                                     <ul>
                                         <GlosTerm />
                                         <GlosTerm />

@@ -4,11 +4,13 @@ import './Article.css';
 
 const Article = (props) => {
     return (
-        <ul>
-            <li className='article-link'>
-                <a className='article-link' href={props.link} target='_blank'>{props.artName}</a>
-            </li>
-        </ul>
+        <div className='article-holder'>
+            <a className='article-link' href={props.link} target='_blank'>{props.artName}</a>
+            {
+            props.descr ?
+                <p>{props.descr}</p> : null
+            }
+        </div>
     )
 }
         

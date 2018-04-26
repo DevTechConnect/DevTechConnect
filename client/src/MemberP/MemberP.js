@@ -119,6 +119,7 @@ class MemberP extends Component {
                         return <Article 
                             artName={this.props.user.bookmarks[index].linkName}
                             link={this.props.user.bookmarks[index].url}
+                            descr={this.props.user.bookmarks[index].linkDescription}
                             key={index} />
                     })}
                 </div>
@@ -152,7 +153,9 @@ class MemberP extends Component {
                             <p className='mem-p-second'>
                                 Your Saved Articles
                             </p>
-                            {articles}
+                            <div className='art-holder'>
+                                {articles}
+                            </div>
                         </div>
                     </div>
                 </div> : null

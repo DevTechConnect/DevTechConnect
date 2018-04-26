@@ -62,7 +62,7 @@ class Home extends Component {
     render () {
         
     return (
-        <div>
+        <div className='main-home-box'>
         {
         this.state.startTrackClkd === false && this.state.homeClkd === true ?
             <div>
@@ -83,9 +83,6 @@ class Home extends Component {
                         <h2 className='page-second'>Where You Can Keep Moving</h2>
                         <div className='rec-art-box'>
                             <h1 className='page-second'>Recently Added Articles</h1>
-                                <Article />
-                                <Article />
-                                <Article />
                                 <Article />
                                 <Article />
                         </div>

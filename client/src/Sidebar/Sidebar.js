@@ -73,7 +73,9 @@ class Sidebar extends Component {
                 <hr />
                 <h4 className='sidebar-head'>These are your last 3 bookmarked articles.</h4>
                 <hr />
-                {articles}
+                <div className='art-holder'>
+                    {articles}
+                </div>
             </div>
         )
     }

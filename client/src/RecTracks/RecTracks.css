@@ -5,5 +5,12 @@
 }
 .rec-tracks-bar {
     padding: .2em;
-    margin: .5em auto;
+    margin: 1em;
+    border: solid 2px white;
+    border-radius: 25px;
+}
+.rec-track-head {
+    background-color: rgba(134, 133, 133, 0.2);
+    border-bottom: solid 2px white;
+    padding: 1em;
 }

@@ -53,7 +53,7 @@ class App extends Component {
                   console.log("UNABLE TO LOGIN. USERNAME AND PASSWORD ARE INCORRECT");
               } else {
                 this.setState({user:response.data})
-                  console.log(Promise.resolve(response.data))
+                  console.log(response.data)
             }})
             .then(() => { 
                     let complTrackHolder = [];
@@ -70,7 +70,7 @@ class App extends Component {
                         }
                     }
                     this.trialTrackHandler();
-                    this.fetchArticlesHandler();
+                    this.fetchArticlesHandler(10);
                     this.setState({userSavedTracks: userTrackHolder, userComplTracks: complTrackHolder});
                 }
             )
@@ -86,7 +86,7 @@ class App extends Component {
         API.addNewUser({firstName:this.state.firstName, lastName:this.state.lastName, email:this.state.email, password:this.state.psw})
             .then((response) => {
                 this.trialTrackHandler();
-                this.fetchArticlesHandler();
+                this.fetchArticlesHandler(10);
                 this.setState({user:response.data, page:"MemberP"});
              })
             .catch(err => console.log(err));
@@ -104,8 +104,8 @@ class App extends Component {
             .catch(err => console.log(err));
     }
     
-    fetchArticlesHandler = () => {
-        API.getArticles(10)
+    fetchArticlesHandler = (num) => {
+        API.getArticles(num)
         .then( (response) => {
               if(response.status!=200){
                 //TODO show error cannot log in

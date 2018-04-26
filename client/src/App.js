@@ -49,7 +49,7 @@ class App extends Component {
         API.login({username:this.state.loginEmail, password:this.state.loginPass})
           .then((response) => response)
           .then( (response) => {
-              if(response.status!=200){
+              if(response.status!==200){
                 //TODO show error cannot log in
                   console.log("UNABLE TO LOGIN. USERNAME AND PASSWORD ARE INCORRECT");
               } else {
@@ -96,7 +96,7 @@ class App extends Component {
     trialTrackHandler = () => {
         API.getAllTracks()
           .then( (response) => {
-              if(response.status!=200){
+              if(response.status!==200){
                 //TODO show error cannot log in
                   console.log("UNABLE TO GET TRACK INFORMATION");
               } else {
@@ -108,7 +108,7 @@ class App extends Component {
     relTrackHandler = (num) => {
         API.getRelatedTracksSummary(num)
         .then( (response) => {
-              if(response.status!=200){
+              if(response.status!==200){
                 //TODO show error cannot log in
                   console.log("UNABLE TO GET RELATED TRACK INFORMATION");
               } else {
@@ -121,7 +121,7 @@ class App extends Component {
     fetchArticlesHandler = (num = 5) => {
         API.getArticles(num)
         .then( (response) => {
-              if(response.status!=200){
+              if(response.status!==200){
                 //TODO show error
                   console.log("UNABLE TO GET INFORMATION");
               } else {

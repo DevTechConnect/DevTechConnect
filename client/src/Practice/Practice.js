@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 
 import Link from '../Link/Link';
 import Info from '../Info/Info';
-import Type from '../Type/Type';
-import Duration from '../Duration/Duration';
 
 import './Practice.css';
 

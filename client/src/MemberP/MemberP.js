@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 
 import Navbar from '../Navbar/Navbar';
-import Sidebar from '../Sidebar/Sidebar';
 import MemberInfo from '../MemberInfo/MemberInfo';
 import Achievement from '../Achievement/Achievement';
 import TrackQV from '../TrackQV/TrackQV';
 import Article from '../Article/Article';
-import LimitedFocus from '../LimitedFocus/LimitedFocus';
 import LimitedFModule from '../LimitedFModule/LimitedFModule';
 
 import './MemberP.css';
@@ -47,7 +45,7 @@ class MemberP extends Component {
     };
 
     memClickHandler = () => {
-        this.props.setAppState("MemberP"),
+        this.props.setAppState("MemberP");
         this.memClickedStateHandler();
     }
     
@@ -177,7 +175,7 @@ class MemberP extends Component {
                                     Welcome to your {this.state.trackName} learning track.
                                 </h2>
                                 <p>
-                                    Follow along and check off each step you complete to track of your progress. Most importantly, don/'t skip the practice; practice will be your quickest teacher in code. We will give you achievements along the way - you can find those on your <a className='link' href="#" onClick={this.memClickHandler}>Member Page</a>. 
+                                    Follow along and check off each step you complete to track of your progress. Most importantly, don/'t skip the practice; practice will be your quickest teacher in code. We will give you achievements along the way - you can find those on your <span className='link' onClick={this.memClickHandler}>Member Page</span>. 
                                 </p>
                                 <p>
                                     We're' happy you're here. Stick around, and like always, keep moving.

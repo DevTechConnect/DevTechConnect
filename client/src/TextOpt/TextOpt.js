@@ -5,20 +5,19 @@ import Info from '../Info/Info';
 
 import './TextOpt.css';
 
-class TextOpt extends Component {
-    
-    state={
-        allTracks: this.props.allTracks
-    }
-    
-    render() {
+const TextOpt = (props) => {
+
         return (
-            <div className='text-opt'>
-                <a className='text-link' target='_blank' href={this.state.allTracks[0].steps[this.props.stepNum].stepLink}>{this.state.allTracks[0].steps[this.props.stepNum].stepLink}</a>
-                <p className='text-descr'>{this.state.allTracks[0].steps[this.props.stepNum].stepdescription}</p>
+            <div>
+                {
+                props.allTracks ?
+                    <div className='text-opt'>
+                        <a className='text-link' target='_blank' href={props.allTracks[props.trackId].steps[props.stepNum].stepLink}>{props.allTracks[props.trackId].steps[props.stepNum].stepLink}</a>
+                        <p className='text-descr'>{props.allTracks[props.trackId].steps[props.stepNum].stepdescription}</p>
+                    </div> : null
+                }
             </div>
         )
-    }
 };
 
 export default TextOpt;

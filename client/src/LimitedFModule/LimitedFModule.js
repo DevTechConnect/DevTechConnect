@@ -16,19 +16,14 @@ class LimitedFModule extends Component {
     
     state = {
         startClick: false,
-        trackName: 'HTML/CSS',
-        page: 'LangDef'
+        page: 'LangDef',
     };
 
     startClickHandler = () => {
         const startClkd = this.state.startClick;
         this.setState({startClick: !startClkd});
     }
-    
-    trackNameHandler = () => {
-        let selectedTrack = '';
-        this.setState({trackName: selectedTrack})
-    }
+
     langDefHandler = () => {
         this.setState({page: 'LangDef'})
     }
@@ -48,7 +43,8 @@ class LimitedFModule extends Component {
         this.setState({page: 'Practice'})
     }
     relTrackHandler = () => {
-        this.setState({page: 'RelTrack'})
+        this.setState({page: 'RelTrack'});
+        this.props.relTrackHandler(this.props.trackId +1);
     }
 
     render () {
@@ -110,7 +106,9 @@ class LimitedFModule extends Component {
                     this.state.page === 'RelTrack' ?
                         <RelTrack 
                             allTracks={this.props.allTracks} 
-                            trackId={this.props.trackId} /> : null
+                            trackId={this.props.trackId} 
+                            relTracks={this.props.relTracks} 
+                            message={this.props.message} /> : null
                     }
                 </div>
             </div>

@@ -131,7 +131,10 @@ class Landing extends Component {
                                 <LimitedFModule
                                     trackName={'HTML/CSS'}
                                     allTracks={this.props.allTracks}
-                                    trackId={0} />
+                                    trackId={0} 
+                                    relTrackHandler={this.props.relTrackHandler} 
+                                    relTracks={this.props.relTracks} 
+                                    message='Please Sign Up to Try More Tracks'/>
                         </div> : null
                         }
                 </div>

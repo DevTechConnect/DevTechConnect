@@ -65,7 +65,7 @@ class LimitedFocus extends Component {
                         <LimitedFModule 
                             trackName={'HTML/CSS'} 
                                 allTracks={this.props.allTracks}
-                                trackId={0}/> 
+                                trackId={this.props.trackId}/> 
                     </div> : null
                 }
             </div>

@@ -4,3 +4,12 @@
     display: inline-block;
     vertical-align: top;
 }
+.rec-art-box {
+    background-color: rgba(134, 133, 133, 0.2);
+    width: 100%;
+    padding: .3em;
+    margin: 0 1em;
+    border-top: solid 2px white;
+    border-bottom: solid 2px white;
+    border-radius: 25px;
+}

@@ -18,7 +18,7 @@ class Sidebar extends Component {
                     <div>
                         {this.props.userComplTracks.map((person, index) => {
                             return <Achievement 
-                                trackId={3}
+                                trackId={this.props.userComplTracks[index]}
                                 key={index} />
                         })}
                     </div>
@@ -35,7 +35,7 @@ class Sidebar extends Component {
                                 trackId={this.props.user.tracks[index].trackId}
                                 trackName={this.props.user.tracks[index].trackName}
                                 userSavedTracks={this.props.userSavedTracks}
-                                startTrackHandler={this.props.startTrackHandler}
+                                startTrkClickHandler={this.props.startTrkClickHandler}
                                 key={index} />
                         })}
                     </div>
@@ -64,6 +64,7 @@ class Sidebar extends Component {
                 <MemberInfo 
                     user={this.props.user} 
                     userSavedTracks={this.props.userSavedTracks} />
+                <h4 className='sidebar-head'>Your completed tracks:</h4>
                 {complTracks}
                 <hr />
                 <h4 className='sidebar-head'>Jump into one of your saved tracks:</h4>

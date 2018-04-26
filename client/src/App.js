@@ -23,6 +23,7 @@ class App extends Component {
         loginPass:'',
         user:[],
         allTracks:[],
+        relTracks: [],
         allArticles:[],
         userSavedTracks: [],
         userComplTracks: []
@@ -70,7 +71,7 @@ class App extends Component {
                         }
                     }
                     this.trialTrackHandler();
-                    this.fetchArticlesHandler(10);
+                    this.fetchArticlesHandler(0);
                     this.setState({userSavedTracks: userTrackHolder, userComplTracks: complTrackHolder});
                 }
             )
@@ -86,7 +87,7 @@ class App extends Component {
         API.addNewUser({firstName:this.state.firstName, lastName:this.state.lastName, email:this.state.email, password:this.state.psw})
             .then((response) => {
                 this.trialTrackHandler();
-                this.fetchArticlesHandler(10);
+                this.fetchArticlesHandler(0);
                 this.setState({user:response.data, page:"MemberP"});
              })
             .catch(err => console.log(err));
@@ -103,16 +104,29 @@ class App extends Component {
             }})
             .catch(err => console.log(err));
     }
+    
+    relTrackHandler = (num) => {
+        API.getRelatedTracksSummary(num)
+        .then( (response) => {
+              if(response.status!=200){
+                //TODO show error cannot log in
+                  console.log("UNABLE TO GET RELATED TRACK INFORMATION");
+              } else {
+                this.setState({relTracks:response.data});
+                console.log(response.data);
+            }})
+            .catch(err => console.log(err));
+    }
 
-    fetchArticlesHandler = () => {
-        API.getArticles(10)
+    fetchArticlesHandler = (num) => {
+        API.getArticles(num)
         .then( (response) => {
               if(response.status!=200){
                 //TODO show error cannot log in
                   console.log("UNABLE TO GET INFORMATION");
               } else {
                 this.setState({allArticles:response.data});
-                  console.log('ALL ARTICLES: ' + this.state.allArticles);
+                  console.log('ALL ARTICLES: ' + response.data);
             }})
             .catch(err => console.log(err));
     };
@@ -145,7 +159,9 @@ class App extends Component {
                     loginEmail={this.state.loginEmail}
                     loginPass={this.state.loginPass}
                     trialTrackHandler={this.trialTrackHandler}
-                    allTracks={this.state.allTracks} /> : null
+                    allTracks={this.state.allTracks} 
+                    relTrackHandler={this.relTrackHandler} 
+                    relTracks={this.state.relTracks} /> : null
             }
             {
             this.state.page === 'Home' ?
@@ -156,7 +172,9 @@ class App extends Component {
                     userComplTracks={this.state.userComplTracks}
                     userSavedTracks={this.state.userSavedTracks}
                     allTracks={this.state.allTracks}
-                    fetchArticlesHandler={this.fetchArticlesHandler} /> : null
+                    fetchArticlesHandler={this.fetchArticlesHandler} 
+                    relTrackHandler={this.relTrackHandler} 
+                    relTracks={this.state.relTracks}/> : null
             }
             {
             this.state.page === 'MemberP' ?
@@ -166,7 +184,9 @@ class App extends Component {
                     userComplTracks={this.state.userComplTracks}
                     userSavedTracks={this.state.userSavedTracks}
                     allTracks={this.state.allTracks}
-                    fetchArticlesHandler={this.fetchArticlesHandler} /> : null
+                    fetchArticlesHandler={this.fetchArticlesHandler} 
+                    relTrackHandler={this.relTrackHandler} 
+                    relTracks={this.state.relTracks}/> : null
             }
             {
             this.state.page === 'Resources' ?
@@ -178,7 +198,9 @@ class App extends Component {
                     userSavedTracks={this.state.userSavedTracks}
                     allTracks={this.state.allTracks}
                     fetchArticlesHandler={this.fetchArticlesHandler}
-                    allArticles={this.state.allArticles}/> : null
+                    allArticles={this.state.allArticles} 
+                    relTrackHandler={this.relTrackHandler} 
+                    relTracks={this.state.relTracks} /> : null
             }
             {
             this.state.page === 'LimitedFocus' ?
@@ -187,7 +209,9 @@ class App extends Component {
                     handleInputChange={this.handleInputChange}
                     user={this.state.user}
                     allTracks={this.state.allTracks}
-                    fetchArticlesHandler={this.fetchArticlesHandler} /> : null
+                    fetchArticlesHandler={this.fetchArticlesHandler} 
+                    relTrackHandler={this.relTrackHandler} 
+                    relTracks={this.state.relTracks}/> : null
             }
           </div>
         </div>

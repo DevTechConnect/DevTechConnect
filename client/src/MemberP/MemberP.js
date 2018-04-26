@@ -6,13 +6,49 @@ import MemberInfo from '../MemberInfo/MemberInfo';
 import Achievement from '../Achievement/Achievement';
 import TrackQV from '../TrackQV/TrackQV';
 import Article from '../Article/Article';
+import LimitedFocus from '../LimitedFocus/LimitedFocus';
+import LimitedFModule from '../LimitedFModule/LimitedFModule';
 
 import './MemberP.css';
 
 class MemberP extends Component {
+    
+    state= {
+        startTrackClkd: false,
+        startTrack: false,
+        selTrackId: 0,
+        memClkd: true
+    }
+
+    startTrkClickHandler = (e, id) => {
+        const startClkd = this.state.startTrackClkd;
+        this.setState({
+            startTrackClkd: !startClkd,
+            selTrackId: id-1,
+            memClkd: false
+        });
+        console.log(id);
+    };
+
+    startNowClickHandler = () => {
+        const startNowClkd = this.state.startTrack;
+        this.setState({
+            startTrack: !startNowClkd,
+            memClkd: false
+        });
+    };
+
+    memClickedStateHandler = () => {
+        this.setState({
+            memClkd: true,
+            startTrackClkd: false,
+            startTrack: false
+        });
+    };
 
     memClickHandler = () => {
-        this.props.setAppState("MemberP")
+        this.props.setAppState("MemberP"),
+        this.memClickedStateHandler();
     }
     
     resourceClickHandler = () => {
@@ -23,30 +59,9 @@ class MemberP extends Component {
         this.props.setAppState("Home")
     }
     
-    startTrackHandler = () => {
-        this.props.setAppState("LimitedFocus")
-    }
     
     render() {
-        
-//        let complTracks = null;
-//        if (this.props.userComplTracks) {
-//            for (let j = 0; j < this.props.userComplTracks.length; j++) {
-//                complTracks = (
-//                    <div>
-//                        {this.props.userComplTracks.map((index) => {
-//                            return <Achievement 
-//                                trackId={this.props.userComplTracks[j]}
-//                                key={index} />
-//                        })}
-//                    </div>
-//                );
-//            }
-//        }
-    
-        
-        
-        
+
         let complTracks = null;
 
         if (this.props.user.tracks) {
@@ -56,12 +71,10 @@ class MemberP extends Component {
                      if (this.props.user.tracks[index].trackMarkedComplete === 1 && this.props.user.tracks[index].trackMarkedComplete !== 0) {
                        return  <div className='user-saved-main'>
                             <div  className='mem-saved-track-qv'>
-                                <TrackQV
+                                <Achievement
                                     trackId={this.props.user.tracks[index].trackId}
-                                    imgDim={75}
-                                    trackName={this.props.user.tracks[index].trackName}
                                     key={index} 
-                                    startTrackHandler={this.startTrackHandler} />
+                                />
                             </div>
                         </div>
                       }
@@ -86,7 +99,7 @@ class MemberP extends Component {
                                     imgDim={75}
                                     trackName={this.props.user.tracks[index].trackName}
                                     key={index} 
-                                    startTrackHandler={this.startTrackHandler} />
+                                    startTrkClickHandler={this.startTrkClickHandler} />
                             </div>
                         </div>
                       }
@@ -112,35 +125,78 @@ class MemberP extends Component {
             );
         }
      
-        
-        console.log(Promise.resolve(this.props.userComplTracks))
         return (
             <div>
-                <Navbar 
-                    memClickHandler={this.memClickHandler} 
-                    resourceClickHandler={this.resourceClickHandler} 
-                    homeClickHandler={this.homeClickHandler} 
-                    fetchArticlesHandler={this.fetchArticlesHandler} />
-                <div className='mem-box'>
-                    <div className='mem-p-head'>
-                        <MemberInfo 
-                            user={this.props.user} />
+            {
+            this.state.startTrackClkd === false && this.state.memClkd === true ?
+                <div>
+                    <Navbar 
+                        memClickHandler={this.memClickHandler} 
+                        resourceClickHandler={this.resourceClickHandler} 
+                        homeClickHandler={this.homeClickHandler} 
+                        fetchArticlesHandler={this.fetchArticlesHandler} />
+                    <div className='mem-box'>
+                        <div className='mem-p-head'>
+                            <MemberInfo 
+                                user={this.props.user} />
+                        </div>
+                        <div className='content-box-mem-p'>
+                            <p className='mem-p-second'>
+                                Your Saved Tracks
+                            </p>
+                            {savedTracks}
+                            <p className='mem-p-second'>
+                                Your Completed Tracks
+                            </p>
+                            {complTracks}
+                            <p className='mem-p-second'>
+                                Your Saved Articles
+                            </p>
+                            {articles}
+                        </div>
                     </div>
-                    <div className='content-box-mem-p'>
-                        <p className='mem-p-second'>
-                            Your Saved Tracks
-                        </p>
-                        {savedTracks}
-                        <p className='mem-p-second'>
-                            Your Completed Tracks
-                        </p>
-                        {complTracks}
-                        <p className='mem-p-second'>
-                            Your Saved Articles
-                        </p>
-                        {articles}
-                    </div>
-                </div>
+                </div> : null
+            }
+            {
+            this.state.startTrackClkd && this.state.memClkd === false ?
+                <div>
+                    <Navbar 
+                        memClickHandler={this.memClickHandler} 
+                        resourceClickHandler={this.resourceClickHandler} 
+                        homeClickHandler={this.homeClickHandler} 
+                        fetchArticlesHandler={this.fetchArticlesHandler} />
+                    {
+                    this.state.startTrack === false ?
+                        <div className='land-box'>
+                            <h1>Limited Focus Track</h1>
+                            <div>
+                                <h2>
+                                    Welcome to your {this.state.trackName} learning track.
+                                </h2>
+                                <p>
+                                    Follow along and check off each step you complete to track of your progress. Most importantly, don/'t skip the practice; practice will be your quickest teacher in code. We will give you achievements along the way - you can find those on your <a className='link' href="#" onClick={this.memClickHandler}>Member Page</a>. 
+                                </p>
+                                <p>
+                                    We're' happy you're here. Stick around, and like always, keep moving.
+                                </p>
+                                <button type='button' name='startButton' onClick={this.startNowClickHandler}>
+                                    Start Track 
+                                </button>
+                            </div> 
+                        </div> : null
+                    }
+                    {
+                    this.state.startTrack && this.state.memClkd === false ?
+                        <div className='land-box'>
+                            <LimitedFModule 
+                                allTracks={this.props.allTracks}
+                                trackId={this.state.selTrackId} 
+                                relTrackHandler={this.props.relTrackHandler} 
+                                relTracks={this.props.relTracks} /> 
+                        </div> : null
+                    }
+                </div> : null
+            }
             </div>
         )
     }

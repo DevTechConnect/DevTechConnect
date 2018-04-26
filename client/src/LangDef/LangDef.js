@@ -15,26 +15,31 @@ class LangDef extends Component {
 
         return (
             <div>
-                <h1 className='content-header'>What is {this.props.allTracks[this.props.trackId].trackName}?</h1>
-                <hr />
                 {
                 this.props.allTracks ?
-                    <div className='content-box'>
-                        <TextDef 
-                            allTracks={this.props.allTracks } 
-                            trackId={this.props.trackId} />
-                        <div className='vid-holder'>
-                            <Iframe url={this.props.allTracks[this.props.trackId].trackIntroVideoLink.replace('watch', 'embed')}
-                                    width="480px"
-                                    height="250px"
-                                    id="myId"
-                                    className="iframe"
-                                    display="initial"
-                                    position="relative"
-                                    allowFullScreen/>
-                            <br />
-                            <a className='article-link' href={this.props.allTracks[this.props.trackId].trackIntroVideoLink}>URL: {this.props.allTracks[this.props.trackId].trackIntroVideoLink}</a>
-                        </div> 
+                    <div>
+                        <h1 className='content-header'>What is {this.props.allTracks[this.props.trackId].trackName}?</h1>
+
+                            <div className='content-box'>
+                                <h2 className='opt-header'>Text Explanation</h2>
+                                <TextDef 
+                                    allTracks={this.props.allTracks } 
+                                    trackId={this.props.trackId} />
+                                <hr />
+                                <div className='vid-holder'>
+                                    <h2 className='opt-header'>Video Explanation</h2>
+                                    <Iframe url={this.props.allTracks[this.props.trackId].trackIntroVideoLink.replace('watch', 'embed')}
+                                            width="420px"
+                                            height="250px"
+                                            id="myId"
+                                            className="iframe"
+                                            display="initial"
+                                            position="relative"
+                                            allowFullScreen/>
+                                    <br />
+                                    <a className='article-link' href={this.props.allTracks[this.props.trackId].trackIntroVideoLink}>URL: {this.props.allTracks[this.props.trackId].trackIntroVideoLink}</a>
+                                </div> 
+                            </div>
                     </div> : null
                 }
             </div>

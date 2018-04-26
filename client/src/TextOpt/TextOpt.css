@@ -2,12 +2,11 @@
     display: inline-block;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
+    width: 75%;
     padding: .8em 3em 1em 1em;
     vertical-align: middle;
 }
 .text-link {
-    display: block;
     padding: .3em;
     margin: 1em auto;
     font-size: 1.4em;

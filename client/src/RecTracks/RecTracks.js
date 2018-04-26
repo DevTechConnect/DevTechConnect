@@ -17,7 +17,7 @@ class RecTracks extends Component {
                             return <TrackQV 
                                 trackId={this.props.allTracks[index].trackId}
                                 trackName={this.props.allTracks[index].trackName}
-                                startTrackHandler={this.props.startTrackHandler}
+                                startTrkClickHandler={this.props.startTrkClickHandler}
                                 key={index} />
                         })}
                     </div>
@@ -34,7 +34,7 @@ class RecTracks extends Component {
                             return <TrackQV 
                                 trackId={this.props.allTracks[index].trackId}
                                 trackName={this.props.allTracks[index].trackName}
-                                startTrackHandler={this.props.startTrackHandler}
+                                startTrkClickHandler={this.props.startTrkClickHandler}
                                 key={index} />
                         })}
                     </div>
@@ -51,7 +51,7 @@ class RecTracks extends Component {
                             return <TrackQV 
                                 trackId={this.props.allTracks[index].trackId}
                                 trackName={this.props.allTracks[index].trackName}
-                                startTrackHandler={this.props.startTrackHandler}
+                                startTrkClickHandler={this.props.startTrkClickHandler}
                                 key={index} />
                         })}
                     </div>

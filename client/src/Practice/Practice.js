@@ -18,7 +18,6 @@ class Practice extends Component {
         return (
             <div>
                 <h1 className='content-header'>Practice Links</h1>
-                <hr />
                 <div className='pract-link'>
                     <Link 
                         link={this.state.allTracks[0].steps[8].stepLink} />

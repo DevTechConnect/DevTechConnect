@@ -17,8 +17,9 @@
     color: #48276a;
 }
 .track-content-box {
-    padding: .8em;
+    padding: 0 0 1em 0;
     display: inline-block;
     margin-left: auto;
     margin-right: auto;
+    width: 100%;
 }

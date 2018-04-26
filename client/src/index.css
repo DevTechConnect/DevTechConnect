@@ -67,4 +67,6 @@ h1 {
 .page-second {
     text-shadow: .04em .04em #575757;
     font-size: 2.5em;
+    padding: .1em .5em;
+    margin-bottom: .5em;
 }

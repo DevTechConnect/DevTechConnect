@@ -1,8 +1,8 @@
 .text-def {
-    display: inline-block;
+    display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
+    width: 75%;
     padding: .8em 3em 1em 1em;
     vertical-align: middle;
 }

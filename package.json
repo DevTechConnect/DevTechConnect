@@ -28,9 +28,11 @@
     "react": "^16.3.1",
     "react-dom": "^16.3.1",
     "react-iframe": "^1.1.0",
+    "react-router-dom": "^4.2.2",
     "react-scripts": "^1.1.4",
     "redux": "^4.0.0",
     "sequelize": "^4.37.5",
+    "video-react": "^0.10.4"
   },
   "devDependencies": {
     "chai": "^4.1.2",

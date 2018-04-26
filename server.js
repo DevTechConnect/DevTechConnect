@@ -222,7 +222,7 @@ app.post('/api/getArticles', function(req, res, next){
               });
 });
 
-app.get("/api/getGlossary"), function(req,res){
+app.get("/api/getGlossary", function(req,res){
   db.sequelize
       .query(
               "Select id, term, acronymMeaning, definition, url from Glossaries order by term;"
@@ -242,9 +242,10 @@ app.get("/api/getGlossary"), function(req,res){
         res.status(200).send(JSON.stringify(glossary));
       })
       .catch(function(err){
-        console.log("Error getting tracks", err); throw err;
+        console.log("Error getting glossary", err); throw err;
       });
-}
+});
+
 app.get('/api/getAllTracks', function(req, res, next){
   db.sequelize
       .query(
@@ -431,7 +432,7 @@ app.post('/api/logout', function(req, res){
 });
 
 app.get("*", function(req,res){
-  res.sendFile(path.resolve(__dirname, 'client/build/public/index.html'));
+  res.sendFile(path.resolve(__dirname, 'client/public/index.html'));
 });
 
 

@@ -71,7 +71,7 @@ class App extends Component {
                         }
                     }
                     this.trialTrackHandler();
-                    this.fetchArticlesHandler(0);
+                    this.fetchArticlesHandler();
                     this.setState({userSavedTracks: userTrackHolder, userComplTracks: complTrackHolder});
                 }
             )
@@ -87,7 +87,7 @@ class App extends Component {
         API.addNewUser({firstName:this.state.firstName, lastName:this.state.lastName, email:this.state.email, password:this.state.psw})
             .then((response) => {
                 this.trialTrackHandler();
-                this.fetchArticlesHandler(0);
+                this.fetchArticlesHandler();
                 this.setState({user:response.data, page:"MemberP"});
              })
             .catch(err => console.log(err));

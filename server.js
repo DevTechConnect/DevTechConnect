@@ -32,7 +32,7 @@ app.use(bodyParser.json());
 
 // Static directory
 //app.use(express.static("./app/client/public"));
-app.use(express.static(path.resolve(__dirname,'/client/public')));
+app.use(express.static(path.resolve(__dirname,'/client/')));
 
 app.use(session({ secret: SECRET}));
 app.use(bodyParser.urlencoded({ extended: false }));

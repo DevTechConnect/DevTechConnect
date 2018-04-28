@@ -9,8 +9,8 @@
     "server": "nodemon server.js",
     "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
     "test": "mocha",
-    "start": "node server.js",
-    "heroku-prebuild": "cd client && npm install && npm install"
+    "start": "npm run dev",
+    "heroku-prebuild": "npm install && cd client && npm install"
 
   },
   "dependencies": {

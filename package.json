@@ -1,6 +1,9 @@
 {
   "name": "app",
   "version": "1.0.0",
+  "engines": {
+    "node": "8.2.1"
+  },
   "scripts": {
     "client": "cd client && npm run start",
     "server": "nodemon server.js",

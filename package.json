@@ -8,7 +8,8 @@
     "test": "mocha",
     "start": "node server.js",
     "heroku-prebuild":"cd client && npm install",
-    "heroku-postbuild": "npm run client"
+    "heroku-postbuild": "npm run client",
+    "postinstall": "webpack -p"
   },
   "dependencies": {
     "ajv": "^6.4.0",

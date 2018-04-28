@@ -10,7 +10,7 @@ import LimitedFModule from '../LimitedFModule/LimitedFModule';
 import './Resources.css';
 
 class Home extends Component {
-    
+
     state= {
         startTrackClkd: false,
         startTrack: false,
@@ -43,26 +43,26 @@ class Home extends Component {
             startTrack: false
         });
     };
-    
+
     memClickHandler = () => {
         this.props.setAppState("MemberP")
     }
-    
+
     resourceClickHandler = () => {
         this.props.setAppState("Resources");
         this.resClickedStateHandler();
     }
-    
+
     homeClickHandler = () => {
         this.props.setAppState("Home")
     }
-    
+
     startTrackHandler = () => {
         this.props.setAppState("LimitedFocus")
     }
-    
+
     render () {
-        
+
         let articles = null;
         if (this.props.allArticles) {
             articles = (
@@ -83,7 +83,7 @@ class Home extends Component {
                         {this.props.allArticles.map((p, index) => {
                          if (this.props.allArticles[index].topicName === 'Classes and Tutorials') {
                             return <div>
-                                        <Article 
+                                        <Article
                                         artName={this.props.allArticles[index].linkName}
                                         link={this.props.allArticles[index].url}
                                         descr={this.props.allArticles[index].linkDescription}
@@ -99,7 +99,7 @@ class Home extends Component {
                         {this.props.allArticles.map((p, index) => {
                          if (this.props.allArticles[index].topicName === 'Databases and Platforms') {
                             return <div>
-                                        <Article 
+                                        <Article
                                         artName={this.props.allArticles[index].linkName}
                                         link={this.props.allArticles[index].url}
                                         descr={this.props.allArticles[index].linkDescription}
@@ -115,7 +115,7 @@ class Home extends Component {
                         {this.props.allArticles.map((p, index) => {
                          if (this.props.allArticles[index].topicName === 'Frameworks and Libraries') {
                             return <div>
-                                        <Article 
+                                        <Article
                                         artName={this.props.allArticles[index].linkName}
                                         link={this.props.allArticles[index].url}
                                         descr={this.props.allArticles[index].linkDescription}
@@ -131,7 +131,7 @@ class Home extends Component {
                         {this.props.allArticles.map((p, index) => {
                          if (this.props.allArticles[index].topicName === 'Job Hunting and Career Resources') {
                             return <div>
-                                        <Article 
+                                        <Article
                                         artName={this.props.allArticles[index].linkName}
                                         link={this.props.allArticles[index].url}
                                         descr={this.props.allArticles[index].linkDescription}
@@ -147,7 +147,7 @@ class Home extends Component {
                         {this.props.allArticles.map((p, index) => {
                          if (this.props.allArticles[index].topicName === 'NPM Packages') {
                             return <div>
-                                        <Article 
+                                        <Article
                                         artName={this.props.allArticles[index].linkName}
                                         link={this.props.allArticles[index].url}
                                         descr={this.props.allArticles[index].linkDescription}
@@ -163,7 +163,7 @@ class Home extends Component {
                         {this.props.allArticles.map((p, index) => {
                          if (this.props.allArticles[index].topicName === 'Project Management and Communication') {
                             return <div>
-                                        <Article 
+                                        <Article
                                         artName={this.props.allArticles[index].linkName}
                                         link={this.props.allArticles[index].url}
                                         descr={this.props.allArticles[index].linkDescription}
@@ -179,7 +179,7 @@ class Home extends Component {
                         {this.props.allArticles.map((p, index) => {
                          if (this.props.allArticles[index].topicName === 'Other/Misc') {
                             return <div>
-                                        <Article 
+                                        <Article
                                         artName={this.props.allArticles[index].linkName}
                                         link={this.props.allArticles[index].url}
                                         descr={this.props.allArticles[index].linkDescription}
@@ -202,7 +202,7 @@ class Home extends Component {
                     {this.props.allGloss.map((t, index) => {
                         return <div id='glos-top'>
                                     <li>
-                                        <GlosTermComp 
+                                        <GlosTermComp
                                             term={this.props.allGloss[index].term}
                                             def={this.props.allGloss[index].definition}
                                             key={index} />
@@ -214,21 +214,21 @@ class Home extends Component {
                 </div>
             );
         }
-        
+
     return (
         <div>
             {
             this.state.startTrackClkd === false && this.state.resClkd === true ?
                 <div>
-                    <Navbar 
-                        memClickHandler={this.memClickHandler} 
-                        resourceClickHandler={this.resourceClickHandler} 
+                    <Navbar
+                        memClickHandler={this.memClickHandler}
+                        resourceClickHandler={this.resourceClickHandler}
                         homeClickHandler={this.homeClickHandler} />
                     <div>
-                        <Sidebar 
-                            user={this.props.user} 
+                        <Sidebar
+                            user={this.props.user}
                             userComplTracks={this.props.userComplTracks}
-                            userSavedTracks={this.props.userSavedTracks} 
+                            userSavedTracks={this.props.userSavedTracks}
                             allTracks={this.props.allTracks} />
                         <div className='home-box'>
                             <h1 className='page-head'>DevTech Connect Resources</h1>
@@ -247,9 +247,9 @@ class Home extends Component {
                             </div>
                              <div className='inline-block'>
                                 <div>
-                                    <RecTracks 
-                                        startTrackHandler={this.startTrackHandler} 
-                                        allTracks={this.props.allTracks} 
+                                    <RecTracks
+                                        startTrackHandler={this.startTrackHandler}
+                                        allTracks={this.props.allTracks}
                                         startTrkClickHandler={this.startTrkClickHandler} />
                                 </div>
                             </div>
@@ -260,10 +260,10 @@ class Home extends Component {
         {
         this.state.startTrackClkd && this.state.resClkd === false ?
                 <div>
-                    <Navbar 
-                        memClickHandler={this.memClickHandler} 
-                        resourceClickHandler={this.resourceClickHandler} 
-                        homeClickHandler={this.homeClickHandler} 
+                    <Navbar
+                        memClickHandler={this.memClickHandler}
+                        resourceClickHandler={this.resourceClickHandler}
+                        homeClickHandler={this.homeClickHandler}
                         fetchArticlesHandler={this.fetchArticlesHandler} />
                     {
                     this.state.startTrack === false ?
@@ -274,25 +274,25 @@ class Home extends Component {
                                     Welcome to your {this.state.trackName} learning track.
                                 </h2>
                                 <p>
-                                    Follow along and check off each step you complete to track of your progress. Most importantly, don/'t skip the practice; practice will be your quickest teacher in code. We will give you achievements along the way - you can find those on your <span className='link' onClick={this.memClickHandler}>Member Page</span>. 
+                                    Follow along and check off each step you complete to track of your progress. Most importantly, don't skip the practice; practice will be your quickest teacher in code. We will give you achievements along the way - you can find those on your <span className='link' onClick={this.memClickHandler}>Member Page</span>. 
                                 </p>
                                 <p>
                                     We're' happy you're here. Stick around, and like always, keep moving.
                                 </p>
                                 <button type='button' name='startButton' onClick={this.startNowClickHandler}>
-                                    Start Track 
+                                    Start Track
                                 </button>
-                            </div> 
+                            </div>
                         </div> : null
                     }
                     {
                     this.state.startTrack && this.state.resClkd === false ?
                         <div className='land-box'>
-                            <LimitedFModule 
+                            <LimitedFModule
                                 allTracks={this.props.allTracks}
-                                trackId={this.state.selTrackId} 
-                                relTrackHandler={this.props.relTrackHandler} 
-                                relTracks={this.props.relTracks} /> 
+                                trackId={this.state.selTrackId}
+                                relTrackHandler={this.props.relTrackHandler}
+                                relTracks={this.props.relTracks} />
                         </div> : null
                     }
                 </div> : null

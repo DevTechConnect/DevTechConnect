@@ -49,8 +49,8 @@ passport.use(new LocalStrategy(
             return done(null, false, { message: 'Incorrect Login Information.' });
           } else {
             var match = bcrypt.compareSync(password, results[0].password);
-            match = password=== results[0].password; //TODO remove before dedployment
-            console.log("Remove line above before deployment");
+            //match = password=== results[0].password; //TODO remove before dedployment
+            //console.log("Remove line above before deployment");
             if(match){
               results[0].password = ""; //don't return the hashed password for safety reasons
               return done(null, results[0]);
@@ -121,8 +121,8 @@ app.post('/api/markStepIncomplete', function(req, res, next) {
 app.post('/api/addUser', (req, res) => {
       var email = req.body.email.toLowerCase();
       var hash = bcrypt.hashSync(req.body.password, 10);
-      hash = req.body.password; //TODO remove before deployment
-      console.log("Remove line above before deployment");
+      //hash = req.body.password; //TODO remove before deployment
+    //  console.log("Remove line above before deployment");
       var newUser = { firstName: req.body.firstName, lastName: req.body.lastName,
                        email:email, password:hash, lastLogin:db.sequelize.fn('NOW') };
       // search for attributes

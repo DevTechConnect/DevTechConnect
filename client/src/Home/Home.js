@@ -9,7 +9,7 @@ import LimitedFModule from '../LimitedFModule/LimitedFModule';
 import './Home.css';
 
 class Home extends Component {
-    
+
     state= {
         startTrackClkd: false,
         startTrack: false,
@@ -42,22 +42,22 @@ class Home extends Component {
             startTrack: false
         });
     };
-    
+
     memClickHandler = () => {
         this.props.setAppState("MemberP")
     }
-    
+
     resourceClickHandler = () => {
         this.props.setAppState("Resources");
     }
-    
+
     homeClickHandler = () => {
         this.props.setAppState("Home");
         this.homeClickedStateHandler();
     }
-    
 
-    
+
+
     render () {
         let articles = null;
         if (this.props.allArticles) {
@@ -65,7 +65,7 @@ class Home extends Component {
             articles = (
                 <div>
                     {recArticles.map((p, index) => {
-                        return <Article 
+                        return <Article
                             artName={recArticles[index].linkName}
                             link={recArticles[index].url}
                             descr={recArticles[index].linkDescription}
@@ -74,22 +74,22 @@ class Home extends Component {
                 </div>
             );
         }
-        
+
     return (
         <div className='main-home-box'>
         {
         this.state.startTrackClkd === false && this.state.homeClkd === true ?
             <div>
-                <Navbar 
-                    memClickHandler={this.memClickHandler} 
-                    resourceClickHandler={this.resourceClickHandler} 
-                    homeClickHandler={this.homeClickHandler} 
+                <Navbar
+                    memClickHandler={this.memClickHandler}
+                    resourceClickHandler={this.resourceClickHandler}
+                    homeClickHandler={this.homeClickHandler}
                     fetchArticlesHandler={this.fetchArticlesHandler} />
                 <div>
-                    <Sidebar 
-                        user={this.props.user} 
+                    <Sidebar
+                        user={this.props.user}
                         userComplTracks={this.props.userComplTracks}
-                        userSavedTracks={this.props.userSavedTracks} 
+                        userSavedTracks={this.props.userSavedTracks}
                         startTrkClickHandler={this.startTrkClickHandler}
                         allTracks={this.props.allTracks} />
                     <div className='home-box'>
@@ -101,23 +101,23 @@ class Home extends Component {
                         </div>
                          <div className='inline-block'>
                             <div>
-                                <RecTracks 
-                                    startTrkClickHandler={this.startTrkClickHandler} 
-                                    allTracks={this.props.allTracks} 
+                                <RecTracks
+                                    startTrkClickHandler={this.startTrkClickHandler}
+                                    allTracks={this.props.allTracks}
                                     page={'home'} />
                             </div>
                         </div>
                     </div>
                 </div>
             </div> : null
-        } 
+        }
         {
         this.state.startTrackClkd && this.state.homeClkd === false ?
             <div>
-                <Navbar 
-                    memClickHandler={this.memClickHandler} 
-                    resourceClickHandler={this.resourceClickHandler} 
-                    homeClickHandler={this.homeClickHandler} 
+                <Navbar
+                    memClickHandler={this.memClickHandler}
+                    resourceClickHandler={this.resourceClickHandler}
+                    homeClickHandler={this.homeClickHandler}
                     fetchArticlesHandler={this.fetchArticlesHandler} />
                 {
                 this.state.startTrack === false ?
@@ -128,25 +128,25 @@ class Home extends Component {
                                 Welcome to your {this.state.trackName} learning track.
                             </h2>
                             <p>
-                                Follow along and check off each step you complete to track of your progress. Most importantly, don/'t skip the practice; practice will be your quickest teacher in code. We will give you achievements along the way - you can find those on your <span className='link' onClick={this.memClickHandler}>Member Page</span>. 
+                                Follow along and check off each step you complete to track of your progress. Most importantly, don't skip the practice; practice will be your quickest teacher in code. We will give you achievements along the way - you can find those on your <span className='link' onClick={this.memClickHandler}>Member Page</span>. 
                             </p>
                             <p>
                                 We're' happy you're here. Stick around, and like always, keep moving.
                             </p>
                             <button type='button' name='startButton' onClick={this.startNowClickHandler}>
-                                Start Track 
+                                Start Track
                             </button>
-                        </div> 
+                        </div>
                     </div> : null
                 }
                 {
                 this.state.startTrack && this.state.homeClkd === false ?
                     <div className='land-box'>
-                        <LimitedFModule 
+                        <LimitedFModule
                             allTracks={this.props.allTracks}
-                            trackId={this.state.selTrackId} 
-                            relTrackHandler={this.props.relTrackHandler} 
-                            relTracks={this.props.relTracks} /> 
+                            trackId={this.state.selTrackId}
+                            relTrackHandler={this.props.relTrackHandler}
+                            relTracks={this.props.relTracks} />
                     </div> : null
                 }
             </div> : null

@@ -10,8 +10,8 @@
     "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
     "test": "mocha",
     "start": "node server.js",
-    "heroku-prebuild": "cd client && npm install && npm install",
-    
+    "heroku-prebuild": "cd client && npm install && npm install"
+
   },
   "dependencies": {
     "ajv": "^6.4.0",

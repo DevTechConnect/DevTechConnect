@@ -7,8 +7,9 @@
     "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
     "test": "mocha",
     "start": "node server.js",
-    "heroku-prebuild":"npm install && cd client && npm install",
-    "heroku-postbuild": "npm run dev"
+    "heroku-prebuild":"cd client && npm install",
+    "heroku-postbuild": "npm run client",
+    "postinstall": "webpack -p"
   },
   "dependencies": {
     "ajv": "^6.4.0",

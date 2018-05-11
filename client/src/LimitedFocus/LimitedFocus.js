@@ -6,11 +6,11 @@ import LimitedFModule from '../LimitedFModule/LimitedFModule';
 import './LimitedFocus.css';
 
 class LimitedFocus extends Component {
-    
+
     state = {
         startTrack: false
     }
-    
+
     startNowClickHandler = () => {
         const startNowClkd = this.state.startTrack;
         this.setState({
@@ -21,22 +21,22 @@ class LimitedFocus extends Component {
     memClickHandler = () => {
         this.props.setAppState("MemberP")
     }
-    
+
     resourceClickHandler = () => {
         this.props.setAppState("Resources");
     }
-    
+
     homeClickHandler = () => {
         this.props.setAppState("Home")
     }
-    
+
     render(props) {
         return (
             <div>
-                <Navbar 
-                    memClickHandler={this.memClickHandler} 
-                    resourceClickHandler={this.resourceClickHandler} 
-                    homeClickHandler={this.homeClickHandler} 
+                <Navbar
+                    memClickHandler={this.memClickHandler}
+                    resourceClickHandler={this.resourceClickHandler}
+                    homeClickHandler={this.homeClickHandler}
                     fetchArticlesHandler={this.fetchArticlesHandler} />
                 {
                 this.state.startTrack === false ?
@@ -47,24 +47,24 @@ class LimitedFocus extends Component {
                                 Welcome to your {this.state.trackName} learning track.
                             </h2>
                             <p>
-                                Follow along and check off each step you complete to track of your progress. Most importantly, don/'t skip the practice; practice will be your quickest teacher in code. We will give you achievements along the way - you can find those on your <span className='link' onClick={this.memClickHandler}>Member Page</span>. 
+                                Follow along and check off each step you complete to track of your progress. Most importantly, don't skip the practice; practice will be your quickest teacher in code. We will give you achievements along the way - you can find those on your <span className='link' onClick={this.memClickHandler}>Member Page</span>. 
                             </p>
                             <p>
                                 We're' happy you're here. Stick around, and like always, keep moving.
                             </p>
                             <button type='button' name='startButton' onClick={this.startNowClickHandler}>
-                                Start Track 
+                                Start Track
                             </button>
-                        </div> 
+                        </div>
                     </div> : null
                 }
                 {
                 this.state.startTrack ?
                     <div className='land-box'>
-                        <LimitedFModule 
-                            trackName={'HTML/CSS'} 
+                        <LimitedFModule
+                            trackName={'HTML/CSS'}
                                 allTracks={this.props.allTracks}
-                                trackId={this.props.trackId}/> 
+                                trackId={this.props.trackId}/>
                     </div> : null
                 }
             </div>

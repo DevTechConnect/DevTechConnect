@@ -1,14 +1,17 @@
 {
   "name": "app",
   "version": "1.0.0",
+  "engines": {
+    "node": "8.2.1"
+  },
   "scripts": {
     "client": "cd client && npm run start",
     "server": "nodemon server.js",
     "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
     "test": "mocha",
-    "start": "node server.js",
-    "heroku-prebuild":"cd client && npm install",
-    "heroku-postbuild": "npm run client"
+    "start": "npm run dev",
+    "heroku-prebuild": "npm install && cd client && npm install"
+
   },
   "dependencies": {
     "ajv": "^6.4.0",

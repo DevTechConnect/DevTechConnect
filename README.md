@@ -4,7 +4,7 @@ A web application to assist those who are new to web development. Intended to he
 
 ## Getting Started
 
-Once cloned to your local machine, make sure your local SQL server is up and running. Manually create a database entitiled, 'devtech_db', then feed in the seeds.Once navigating to the cloned directory, enter 'npm run dev' inside of your terminal.
+Once cloned to your local machine, make sure your local SQL server is up and running. Manually create a database entitiled, 'devtech_db', then feed in the seeds. Once navigating to the cloned directory, enter 'npm run dev' inside of your terminal.
 
 ### Prerequisites
 
